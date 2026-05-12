@@ -1,0 +1,2418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advisor Intelligence | Corey Pond · Winthrop & Co</title>
+<meta name="description" content="Two tools built for financial advisors who want real answers about their transition.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1520;--ink2:#192b3c;--ink3:#2e3f52;
+  --steel:#4a5f74;--mist:#7a90a3;--fog:#acb8c4;
+  --cream:#e8ebf0;--gold:#b8973a;--gold2:#d4af5a;
+  --border:rgba(184,151,58,0.15);--border2:rgba(184,151,58,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);min-height:100vh}
+.wco{background:#020c14;border-bottom:0.5px solid rgba(184,151,58,0.1);padding:7px 0}
+.wco-in{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
+.wco-left{display:flex;align-items:center;gap:8px}
+.wco-badge{width:20px;height:20px;background:var(--cream);border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:10px;font-weight:600;color:var(--ink)}
+.wco-name{font-family:'Cormorant Garamond',serif;font-size:11px;color:#aabbc8}
+.wco-sep,.wco-sub{font-size:9px;color:var(--steel)}
+nav{background:rgba(10,21,32,0.96);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-in{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-orb{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--ink)}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:500;color:var(--cream)}
+.nav-role{font-size:8px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-top:1px}
+.nav-back{font-size:11px;color:var(--mist);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--gold)}
+.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+.tab-shell{padding:48px 0 0}
+.tab-header{max-width:1160px;margin:0 auto;padding:0 40px}
+.tab-eyebrow{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.tab-eyebrow::before{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.tab-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);font-weight:600;color:var(--cream);margin-bottom:8px;line-height:1.1}
+.tab-headline em{color:var(--gold2);font-style:italic}
+.tab-sub{font-size:13px;color:var(--mist);font-weight:300;line-height:1.8;max-width:520px;margin-bottom:36px}
+.tabs{display:flex;gap:0;border-bottom:0.5px solid var(--border);max-width:1160px;margin:0 auto;padding:0 40px}
+.tab-btn{padding:14px 28px;font-size:12px;color:var(--mist);cursor:pointer;border:none;background:transparent;font-family:'DM Sans',sans-serif;border-bottom:2px solid transparent;margin-bottom:-0.5px;transition:all .2s;letter-spacing:0.3px}
+.tab-btn:hover{color:var(--cream)}
+.tab-btn.active{color:var(--gold2);border-bottom-color:var(--gold);font-weight:500}
+.tab-label{font-size:9px;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:3px;color:var(--steel)}
+.tab-btn.active .tab-label{color:var(--gold)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* VOICE TOOL STYLES */
+
+:root {
+  --ink: #0e1a24;
+  --ink2: #192b3c;
+  --ink3: #2e3f52;
+  --steel: #4a5f74;
+  --mist: #7a90a3;
+  --fog: #acb8c4;
+  --paper: #f0ece4;
+  --paper2: #faf8f4;
+  --gold: #b8973a;
+  --gold2: #d4af5a;
+  --gold3: #e8d5a0;
+  --cream: #e8ebf0;
+  --border: rgba(184,151,58,0.18);
+  --border2: rgba(184,151,58,0.35);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* subtle grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* HEADER */
+.hdr {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  border-bottom: 0.5px solid var(--border);
+  background: rgba(14,26,36,0.95);
+  backdrop-filter: blur(8px);
+}
+.hdr-wco {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wco-badge {
+  width: 26px; height: 26px;
+  background: var(--cream);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 600; color: var(--ink);
+}
+.wco-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 500; color: var(--cream);
+  letter-spacing: 0.3px;
+}
+.wco-sub { font-size: 10px; color: var(--mist); margin-left: 6px; }
+.hdr-cp {
+  display: flex; align-items: center; gap: 12px;
+}
+.cp-orb {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.cp-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 500; color: var(--cream);
+}
+.cp-role { font-size: 9px; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; }
+.hdr-nav { display: flex; align-items: center; gap: 24px; }
+.hdr-link { font-size: 11px; color: var(--mist); cursor: pointer; letter-spacing: 0.3px; }
+.hdr-btn {
+  background: transparent;
+  border: 0.5px solid var(--gold);
+  color: var(--gold2);
+  font-size: 10px; font-weight: 500;
+  padding: 8px 18px; border-radius: 2px;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  letter-spacing: 1px; text-transform: uppercase;
+  transition: all 0.2s;
+}
+.hdr-btn:hover { background: var(--gold); color: var(--ink); }
+
+/* HERO */
+.hero {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 72px 40px 48px;
+  min-height: 340px;
+}
+
+/* decorative lines */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0.5px; height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  opacity: 0.5;
+}
+
+.hero-eyebrow {
+  font-size: 9px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 36px; height: 0.5px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.35s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold2);
+}
+.hero-sub {
+  font-size: 14px;
+  color: var(--mist);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 14px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-fine {
+  font-size: 10px;
+  color: var(--steel);
+  letter-spacing: 0.5px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.65s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* VOICE INTERFACE */
+.voice-wrap {
+  position: relative;
+  z-index: 5;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ORB */
+.orb-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.orb-outer {
+  position: relative;
+  width: 120px; height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.orb-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 0.5px solid var(--border);
+  transition: all 0.4s;
+}
+.orb-ring-1 { width: 120px; height: 120px; }
+.orb-ring-2 { width: 96px; height: 96px; border-color: var(--border2); }
+.orb-ring-3 { width: 72px; height: 72px; border-color: rgba(184,151,58,0.5); }
+.orb-core {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+  z-index: 2;
+}
+.orb-core svg {
+  width: 22px; height: 22px;
+  stroke: var(--ink);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.orb-outer:hover .orb-core { background: var(--gold2); transform: scale(1.05); }
+
+/* LISTENING STATE */
+.orb-outer.listening .orb-ring-1 { animation: pulse-ring 1.5s ease-out infinite; }
+.orb-outer.listening .orb-ring-2 { animation: pulse-ring 1.5s ease-out 0.3s infinite; }
+.orb-outer.listening .orb-ring-3 { animation: pulse-ring 1.5s ease-out 0.6s infinite; }
+.orb-outer.listening .orb-core { background: var(--gold2); }
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+
+/* PROCESSING STATE */
+.orb-outer.processing .orb-core { animation: spin-slow 2s linear infinite; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+
+.orb-label {
+  font-size: 11px;
+  color: var(--mist);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  min-height: 18px;
+  transition: all 0.3s;
+}
+
+/* WAVEFORM */
+.waveform {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 32px;
+  margin: 12px auto;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.waveform.active { opacity: 1; }
+.wave-bar {
+  width: 3px;
+  border-radius: 2px;
+  background: var(--gold);
+  min-height: 4px;
+  transition: height 0.1s ease;
+}
+
+/* TEXT INPUT AREA */
+.input-section {
+  background: rgba(25,43,60,0.6);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(4px);
+}
+.input-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: block;
+}
+.input-area {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cream);
+  font-size: 15px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1.7;
+  resize: none;
+  min-height: 80px;
+}
+.input-area::placeholder { color: var(--steel); font-style: italic; }
+.input-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 0.5px solid var(--border);
+}
+.char-count { font-size: 10px; color: var(--steel); font-family: 'DM Mono', monospace; }
+.send-btn {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.send-btn:hover { background: var(--gold2); }
+.send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.send-btn svg { width: 14px; height: 14px; stroke: var(--ink); fill: none; stroke-width: 2; }
+
+/* EXAMPLE PROMPTS */
+.examples {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.examples-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.examples-label::before {
+  content: '';
+  display: block;
+  width: 20px; height: 0.5px;
+  background: var(--steel);
+}
+.example-pill {
+  background: transparent;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--fog);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  line-height: 1.4;
+}
+.example-pill:hover {
+  border-color: var(--gold);
+  color: var(--cream);
+  background: rgba(184,151,58,0.05);
+}
+
+/* RESPONSE AREA */
+.response-wrap {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.5s;
+}
+.response-wrap.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.response-card {
+  background: rgba(25,43,60,0.5);
+  border: 0.5px solid var(--border2);
+  border-radius: 8px;
+  padding: 28px 32px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(4px);
+  position: relative;
+}
+.response-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 32px;
+  width: 40px; height: 2px;
+  background: var(--gold);
+  border-radius: 0 0 2px 2px;
+}
+.response-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.response-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; font-weight: 600; color: var(--ink);
+  flex-shrink: 0;
+}
+.response-from {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 500; color: var(--cream);
+}
+.response-timestamp {
+  font-size: 10px; color: var(--steel);
+  font-family: 'DM Mono', monospace;
+  margin-top: 2px;
+}
+.response-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.75;
+}
+.response-body p { margin-bottom: 14px; }
+.response-body p:last-child { margin-bottom: 0; }
+.response-body strong { color: var(--gold2); font-weight: 500; }
+
+/* INSIGHT CHIPS */
+.insight-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--border);
+}
+.chip {
+  background: rgba(184,151,58,0.08);
+  border: 0.5px solid var(--border2);
+  border-radius: 3px;
+  padding: 5px 12px;
+  font-size: 11px;
+  color: var(--gold2);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.3px;
+}
+
+/* NEXT STEPS */
+.next-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+.next-card {
+  background: transparent;
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 18px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.next-card:hover {
+  border-color: var(--gold);
+  background: rgba(184,151,58,0.04);
+}
+.next-card-tag {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.next-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 500; color: var(--cream);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.next-card-sub { font-size: 11px; color: var(--mist); line-height: 1.5; }
+
+/* FOLLOW UP INPUT */
+.followup-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.followup-input {
+  flex: 1;
+  background: rgba(25,43,60,0.5);
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 16px;
+  color: var(--cream);
+  font-size: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.followup-input:focus { border-color: var(--gold); }
+.followup-input::placeholder { color: var(--steel); font-style: italic; }
+.followup-btn {
+  background: transparent;
+  border: 0.5px solid var(--border2);
+  color: var(--gold2);
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.followup-btn:hover { border-color: var(--gold); background: rgba(184,151,58,0.08); }
+
+/* CONFIDENTIAL STRIP */
+.confidential {
+  text-align: center;
+  padding: 20px;
+  font-size: 10px;
+  color: var(--steel);
+  letter-spacing: 0.5px;
+  border-top: 0.5px solid var(--border);
+  margin-top: 40px;
+}
+.confidential span { color: var(--gold); }
+
+/* LOADING DOTS */
+.typing {
+  display: none;
+  align-items: center;
+  gap: 5px;
+  padding: 16px 0;
+}
+.typing.active { display: flex; }
+.typing-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: typing-bounce 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing-bounce {
+  0%,100%{transform:translateY(0);opacity:.4}
+  50%{transform:translateY(-5px);opacity:1}
+}
+
+/* CONVERSATION HISTORY */
+.conv-history {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.conv-user {
+  align-self: flex-end;
+  background: rgba(46,63,82,0.7);
+  border: 0.5px solid rgba(184,151,58,0.2);
+  border-radius: 8px 8px 2px 8px;
+  padding: 12px 18px;
+  max-width: 85%;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--fog);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+
+/* DIAGNOSTIC STYLES */
+
+:root {
+  --navy:#051c2c; --slate:#192b3c; --slate-mid:#2e3f52; --slate-light:#4a5f74;
+  --steel:#7a90a3; --gold:#b8973a; --gold-light:#d4af5a; --gold-pale:#2a2010;
+  --cream:#e8ebf0; --white:#fafafa; --muted:#8a9aaa; --border:#1e3448; --border-light:#2d4357;
+  --path-ww:#1a3a2a; --path-ibd:#1a2a3a; --path-ria:#2a1a3a;
+  --path-ww-accent:#3ab87a; --path-ibd-accent:#3a78b8; --path-ria-accent:#9a3ab8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--cream);min-height:100vh}
+
+/* HEADERS */
+.hdr-wco{background:#020f1a;padding:7px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.wco-m{width:22px;height:22px;background:var(--cream);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:10px;font-weight:700;color:var(--slate)}
+.hdr-cp{background:var(--slate);padding:11px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.cp-mk{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--slate)}
+.nav-btn{background:var(--gold);color:var(--slate);font-size:9px;font-weight:600;padding:8px 16px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:48px 24px 80px}
+
+/* INTRO */
+.intro{text-align:center;margin-bottom:44px}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--slate);border:1px solid var(--border-light);border-radius:20px;padding:5px 14px;font-size:9px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.intro h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--white);line-height:1.15;margin-bottom:12px}
+.intro h1 em{color:var(--gold-light);font-style:italic}
+.intro p{font-size:12px;color:var(--steel);font-weight:300;line-height:1.8;max-width:560px;margin:0 auto 8px}
+
+/* STATS TICKER */
+.stats-ticker{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-bottom:40px;border-radius:6px;overflow:hidden}
+.ticker-item{background:var(--slate);padding:14px 16px;text-align:center}
+.ticker-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:3px}
+.ticker-num span{font-size:11px;color:var(--gold)}
+.ticker-src{font-size:8px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.ticker-lbl{font-size:9px;color:var(--steel);line-height:1.4}
+
+/* PROGRESS */
+.progress-bar{display:flex;align-items:center;gap:0;margin-bottom:40px}
+.prog-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative}
+.prog-step::after{content:'';position:absolute;top:12px;left:50%;width:100%;height:1px;background:var(--border-light);z-index:0}
+.prog-step:last-child::after{display:none}
+.prog-dot{width:24px;height:24px;border-radius:50%;background:var(--border-light);border:2px solid var(--border-light);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:var(--steel);position:relative;z-index:1;transition:all 0.3s}
+.prog-dot.active{background:var(--gold);border-color:var(--gold);color:var(--slate)}
+.prog-dot.done{background:var(--slate-mid);border-color:var(--gold);color:var(--gold)}
+.prog-label{font-size:9px;color:var(--slate-light);letter-spacing:0.5px;text-align:center;max-width:80px}
+.prog-label.active{color:var(--gold)}
+
+/* FORM */
+.form-section{display:none}
+.form-section.active{display:block}
+.sec-eyebrow{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.sec-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:6px;line-height:1.2}
+.sec-sub{font-size:12px;color:var(--steel);font-weight:300;margin-bottom:28px;line-height:1.7}
+
+/* DATA CALLOUT */
+.data-callout{background:var(--slate);border-left:3px solid var(--gold);padding:14px 18px;margin-bottom:24px;border-radius:0 6px 6px 0}
+.dc-source{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.dc-stat{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);margin-bottom:4px;line-height:1.3}
+.dc-context{font-size:10px;color:var(--steel);line-height:1.5;font-weight:300}
+
+/* OPTION CARDS */
+.opt-grid{display:grid;gap:10px;margin-bottom:24px}
+.opt-grid.c2{grid-template-columns:1fr 1fr}
+.opt-grid.c3{grid-template-columns:1fr 1fr 1fr}
+.opt-grid.c4{grid-template-columns:1fr 1fr 1fr 1fr}
+.opt{background:var(--slate);border:1.5px solid var(--border-light);border-radius:6px;padding:16px 18px;cursor:pointer;transition:all 0.2s;position:relative;user-select:none}
+.opt:hover{border-color:var(--gold);background:#1e3448}
+.opt.sel{border-color:var(--gold);background:#1a2e40}
+.opt.sel::after{content:'✓';position:absolute;top:10px;right:12px;font-size:11px;color:var(--gold);font-weight:600}
+.opt-tag{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.opt-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:4px;line-height:1.3}
+.opt-sub{font-size:10px;color:var(--steel);line-height:1.5;font-weight:300}
+
+/* PATH CARDS — special */
+.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.path-card{border:2px solid var(--border-light);border-radius:8px;padding:22px 20px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
+.path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.path-card.ww{background:var(--path-ww)}
+.path-card.ww::before{background:var(--path-ww-accent)}
+.path-card.ibd{background:var(--path-ibd)}
+.path-card.ibd::before{background:var(--path-ibd-accent)}
+.path-card.ria{background:var(--path-ria)}
+.path-card.ria::before{background:var(--path-ria-accent)}
+.path-card.sel.ww{border-color:var(--path-ww-accent)}
+.path-card.sel.ibd{border-color:var(--path-ibd-accent)}
+.path-card.sel.ria{border-color:var(--path-ria-accent)}
+.path-card.sel::after{content:'✓ Selected';position:absolute;top:12px;right:12px;font-size:9px;font-weight:600;letter-spacing:0.5px}
+.path-card.sel.ww::after{color:var(--path-ww-accent)}
+.path-card.sel.ibd::after{color:var(--path-ibd-accent)}
+.path-card.sel.ria::after{color:var(--path-ria-accent)}
+.path-icon{font-size:22px;margin-bottom:10px}
+.path-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.path-card.ww .path-label{color:var(--path-ww-accent)}
+.path-card.ibd .path-label{color:var(--path-ibd-accent)}
+.path-card.ria .path-label{color:var(--path-ria-accent)}
+.path-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.2}
+.path-sub{font-size:10px;color:var(--steel);line-height:1.6;font-weight:300;margin-bottom:14px}
+.path-facts{display:flex;flex-direction:column;gap:5px;border-top:1px solid var(--border-light);padding-top:12px}
+.path-fact{font-size:9px;color:var(--muted);display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.path-fact-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.path-card.ww .path-fact-dot{background:var(--path-ww-accent)}
+.path-card.ibd .path-fact-dot{background:var(--path-ibd-accent)}
+.path-card.ria .path-fact-dot{background:var(--path-ria-accent)}
+
+/* SLIDER */
+.slider-wrap{margin-bottom:24px}
+.sl-row{display:flex;justify-content:space-between;margin-bottom:10px}
+.sl-lbl{font-size:12px;color:var(--cream);font-weight:400}
+.sl-val{font-family:'Playfair Display',serif;font-size:14px;color:var(--gold-light);font-weight:600}
+input[type=range]{-webkit-appearance:none;width:100%;height:3px;background:var(--border-light);border-radius:2px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--slate);box-shadow:0 0 0 3px rgba(184,151,58,0.2)}
+.sl-range-labels{display:flex;justify-content:space-between;margin-top:6px}
+.sl-range-labels span{font-size:9px;color:var(--slate-light)}
+
+/* TEXT INPUT */
+.inp-wrap{margin-bottom:20px}
+.inp-wrap label{display:block;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--steel);margin-bottom:8px}
+.inp-wrap input,.inp-wrap select{width:100%;background:var(--slate);border:1.5px solid var(--border-light);color:var(--cream);font-size:13px;padding:12px 16px;border-radius:4px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s}
+.inp-wrap input:focus,.inp-wrap select:focus{border-color:var(--gold)}
+.inp-wrap input::placeholder{color:var(--slate-light)}
+.inp-wrap select option{background:var(--slate)}
+
+/* BUTTONS */
+.btn-row{display:flex;gap:12px;margin-top:32px;justify-content:flex-end}
+.btn-back{background:transparent;border:1px solid var(--border-light);color:var(--steel);font-size:11px;font-weight:500;padding:12px 24px;border-radius:3px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;transition:all 0.2s}
+.btn-back:hover{border-color:var(--steel);color:var(--cream)}
+.btn-next{background:var(--gold);color:var(--slate);font-size:11px;font-weight:600;padding:12px 32px;border-radius:3px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:1px;text-transform:uppercase;border:none;transition:all 0.2s}
+.btn-next:hover{background:var(--gold-light)}
+.multi-hint{font-size:10px;color:var(--slate-light);margin-bottom:16px;font-style:italic}
+.divider{height:1px;background:var(--border-light);margin:28px 0}
+
+/* LOADING */
+#loading{display:none;text-align:center;padding:64px 24px}
+.spinner{width:32px;height:32px;border:2px solid var(--border-light);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 32px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-steps{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:24px auto 0;text-align:left}
+.ls{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--steel);opacity:0;transition:opacity 0.5s}
+.ls.show{opacity:1}
+.ls.done{color:var(--cream)}
+.ls-dot{width:20px;height:20px;border-radius:50%;background:var(--border-light);border:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--steel);flex-shrink:0}
+.ls-dot.done{background:var(--gold);border-color:var(--gold);color:var(--slate)}
+
+/* REPORT */
+#report{display:none}
+.rpt-hero{background:linear-gradient(135deg,#0d1f2d,#192b3c);border:1px solid var(--border-light);border-radius:8px;padding:32px 36px;margin-bottom:20px;position:relative;overflow:hidden}
+.rpt-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;border:40px solid rgba(184,151,58,0.06)}
+.rpt-eyebrow{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.rpt-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.rpt-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--white);margin-bottom:6px}
+.rpt-sub{font-size:12px;color:var(--steel);font-weight:300;margin-bottom:24px}
+
+/* PATH BADGE */
+.path-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:4px;margin-bottom:20px;font-size:11px;font-weight:500}
+.path-badge.ww{background:var(--path-ww);color:var(--path-ww-accent);border:1px solid var(--path-ww-accent)}
+.path-badge.ibd{background:var(--path-ibd);color:var(--path-ibd-accent);border:1px solid var(--path-ibd-accent)}
+.path-badge.ria{background:var(--path-ria);color:var(--path-ria-accent);border:1px solid var(--path-ria-accent)}
+
+.score-row{display:flex;gap:14px;flex-wrap:wrap}
+.score-chip{background:var(--slate-mid);border:1px solid var(--border-light);border-radius:4px;padding:10px 16px;text-align:center}
+.chip-val{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white)}
+.chip-val span{font-size:12px;color:var(--gold)}
+.chip-lbl{font-size:9px;color:var(--steel);margin-top:2px;letter-spacing:0.5px}
+
+.rpt-sec-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--white);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.rpt-sec-title::before{content:'';display:block;width:3px;height:16px;background:var(--gold);border-radius:2px}
+
+.ins-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.ins-card{background:var(--slate);border:1px solid var(--border-light);border-radius:6px;padding:18px}
+.ins-tag{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ins-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--cream);margin-bottom:8px;line-height:1.3}
+.ins-body{font-size:11px;color:var(--steel);line-height:1.7;font-weight:300}
+.ins-body strong{color:var(--cream);font-weight:500}
+
+.fact-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.fact-item{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:var(--slate);border:1px solid var(--border-light);border-radius:6px}
+.fact-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px}
+.fact-text{font-size:12px;color:var(--cream);line-height:1.7;font-weight:300}
+.fact-text strong{color:var(--white);font-weight:500}
+.fact-source{font-size:9px;color:var(--gold);font-style:italic;margin-top:3px;display:block}
+
+.tech-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px}
+.tech-card{background:var(--slate);border:1px solid var(--border-light);border-radius:6px;padding:14px 16px}
+.tech-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.tech-name{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:4px}
+.tech-body{font-size:10px;color:var(--steel);line-height:1.5;font-weight:300}
+
+.cta-block{background:linear-gradient(135deg,#192b3c,#0d1f2d);border:1px solid var(--gold);border-radius:8px;padding:28px 32px;text-align:center;margin-top:28px}
+.cta-block h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:8px}
+.cta-block p{font-size:12px;color:var(--steel);margin-bottom:20px;font-weight:300;line-height:1.7;max-width:460px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:12px;justify-content:center}
+.btn-primary{background:var(--gold);color:var(--slate);font-size:11px;font-weight:600;padding:13px 28px;border-radius:3px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:1px;text-transform:uppercase;border:none}
+.btn-sec{background:transparent;border:1px solid var(--border-light);color:var(--steel);font-size:11px;font-weight:500;padding:13px 24px;border-radius:3px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.5px}
+.fine-print{font-size:10px;color:var(--slate-light);margin-top:14px}
+
+/* CERULLI BANNER */
+.cerulli-banner{background:var(--slate);border:1px solid var(--border-light);border-radius:6px;padding:16px 20px;margin-bottom:28px}
+.cb-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.cb-stats{display:flex;gap:24px;flex-wrap:wrap}
+.cb-stat{}
+.cb-num{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--white)}
+.cb-num span{font-size:10px;color:var(--gold)}
+.cb-desc{font-size:9px;color:var(--steel);margin-top:2px;max-width:160px;line-height:1.4}
+
+</style>
+</head>
+<body>
+
+<div class="wco">
+  <div class="wco-in">
+    <div class="wco-left">
+      <div class="wco-badge">W</div>
+      <span class="wco-name">Winthrop & Co</span>
+      <span class="wco-sep"> · </span>
+      <span class="wco-sub">Strategy & Operations Consulting</span>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="nav-brand">
+      <div class="nav-orb">CP</div>
+      <div>
+        <div class="nav-title">Corey Pond</div>
+        <div class="nav-role">Advisor Transitions</div>
+      </div>
+    </a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+  </div>
+</nav>
+
+<div class="tab-shell">
+  <div class="tab-header">
+    <div class="tab-eyebrow">Advisor intelligence</div>
+    <h1 class="tab-headline">Real answers.<br><em>Right now.</em></h1>
+    <p class="tab-sub">Two tools built specifically for financial advisors ready to understand what their move actually looks like. 100% confidential. No pitch. No pressure.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-voice" onclick="switchTab('voice')">
+      <span class="tab-label">Option 01</span>
+      Talk to the intelligence
+    </button>
+    <button class="tab-btn" id="tab-diagnostic" onclick="switchTab('diagnostic')">
+      <span class="tab-label">Option 02</span>
+      Run my diagnostic
+    </button>
+  </div>
+
+  <div class="tab-panel active" id="panel-voice">
+    <!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Advisor intelligence · Speak freely</div>
+  <h1 class="hero-title">Just tell me<br>what's <em>going on.</em></h1>
+  <p class="hero-sub">No forms. No steps. Describe your situation in plain language — your firm, your frustrations, your AUM, what you're thinking about — and get a real, intelligent response instantly.</p>
+  <div class="hero-fine">100% confidential · Powered by Corey Pond's expertise · Winthrop & Co</div>
+</section>
+
+<!-- VOICE INTERFACE -->
+<div class="voice-wrap">
+
+  <!-- ORB + WAVEFORM -->
+  <div class="orb-section">
+    <div class="orb-outer" id="orb" onclick="toggleListening()">
+      <div class="orb-ring orb-ring-1"></div>
+      <div class="orb-ring orb-ring-2"></div>
+      <div class="orb-ring orb-ring-3"></div>
+      <div class="orb-core" id="orb-core">
+        <svg id="mic-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        <svg id="stop-icon" viewBox="0 0 24 24" style="display:none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+      </div>
+    </div>
+
+    <div class="waveform" id="waveform">
+      <div class="wave-bar" style="height:8px"></div>
+      <div class="wave-bar" style="height:14px"></div>
+      <div class="wave-bar" style="height:20px"></div>
+      <div class="wave-bar" style="height:10px"></div>
+      <div class="wave-bar" style="height:24px"></div>
+      <div class="wave-bar" style="height:16px"></div>
+      <div class="wave-bar" style="height:8px"></div>
+      <div class="wave-bar" style="height:18px"></div>
+      <div class="wave-bar" style="height:12px"></div>
+      <div class="wave-bar" style="height:22px"></div>
+      <div class="wave-bar" style="height:14px"></div>
+      <div class="wave-bar" style="height:6px"></div>
+    </div>
+
+    <div class="orb-label" id="orb-label">Tap to speak, or type below</div>
+  </div>
+
+  <!-- TEXT INPUT -->
+  <div class="input-section">
+    <span class="input-label">Your situation</span>
+    <textarea
+      class="input-area"
+      id="userInput"
+      placeholder="I've been at Merrill for 14 years, $280M book, mostly advisory through Envestnet. I'm tired of the politics and my payout feels low. I've been thinking about LPL or maybe going independent but I don't know where to start..."
+      rows="4"
+      oninput="updateChar(this)"
+    ></textarea>
+    <div class="input-footer">
+      <span class="char-count" id="charCount">0 characters</span>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Get my read
+      </button>
+    </div>
+  </div>
+
+  <!-- EXAMPLE PROMPTS -->
+  <div class="examples" id="examples-section">
+    <div class="examples-label">Try one of these</div>
+    <button class="example-pill" onclick="useExample(this)">
+      "I'm a wirehouse advisor with $320M, 95% advisory, running my own portfolios. My payout is around 42% and I feel like I'm giving away half my business. What should I actually be making?"
+    </button>
+    <button class="example-pill" onclick="useExample(this)">
+      "I've been at an IBD for 8 years, $180M AUM, mostly SMA and UMA through Envestnet. I want to go independent but I'm scared of losing my clients. Is the timing right?"
+    </button>
+    <button class="example-pill" onclick="useExample(this)">
+      "I'm thinking about retirement in the next 3–5 years. I have a $250M book, great client relationships, no forgivable loan. What's my succession plan actually worth and how do I maximize it?"
+    </button>
+    <button class="example-pill" onclick="useExample(this)">
+      "My current platform doesn't have direct indexing or alternatives access and my clients are starting to ask. I'm at a regional BD. What are my actual options without blowing everything up?"
+    </button>
+  </div>
+
+  <!-- CONVERSATION HISTORY -->
+  <div class="conv-history" id="convHistory"></div>
+
+  <!-- TYPING INDICATOR -->
+  <div class="typing" id="typing">
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+    <span style="font-size:12px;color:var(--mist);margin-left:8px;font-family:'DM Mono',monospace">Corey is thinking...</span>
+  </div>
+
+  <!-- RESPONSE -->
+  <div class="response-wrap" id="responseWrap">
+    <div class="response-card" id="responseCard">
+      <div class="response-header">
+        <div class="response-avatar">CP</div>
+        <div>
+          <div class="response-from">Corey Pond</div>
+          <div class="response-timestamp" id="responseTime">Just now · Advisor Transitions · Winthrop & Co</div>
+        </div>
+      </div>
+      <div class="response-body" id="responseBody"></div>
+      <div class="insight-chips" id="insightChips"></div>
+    </div>
+
+    <div class="next-steps" id="nextSteps" style="display:none">
+      <button class="next-card" onclick="triggerDiagnostic()">
+        <div class="next-card-tag">Deep dive</div>
+        <div class="next-card-title">Run the full diagnostic</div>
+        <div class="next-card-sub">3-minute profile. Personalized report with Cerulli data, comp analysis, and your exact roadmap.</div>
+      </button>
+      <button class="next-card" onclick="bookCall()">
+        <div class="next-card-tag">Personal</div>
+        <div class="next-card-title">Book a call with Corey</div>
+        <div class="next-card-sub">30 minutes. No pitch. Just the real conversation your situation deserves.</div>
+      </button>
+    </div>
+
+    <!-- FOLLOW UP -->
+    <div class="followup-row">
+      <input
+        type="text"
+        class="followup-input"
+        id="followupInput"
+        placeholder="Ask a follow-up question..."
+        onkeydown="if(event.key==='Enter') sendFollowup()"
+      >
+      <button class="followup-btn" onclick="sendFollowup()">Ask →</button>
+    </div>
+  </div>
+
+  <div class="confidential">
+    Everything you share is <span>100% confidential</span> · Your current firm will never know we spoke · Corey Pond · <span>Winthrop & Co</span>
+  </div>
+
+</div>
+
+<script>
+let isListening = false;
+let recognition = null;
+let conversationHistory = [];
+let waveInterval = null;
+let hasResponded = false;
+
+function updateChar(el) {
+  document.getElementById('charCount').textContent = el.value.length + ' characters';
+}
+
+function useExample(btn) {
+  const text = btn.textContent.trim().replace(/^"|"$/g, '');
+  document.getElementById('userInput').value = text;
+  updateChar(document.getElementById('userInput'));
+  document.getElementById('userInput').focus();
+}
+
+function toggleListening() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    document.getElementById('orb-label').textContent = 'Voice not supported — please type below';
+    return;
+  }
+  if (isListening) {
+    stopListening();
+  } else {
+    startListening();
+  }
+}
+
+function startListening() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = 'en-US';
+
+  recognition.onstart = () => {
+    isListening = true;
+    document.getElementById('orb').classList.add('listening');
+    document.getElementById('orb-label').textContent = 'Listening... speak naturally';
+    document.getElementById('mic-icon').style.display = 'none';
+    document.getElementById('stop-icon').style.display = 'block';
+    document.getElementById('waveform').classList.add('active');
+    startWaveAnimation();
+  };
+
+  recognition.onresult = (e) => {
+    let transcript = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      transcript += e.results[i][0].transcript;
+    }
+    document.getElementById('userInput').value = transcript;
+    updateChar(document.getElementById('userInput'));
+  };
+
+  recognition.onend = () => {
+    if (isListening) stopListening();
+  };
+
+  recognition.onerror = () => {
+    stopListening();
+    document.getElementById('orb-label').textContent = 'Tap to try again';
+  };
+
+  recognition.start();
+}
+
+function stopListening() {
+  isListening = false;
+  if (recognition) recognition.stop();
+  document.getElementById('orb').classList.remove('listening');
+  document.getElementById('orb-label').textContent = 'Tap to speak, or type below';
+  document.getElementById('mic-icon').style.display = 'block';
+  document.getElementById('stop-icon').style.display = 'none';
+  document.getElementById('waveform').classList.remove('active');
+  stopWaveAnimation();
+}
+
+function startWaveAnimation() {
+  const bars = document.querySelectorAll('.wave-bar');
+  waveInterval = setInterval(() => {
+    bars.forEach(bar => {
+      const h = Math.floor(Math.random() * 24) + 4;
+      bar.style.height = h + 'px';
+    });
+  }, 120);
+}
+
+function stopWaveAnimation() {
+  if (waveInterval) clearInterval(waveInterval);
+  document.querySelectorAll('.wave-bar').forEach(b => b.style.height = '4px');
+}
+
+async function sendMessage() {
+  const input = document.getElementById('userInput').value.trim();
+  if (!input) return;
+
+  if (isListening) stopListening();
+
+  addToHistory('user', input);
+  document.getElementById('userInput').value = '';
+  document.getElementById('charCount').textContent = '0 characters';
+  document.getElementById('sendBtn').disabled = true;
+  document.getElementById('examples-section').style.display = 'none';
+
+  showTyping();
+
+  conversationHistory.push({ role: 'user', content: input });
+  const response = await callCorey(conversationHistory);
+  conversationHistory.push({ role: 'assistant', content: response });
+
+  hideTyping();
+  showResponse(response, input);
+  document.getElementById('sendBtn').disabled = false;
+  hasResponded = true;
+}
+
+async function sendFollowup() {
+  const input = document.getElementById('followupInput').value.trim();
+  if (!input) return;
+
+  addToHistory('user', input);
+  document.getElementById('followupInput').value = '';
+
+  showTyping();
+
+  conversationHistory.push({ role: 'user', content: input });
+  const response = await callCorey(conversationHistory);
+  conversationHistory.push({ role: 'assistant', content: response });
+
+  hideTyping();
+  updateResponse(response);
+}
+
+function addToHistory(role, text) {
+  const hist = document.getElementById('convHistory');
+  if (role === 'user') {
+    const div = document.createElement('div');
+    div.className = 'conv-user';
+    div.textContent = '"' + text + '"';
+    hist.appendChild(div);
+    div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function showTyping() {
+  document.getElementById('typing').classList.add('active');
+  document.getElementById('typing').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function hideTyping() {
+  document.getElementById('typing').classList.remove('active');
+}
+
+function showResponse(text, userInput) {
+  const wrap = document.getElementById('responseWrap');
+  wrap.style.display = 'block';
+  setTimeout(() => wrap.classList.add('visible'), 10);
+
+  const now = new Date();
+  document.getElementById('responseTime').textContent =
+    now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + ' · Advisor Transitions · Winthrop & Co';
+
+  renderResponse(text);
+
+  const chips = extractChips(userInput, text);
+  const chipsEl = document.getElementById('insightChips');
+  chipsEl.innerHTML = '';
+  chips.forEach(c => {
+    const span = document.createElement('span');
+    span.className = 'chip';
+    span.textContent = c;
+    chipsEl.appendChild(span);
+  });
+
+  document.getElementById('nextSteps').style.display = 'grid';
+  wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateResponse(text) {
+  renderResponse(text);
+  document.getElementById('responseWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderResponse(text) {
+  const body = document.getElementById('responseBody');
+  const paragraphs = text.split(/\n\n+/).filter(p => p.trim());
+  body.innerHTML = paragraphs.map(p => {
+    const formatted = p
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em style="color:var(--gold2)">$1</em>');
+    return `<p>${formatted}</p>`;
+  }).join('');
+}
+
+function extractChips(input, response) {
+  const chips = [];
+  const inp = (input + ' ' + response).toLowerCase();
+  if (inp.includes('wirehouse') || inp.includes('merrill') || inp.includes('morgan')) chips.push('Wirehouse → IBD/RIA');
+  if (inp.includes('lpl') || inp.includes('raymond james') || inp.includes('ibd')) chips.push('IBD opportunity');
+  if (inp.includes('independent') || inp.includes('ria') || inp.includes('breakaway')) chips.push('RIA path');
+  if (inp.includes('payout') || inp.includes('comp') || inp.includes('produc')) chips.push('Comp analysis');
+  if (inp.includes('envestnet') || inp.includes('orion') || inp.includes('platform')) chips.push('Platform fit');
+  if (inp.includes('sma') || inp.includes('uma') || inp.includes('portfolio')) chips.push('Investment niche');
+  if (inp.includes('succession') || inp.includes('retire') || inp.includes('exit')) chips.push('Succession planning');
+  if (inp.includes('direct index') || inp.includes('alternatives') || inp.includes('private equity')) chips.push('Alt/tech access');
+  if (inp.includes('loan') || inp.includes('promissory') || inp.includes('forgivable')) chips.push('Loan strategy');
+  if (chips.length === 0) chips.push('Transition readiness', 'Advisor career intel');
+  return chips.slice(0, 5);
+}
+
+async function callCorey(history) {
+  const systemPrompt = `You are Corey Pond, a financial advisor transition expert at Winthrop & Co. You have deep, specific knowledge of the advisor industry — compensation structures, platforms (Envestnet, Orion, AssetMark, Tamarac), investment approaches (SMA, UMA, ETF models, direct indexing), firm types (wirehouses like Merrill/Morgan/UBS/Wells, IBDs like LPL/Raymond James/Cetera/Osaic, independent RIAs), transition dynamics, forgivable loans, non-solicits, and the real economics of each channel.
+
+Your communication style:
+- Direct, warm, and confident — like a trusted friend who happens to be the best person in the industry at this
+- You use specific numbers and real market context — not vague platitudes
+- You speak like someone who has seen hundreds of these situations before
+- You are honest about trade-offs — you don't oversell any path
+- You reference real industry data when relevant (Cerulli channel trends, Fintrx RIA data, live comp market)
+- You ask one clarifying question at the end if it would sharpen your advice
+- You never pressure — you illuminate
+
+Key data you know:
+- Wirehouse payouts: 35–50% of gross production
+- IBD payouts: 82–95% typically
+- Independent RIA: 90–100% before overhead (overhead typically 15–25%)
+- Wirehouse transition packages: 100–350% of T12 depending on AUM and production
+- Cerulli 2025: 25,443 advisors changed firms, $3.1T in assets; 71% would choose independent if switching; RIA headcount growing 5.2% CAGR; wirehouses declining 1.9% annually
+- Fintrx: 40,000+ RIA entities, LPL $619B AUM growing 33% YoY
+- Direct indexing, CAIS/iCapital access, AI tools are increasingly key advisor demands
+
+Respond in 3–4 paragraphs. Be specific. Reference their AUM, their firm, their platform if mentioned. End with a clear, non-pushy next step.`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: history
+      })
+    });
+    const data = await response.json();
+    return data.content?.[0]?.text || fallbackResponse();
+  } catch (e) {
+    return fallbackResponse();
+  }
+}
+
+function fallbackResponse() {
+  return `What you're describing is one of the most common situations I hear — and the fact that you're thinking about it clearly means something important. The frustration you're feeling is real, and it's data.
+
+Without knowing all the specifics, I can tell you this: advisors in your position typically have more options than they realize. The gap between what wirehouses pay and what the IBD or RIA world pays for the same book is often significant — and the transition packages being offered right now for established advisors are the strongest I've seen in years.
+
+The most important thing is to understand your real picture before you make any move. That means knowing your actual production number, your loan status if any, and what the market is paying for books like yours right now.
+
+I'd love to dig into your specific situation. If you want to go deeper, run the full diagnostic below — it'll give you a personalized read on your comp opportunity and best-fit path in about 3 minutes.`;
+}
+
+function triggerDiagnostic() {
+  alert('In your live site, this would open the full diagnostic tool. Embed advisor_transition_tool_v2.html on your /diagnostic page.');
+}
+
+function bookCall() {
+  alert('In your live site, this would open your Calendly or booking page. Link it to Corey@CpondAdvisors.com calendar.');
+}
+
+document.getElementById('userInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) sendMessage();
+});
+</script>
+  </div>
+
+  <div class="tab-panel" id="panel-diagnostic">
+    <!-- WINTHROP BAR -->
+<div class="hdr-wco">
+  <div style="display:flex;align-items:center;gap:8px">
+    <div class="wco-m">W</div>
+    <span style="font-family:'Playfair Display',serif;font-size:11px;color:#cdd7df">Winthrop & Co</span>
+    <span style="font-size:9px;color:var(--slate-light);margin-left:4px">· Strategy & Operations Consulting</span>
+  </div>
+  <div style="display:flex;gap:16px">
+    <span style="font-size:9px;color:var(--slate-light);cursor:pointer">About Winthrop</span>
+    <span style="font-size:9px;color:var(--slate-light);cursor:pointer">Our team</span>
+  </div>
+</div>
+
+<!-- COREY NAV -->
+<div class="hdr-cp">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="cp-mk">CP</div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--cream)">Corey Pond</div>
+      <div style="font-size:8px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase">Advisor Transitions</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:20px">
+    <span style="font-size:10px;color:var(--steel);cursor:pointer">Services</span>
+    <span style="font-size:10px;color:var(--steel);cursor:pointer">Webinars</span>
+    <span style="font-size:10px;color:var(--steel);cursor:pointer">Articles</span>
+    <span style="font-size:10px;color:var(--steel);cursor:pointer">Resources</span>
+    <button class="nav-btn">Book a call</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- INTRO -->
+  <div class="intro" id="intro-block">
+    <div class="badge"><div class="pulse"></div>Powered by Cerulli & Fintrx Data · Built by Corey Pond</div>
+    <h1>Your Personalized<br><em>Transition Intelligence Report</em></h1>
+    <p>Answer a few questions about your practice today — your niche, your technology, your compensation — and get a real, data-backed roadmap built around your specific situation. No generic advice. Real market intelligence.</p>
+    <p style="margin-top:6px;font-size:11px;color:var(--slate-light)">Takes 3 minutes · 100% confidential · Corey reviews every report personally</p>
+  </div>
+
+  <!-- CERULLI STATS TICKER -->
+  <div class="stats-ticker" id="stats-ticker">
+    <div class="ticker-item">
+      <div class="ticker-src">Cerulli 2025</div>
+      <div class="ticker-num">25,443<span> advisors</span></div>
+      <div class="ticker-lbl">changed firms in 2025 — representing $3.1T in assets</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-src">Cerulli 2025</div>
+      <div class="ticker-num">71<span>%</span></div>
+      <div class="ticker-lbl">of advisors say they'd choose an independent channel if switching today</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-src">Cerulli / Fintrx</div>
+      <div class="ticker-num">27<span>%</span></div>
+      <div class="ticker-lbl">of all industry assets now managed by independent & hybrid RIAs — up from 21% in 2014</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-src">Cerulli 2026</div>
+      <div class="ticker-num">26<span>%</span></div>
+      <div class="ticker-lbl">of wirehouse advisors are undecided or unlikely to stay at their current firm</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar" id="progress-bar">
+    <div class="prog-step"><div class="prog-dot active" id="dot-1">1</div><div class="prog-label active" id="lbl-1">Your Practice</div></div>
+    <div class="prog-step"><div class="prog-dot" id="dot-2">2</div><div class="prog-label" id="lbl-2">Your Path</div></div>
+    <div class="prog-step"><div class="prog-dot" id="dot-3">3</div><div class="prog-label" id="lbl-3">Investment Niche</div></div>
+    <div class="prog-step"><div class="prog-dot" id="dot-4">4</div><div class="prog-label" id="lbl-4">Technology</div></div>
+    <div class="prog-step"><div class="prog-dot" id="dot-5">5</div><div class="prog-label" id="lbl-5">Compensation</div></div>
+    <div class="prog-step"><div class="prog-dot" id="dot-6">6</div><div class="prog-label" id="lbl-6">Your Goals</div></div>
+  </div>
+
+  <!-- STEP 1: PRACTICE -->
+  <div class="form-section active" id="step-1">
+    <div class="sec-eyebrow">Step 1 of 6</div>
+    <div class="sec-title">Tell me about your practice.</div>
+    <div class="sec-sub">Where you are today shapes everything about your options — and your leverage.</div>
+
+    <div class="inp-wrap">
+      <label>Current Firm Type</label>
+      <select id="firm-type">
+        <option value="">Select your firm type...</option>
+        <option value="wirehouse">Wirehouse (Merrill Lynch, Morgan Stanley, UBS, Wells Fargo)</option>
+        <option value="regional">Regional Broker-Dealer (Edward Jones, Baird, Stifel, etc.)</option>
+        <option value="ibd">Independent Broker-Dealer (LPL, Raymond James, Cetera, Osaic, etc.)</option>
+        <option value="hybrid-ria">Hybrid RIA</option>
+        <option value="ria">Independent RIA</option>
+        <option value="bank">Bank / Credit Union Brokerage</option>
+        <option value="insurance">Insurance BD</option>
+      </select>
+    </div>
+
+    <div class="inp-wrap">
+      <label>Years in the Business</label>
+      <select id="years">
+        <option value="">Select...</option>
+        <option value="1-5">1–5 years (Early career)</option>
+        <option value="6-10">6–10 years (Building momentum)</option>
+        <option value="11-15">11–15 years (Established producer)</option>
+        <option value="16-20">16–20 years (Senior advisor)</option>
+        <option value="20+">20+ years (Industry veteran)</option>
+      </select>
+    </div>
+
+    <div class="slider-wrap">
+      <div class="sl-row"><span class="sl-lbl">Assets Under Management (AUM)</span><span class="sl-val" id="aum-disp">$150M</span></div>
+      <input type="range" id="aum-sl" min="10" max="600" value="150" step="10"
+        oninput="updSlider('aum-sl','aum-disp',v=>v>=600?'$600M+':'$'+v+'M')">
+      <div class="sl-range-labels"><span>$10M</span><span>$300M</span><span>$600M+</span></div>
+    </div>
+
+    <div class="slider-wrap">
+      <div class="sl-row"><span class="sl-lbl">Number of Households (HH)</span><span class="sl-val" id="hh-disp">150 HH</span></div>
+      <input type="range" id="hh-sl" min="20" max="600" value="150" step="10"
+        oninput="updSlider('hh-sl','hh-disp',v=>v>=600?'600+ HH':v+' HH')">
+      <div class="sl-range-labels"><span>20 HH</span><span>300 HH</span><span>600+ HH</span></div>
+    </div>
+
+    <div class="inp-wrap">
+      <label>% of Book on Advisory / Fee-Based</label>
+      <select id="advisory-pct">
+        <option value="">Select...</option>
+        <option value="95-100">95–100% Advisory</option>
+        <option value="80-94">80–94% Advisory</option>
+        <option value="60-79">60–79% Advisory</option>
+        <option value="under-60">Under 60% Advisory</option>
+      </select>
+    </div>
+
+    <div class="btn-row"><button class="btn-next" onclick="goNext(1)">Continue →</button></div>
+  </div>
+
+  <!-- STEP 2: PATH SELECTION -->
+  <div class="form-section" id="step-2">
+    <div class="sec-eyebrow">Step 2 of 6</div>
+    <div class="sec-title">Which path are you exploring?</div>
+    <div class="sec-sub">Your path determines everything — the timeline, the risks, the upside, and what matters most. Pick the one that resonates most right now, even if you're not 100% sure.</div>
+
+    <div class="data-callout">
+      <div class="dc-source">Cerulli Associates — U.S. Advisor Metrics 2025</div>
+      <div class="dc-stat">"In 2025, an estimated 25,443 advisors managing $3.06 trillion in assets switched firms — with roughly two-fifths of those moves crossing channels entirely."</div>
+      <div class="dc-context">This isn't unusual. This is the market. The question is what your move looks like specifically.</div>
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card ww" onclick="selectPath(this,'wirehouse-to-wirehouse')" data-val="wirehouse-to-wirehouse">
+        <div class="path-icon">🏛️</div>
+        <div class="path-label">Path One</div>
+        <div class="path-title">Wirehouse to Wirehouse</div>
+        <div class="path-sub">Lateral move to a competing wirehouse or regional firm. Familiar environment, significant transition package, fastest execution.</div>
+        <div class="path-facts">
+          <div class="path-fact"><div class="path-fact-dot"></div>Transition packages currently ranging 200–350% of trailing 12-month production</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>Fastest timeline — 30–60 days from decision to move</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>Same regulatory environment — minimal compliance friction</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>Risk: trading one set of constraints for another</div>
+        </div>
+      </div>
+
+      <div class="path-card ibd" onclick="selectPath(this,'ibd')" data-val="ibd">
+        <div class="path-icon">⚡</div>
+        <div class="path-label">Path Two</div>
+        <div class="path-title">Independent Broker-Dealer</div>
+        <div class="path-sub">Move to an IBD like LPL, Raymond James, Osaic, or Cetera. More freedom, higher payouts, still with BD infrastructure behind you.</div>
+        <div class="path-facts">
+          <div class="path-fact"><div class="path-fact-dot"></div>Payouts typically 85–95% vs. 35–50% at wirehouses</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>LPL Financial: $619B AUM, +33% YoY growth — largest IBD in the US</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>Access to open-architecture platforms — Envestnet, Orion, AssetMark</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>Timeline: 60–90 days, moderate compliance transition</div>
+        </div>
+      </div>
+
+      <div class="path-card ria" onclick="selectPath(this,'ria')" data-val="ria">
+        <div class="path-icon">🚀</div>
+        <div class="path-label">Path Three</div>
+        <div class="path-title">RIA / Full Independence</div>
+        <div class="path-sub">Launch your own RIA or join an existing one. Maximum payout, full ownership, complete autonomy over your practice.</div>
+        <div class="path-facts">
+          <div class="path-fact"><div class="path-fact-dot"></div>Independent RIAs: 5.2% CAGR headcount growth over 10 years (Cerulli)</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>RIA AUM growing at 11.2% annually — fastest of any channel</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>88% of independent RIAs say they're very likely to stay in channel</div>
+          <div class="path-fact"><div class="path-fact-dot"></div>Fintrx tracks 40,000+ RIA entities — the market has never been bigger</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goPrev(2)">← Back</button>
+      <button class="btn-next" onclick="goNext(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: INVESTMENT NICHE -->
+  <div class="form-section" id="step-3">
+    <div class="sec-eyebrow">Step 3 of 6</div>
+    <div class="sec-title">How do you run money?</div>
+    <div class="sec-sub">Your investment approach directly determines which platforms serve you best — and what you're currently leaving on the table.</div>
+
+    <div class="multi-hint">Select all that apply to your practice.</div>
+    <div class="opt-grid c2">
+      <div class="opt" onclick="togOpt(this,'niche')" data-val="sma">
+        <div class="opt-tag">Managed Accounts</div>
+        <div class="opt-title">SMA — Separately Managed Accounts</div>
+        <div class="opt-sub">Direct ownership of individual securities through a third-party manager. Tax efficiency, customization, institutional feel.</div>
+      </div>
+      <div class="opt" onclick="togOpt(this,'niche')" data-val="uma">
+        <div class="opt-tag">Unified Managed</div>
+        <div class="opt-title">UMA — Unified Managed Accounts</div>
+        <div class="opt-sub">Multiple strategies in a single account — sleeves, overlays, tax management, direct indexing capability.</div>
+      </div>
+      <div class="opt" onclick="togOpt(this,'niche')" data-val="etf">
+        <div class="opt-tag">Model Portfolios</div>
+        <div class="opt-title">ETF Models / Direct Indexing</div>
+        <div class="opt-sub">Rules-based model portfolios, factor investing, tax-loss harvesting. Growing rapidly — especially with direct indexing platforms.</div>
+      </div>
+      <div class="opt" onclick="togOpt(this,'niche')" data-val="own-pm">
+        <div class="opt-tag">Self-Directed</div>
+        <div class="opt-title">I Run My Own Portfolios</div>
+        <div class="opt-sub">Portfolio manager — you build and manage custom strategies. Platform flexibility and custodian access is critical for your practice.</div>
+      </div>
+      <div class="opt" onclick="togOpt(this,'niche')" data-val="pe">
+        <div class="opt-tag">Alternatives</div>
+        <div class="opt-title">Private Equity / Alternatives</div>
+        <div class="opt-sub">Private markets, interval funds, hedge funds. CAIS and iCapital access is increasingly a differentiator.</div>
+      </div>
+      <div class="opt" onclick="togOpt(this,'niche')" data-val="retirement">
+        <div class="opt-tag">Retirement Plans</div>
+        <div class="opt-title">401(k) / 403(b) / Retirement Plans</div>
+        <div class="opt-sub">Plan sponsors, ERISA fiduciary, participant advice. Rollovers as a growth engine.</div>
+      </div>
+      <div class="opt" onclick="togOpt(this,'niche')" data-val="research">
+        <div class="opt-tag">Research-Driven</div>
+        <div class="opt-title">Deep Research / Market Analysis</div>
+        <div class="opt-sub">Heavy dependency on third-party research, market intelligence, Bloomberg, FactSet. Platform matters a lot.</div>
+      </div>
+      <div class="opt" onclick="togOpt(this,'niche')" data-val="mf">
+        <div class="opt-tag">Traditional</div>
+        <div class="opt-title">Mutual Funds / Active Management</div>
+        <div class="opt-sub">Actively managed funds, tactical allocation, fund selection. Commission or advisory.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="inp-wrap">
+      <label>Primary Platform Currently Used</label>
+      <input type="text" id="platform" placeholder="e.g. Envestnet, Orion, AssetMark, Tamarac, Fidelity WealthCentral...">
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goPrev(3)">← Back</button>
+      <button class="btn-next" onclick="goNext(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: TECHNOLOGY -->
+  <div class="form-section" id="step-4">
+    <div class="sec-eyebrow">Step 4 of 6</div>
+    <div class="sec-title">What's your technology situation?</div>
+    <div class="sec-sub">Technology is one of the top three reasons advisors move — and one of the biggest factors in choosing the right landing spot.</div>
+
+    <div class="data-callout">
+      <div class="dc-source">Cerulli Associates — U.S. Advisor Metrics 2025</div>
+      <div class="dc-stat">"Insufficient technology and staff support are among the top day-to-day friction points cited by wirehouse advisors — and a primary driver of movement to IBDs and RIAs."</div>
+      <div class="dc-context">Identifying your specific gaps helps us match you to the right platform — not just the right firm.</div>
+    </div>
+
+    <div style="font-size:12px;color:var(--steel);margin-bottom:10px;font-weight:500">What do you currently have?</div>
+    <div class="multi-hint">Select all that apply.</div>
+    <div class="opt-grid c3">
+      <div class="opt" onclick="togOpt(this,'tech-have')" data-val="crm"><div class="opt-title">CRM</div><div class="opt-sub">Salesforce, Redtail, Wealthbox</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-have')" data-val="portfolio-mgmt"><div class="opt-title">Portfolio Management</div><div class="opt-sub">Orion, Tamarac, Addepar, Black Diamond</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-have')" data-val="fp"><div class="opt-title">Financial Planning</div><div class="opt-sub">eMoney, MoneyGuidePro, RightCapital</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-have')" data-val="risk"><div class="opt-title">Risk Analysis</div><div class="opt-sub">Riskalyze / Nitrogen, Morningstar</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-have')" data-val="research-tools"><div class="opt-title">Research Tools</div><div class="opt-sub">Bloomberg, FactSet, YCharts</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-have')" data-val="compliance"><div class="opt-title">Compliance / Archiving</div><div class="opt-sub">Supervision, email archiving, surveillance</div></div>
+    </div>
+
+    <div class="divider"></div>
+    <div style="font-size:12px;color:var(--steel);margin-bottom:10px;font-weight:500">What are you missing or wish you had?</div>
+    <div class="multi-hint">Select what's holding you back.</div>
+    <div class="opt-grid c3">
+      <div class="opt" onclick="togOpt(this,'tech-want')" data-val="direct-index"><div class="opt-title">Direct Indexing</div><div class="opt-sub">Tax-loss harvesting at individual stock level</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-want')" data-val="ai-tools"><div class="opt-title">AI Tools</div><div class="opt-sub">Meeting prep, note-taking, prospect research AI</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-want')" data-val="alt-access"><div class="opt-title">Alt Investment Access</div><div class="opt-sub">CAIS, iCapital, private market platforms</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-want')" data-val="unified"><div class="opt-title">Unified Platform</div><div class="opt-sub">One system vs. 6 disconnected tools</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-want')" data-val="model-mkt"><div class="opt-title">Model Marketplace</div><div class="opt-sub">Access to third-party strategists and models</div></div>
+      <div class="opt" onclick="togOpt(this,'tech-want')" data-val="better-client"><div class="opt-title">Better Client Portal</div><div class="opt-sub">Client-facing reporting and communication tools</div></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goPrev(4)">← Back</button>
+      <button class="btn-next" onclick="goNext(4)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: COMPENSATION -->
+  <div class="form-section" id="step-5">
+    <div class="sec-eyebrow">Step 5 of 6</div>
+    <div class="sec-title">Let's talk compensation.</div>
+    <div class="sec-sub">I track comp data across the IBD world every 90 days. Tell me where you stand and I'll show you what advisors with your profile are actually seeing right now in the market.</div>
+
+    <div class="slider-wrap">
+      <div class="sl-row"><span class="sl-lbl">Your Current Gross Revenue (Trailing 12 Months)</span><span class="sl-val" id="rev-disp">$800K</span></div>
+      <input type="range" id="rev-sl" min="100" max="3000" value="800" step="50"
+        oninput="updSlider('rev-sl','rev-disp',v=>v>=3000?'$3M+':'$'+v+'K')">
+      <div class="sl-range-labels"><span>$100K</span><span>$1.5M</span><span>$3M+</span></div>
+    </div>
+
+    <div class="slider-wrap">
+      <div class="sl-row"><span class="sl-lbl">Your Current Payout / Grid %</span><span class="sl-val" id="pay-disp">82%</span></div>
+      <input type="range" id="pay-sl" min="30" max="100" value="82" step="1"
+        oninput="updSlider('pay-sl','pay-disp',v=>v+'%')">
+      <div class="sl-range-labels"><span>30%</span><span>65%</span><span>100%</span></div>
+    </div>
+
+    <div class="inp-wrap">
+      <label>What's most important to you about compensation?</label>
+      <select id="comp-pri">
+        <option value="">Select your priority...</option>
+        <option value="higher-payout">Higher ongoing payout percentage</option>
+        <option value="transition-bonus">Transition bonus / forgivable loan upfront</option>
+        <option value="equity">Equity or ownership stake in the firm</option>
+        <option value="revenue-share">Revenue sharing or partnership economics</option>
+        <option value="all">All of the above — show me the full picture</option>
+      </select>
+    </div>
+
+    <div class="inp-wrap">
+      <label>Current Forgivable Loan / Promissory Note Status</label>
+      <select id="loan">
+        <option value="">Select...</option>
+        <option value="no">No — I'm free and clear</option>
+        <option value="small">Yes — under $100K remaining</option>
+        <option value="mid">Yes — $100K–$500K remaining</option>
+        <option value="large">Yes — over $500K remaining</option>
+        <option value="unknown">Not sure — need to check</option>
+      </select>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goPrev(5)">← Back</button>
+      <button class="btn-next" onclick="goNext(5)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 6: GOALS -->
+  <div class="form-section" id="step-6">
+    <div class="sec-eyebrow">Step 6 of 6</div>
+    <div class="sec-title">What's really driving this?</div>
+    <div class="sec-sub">Be honest — there are no wrong answers. The more specific you are, the more targeted your report will be.</div>
+
+    <div style="font-size:12px;color:var(--steel);margin-bottom:10px;font-weight:500">What's your primary driver right now? (Select all that apply)</div>
+    <div class="opt-grid c3">
+      <div class="opt" onclick="togOpt(this,'driver')" data-val="comp"><div class="opt-title">💰 Compensation</div><div class="opt-sub">I'm leaving money on the table every single month</div></div>
+      <div class="opt" onclick="togOpt(this,'driver')" data-val="tech"><div class="opt-title">💻 Technology</div><div class="opt-sub">My platform is holding me back from serving clients the way I want</div></div>
+      <div class="opt" onclick="togOpt(this,'driver')" data-val="culture"><div class="opt-title">🏢 Culture / Politics</div><div class="opt-sub">The firm's direction no longer aligns with how I want to run my business</div></div>
+      <div class="opt" onclick="togOpt(this,'driver')" data-val="autonomy"><div class="opt-title">🔓 Autonomy</div><div class="opt-sub">I want to run my practice my way — without asking for permission</div></div>
+      <div class="opt" onclick="togOpt(this,'driver')" data-val="products"><div class="opt-title">📊 Product Access</div><div class="opt-sub">I can't offer my clients what they need — alternatives, direct indexing, etc.</div></div>
+      <div class="opt" onclick="togOpt(this,'driver')" data-val="passion"><div class="opt-title">❤️ Love the Work Again</div><div class="opt-sub">I got into this business to help people — I want that feeling back</div></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="inp-wrap">
+      <label>Your Name</label>
+      <input type="text" id="adv-name" placeholder="First and last name">
+    </div>
+    <div class="inp-wrap">
+      <label>Best Email for Your Report</label>
+      <input type="text" id="adv-email" placeholder="your@email.com">
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goPrev(6)">← Back</button>
+      <button class="btn-next" onclick="generate()">Generate My Intelligence Report →</button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--white);margin-bottom:10px">Building your Transition Intelligence Report...</div>
+    <div style="font-size:12px;color:var(--steel);font-weight:300">Cross-referencing Cerulli data, Fintrx RIA intelligence, and live comp market data</div>
+    <div class="loading-steps">
+      <div class="ls" id="ls1"><div class="ls-dot" id="ld1">1</div>Analyzing your practice profile and path selection</div>
+      <div class="ls" id="ls2"><div class="ls-dot" id="ld2">2</div>Cross-referencing Cerulli channel migration data</div>
+      <div class="ls" id="ls3"><div class="ls-dot" id="ld3">3</div>Matching your niche to platform intelligence from Fintrx</div>
+      <div class="ls" id="ls4"><div class="ls-dot" id="ld4">4</div>Pulling IBD comp data — last 90 days market activity</div>
+      <div class="ls" id="ls5"><div class="ls-dot" id="ld5">5</div>Mapping your technology gaps to available solutions</div>
+      <div class="ls" id="ls6"><div class="ls-dot" id="ld6">6</div>Generating your personalized transition roadmap</div>
+    </div>
+  </div>
+
+  <!-- REPORT OUTPUT -->
+  <div id="report"></div>
+
+</div>
+
+<script>
+const S = {
+  niche:[], 'tech-have':[], 'tech-want':[], driver:[],
+  firmType:'', years:'', aum:150, hh:150, advisoryPct:'',
+  platform:'', path:'', rev:800, payout:82, compPri:'', loan:'',
+  name:'', email:''
+};
+
+function updSlider(id, dispId, fmt) {
+  const v = parseInt(document.getElementById(id).value);
+  document.getElementById(dispId).textContent = fmt(v);
+}
+
+function togOpt(el, group) {
+  el.classList.toggle('sel');
+  const val = el.dataset.val;
+  const idx = S[group].indexOf(val);
+  if (idx > -1) S[group].splice(idx, 1);
+  else S[group].push(val);
+}
+
+function selectPath(el, val) {
+  document.querySelectorAll('.path-card').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+  S.path = val;
+}
+
+function goNext(from) {
+  if (from === 1) {
+    S.firmType = document.getElementById('firm-type').value;
+    S.years = document.getElementById('years').value;
+    S.aum = parseInt(document.getElementById('aum-sl').value);
+    S.hh = parseInt(document.getElementById('hh-sl').value);
+    S.advisoryPct = document.getElementById('advisory-pct').value;
+  }
+  if (from === 3) { S.platform = document.getElementById('platform').value; }
+  if (from === 5) {
+    S.rev = parseInt(document.getElementById('rev-sl').value);
+    S.payout = parseInt(document.getElementById('pay-sl').value);
+    S.compPri = document.getElementById('comp-pri').value;
+    S.loan = document.getElementById('loan').value;
+  }
+  document.getElementById(`step-${from}`).classList.remove('active');
+  document.getElementById(`step-${from+1}`).classList.add('active');
+  updProg(from+1);
+  window.scrollTo(0,0);
+}
+
+function goPrev(from) {
+  document.getElementById(`step-${from}`).classList.remove('active');
+  document.getElementById(`step-${from-1}`).classList.add('active');
+  updProg(from-1);
+  window.scrollTo(0,0);
+}
+
+function updProg(step) {
+  const labels = ['','Your Practice','Your Path','Investment Niche','Technology','Compensation','Your Goals'];
+  for (let i = 1; i <= 6; i++) {
+    const dot = document.getElementById(`dot-${i}`);
+    const lbl = document.getElementById(`lbl-${i}`);
+    dot.className = 'prog-dot';
+    lbl.className = 'prog-label';
+    if (i < step) { dot.classList.add('done'); dot.textContent = '✓'; }
+    else if (i === step) { dot.classList.add('active'); dot.textContent = i; lbl.classList.add('active'); }
+    else { dot.textContent = i; }
+  }
+}
+
+async function generate() {
+  S.name = document.getElementById('adv-name').value || 'Advisor';
+  S.email = document.getElementById('adv-email').value;
+  S.rev = parseInt(document.getElementById('rev-sl').value);
+  S.payout = parseInt(document.getElementById('pay-sl').value);
+  S.compPri = document.getElementById('comp-pri').value;
+  S.loan = document.getElementById('loan').value;
+
+  document.getElementById('step-6').classList.remove('active');
+  document.getElementById('progress-bar').style.display = 'none';
+  document.getElementById('intro-block').style.display = 'none';
+  document.getElementById('stats-ticker').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+  window.scrollTo(0,0);
+
+  for (let i = 1; i <= 6; i++) {
+    await delay(600);
+    document.getElementById(`ls${i}`).classList.add('show');
+    await delay(900);
+    document.getElementById(`ls${i}`).classList.add('done');
+    const d = document.getElementById(`ld${i}`);
+    d.classList.add('done'); d.textContent = '✓';
+  }
+
+  await delay(400);
+  const html = await callAI();
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('report').style.display = 'block';
+  document.getElementById('report').innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+const pathLabels = {
+  'wirehouse-to-wirehouse': 'Wirehouse to Wirehouse',
+  'ibd': 'Independent Broker-Dealer',
+  'ria': 'RIA / Full Independence'
+};
+const pathClass = {
+  'wirehouse-to-wirehouse': 'ww',
+  'ibd': 'ibd',
+  'ria': 'ria'
+};
+
+async function callAI() {
+  const path = S.path || 'ria';
+  const pc = pathClass[path] || 'ria';
+  const pl = pathLabels[path] || 'RIA / Full Independence';
+
+  const prompt = `You are Corey Pond, a financial advisor transition expert at Winthrop & Co. You have access to real Cerulli Associates data and Fintrx RIA intelligence. Generate a highly specific, data-rich, expert-level transition intelligence report for this advisor.
+
+ADVISOR PROFILE:
+- Name: ${S.name}
+- Firm: ${S.firmType}
+- Years: ${S.years}
+- AUM: $${S.aum}M | HH: ${S.hh} | Advisory %: ${S.advisoryPct}
+- Chosen Path: ${pl}
+- Investment niche: ${S.niche.join(', ') || 'general'}
+- Platform: ${S.platform || 'not specified'}
+- Tech they have: ${S['tech-have'].join(', ') || 'not specified'}
+- Tech they want: ${S['tech-want'].join(', ') || 'not specified'}
+- Gross revenue: $${S.rev}K | Current payout: ${S.payout}%
+- Comp priority: ${S.compPri}
+- Loan status: ${S.loan}
+- Drivers: ${S.driver.join(', ') || 'not specified'}
+
+REAL DATA TO WEAVE IN (cite these sources naturally throughout):
+Cerulli 2025: 25,443 advisors changed firms representing $3.1T assets; 71% of advisors would choose independent channel if switching; wirehouse advisor headcount declining 1.9% annually; independent RIA headcount growing 5.2% CAGR over 10 years; independent RIA AUM growing 11.2% annually; hybrid RIA growing 12.2% annually; independent+hybrid RIAs now control 27% of industry assets up from 21% in 2014; 26% of wirehouse advisors undecided/unlikely to stay; 88% of independent RIAs say very likely to stay in channel; 97% would stay in RIA channel if they left; team practices generate $20.3M organic growth vs $8M for solo; 83% of RIAs cite limited resources as challenge to growth.
+Fintrx: 40,000+ registered RIA entities; $619B LPL Financial AUM +33% YoY; Hightower $165B AUM; 92% of RIA assets discretionary; 90% of RIAs charge % of AUM fee structure; 50% of RIA firms manage under $100M (so your $${S.aum}M puts you in the top tier of the ecosystem).
+
+Generate a report as HTML using ONLY these CSS classes (already defined):
+- Wrap each section in: <div style="margin-bottom:24px">
+- Use .rpt-hero for the opening section
+- Use .rpt-eyebrow for small labels
+- Use .rpt-name for the advisor's name headline
+- Use .rpt-sub for subtitle
+- Use path-badge ${pc} for the path badge
+- Use .score-row and .score-chip .chip-val .chip-lbl for scores
+- Use .cerulli-banner .cb-label .cb-stats .cb-stat .cb-num .cb-desc for data callouts
+- Use .rpt-sec-title for section headings
+- Use .ins-grid and .ins-card .ins-tag .ins-title .ins-body for 2-column card grids
+- Use .fact-list and .fact-item .fact-dot .fact-text .fact-source for bulleted fact lists
+- Use .tech-grid and .tech-card .tech-lbl .tech-name .tech-body for 3-column tech grids
+- Use .divider for horizontal rules
+
+Include these sections:
+1. Opening hero with advisor name, path chosen, readiness score/10, timeline estimate chip, and a "market moment" chip showing a relevant Cerulli stat
+2. "The Market Data That Matters For Your Move" — a cerulli-banner with 3-4 specific stats directly relevant to their path and profile
+3. "What Advisors With Your Profile Are Seeing Right Now" — 4 insight cards with current market intelligence specific to their AUM, revenue, and path
+4. "Your Compensation Opportunity" — fact list with 4-5 very specific points about what they're currently leaving on the table, comp ranges for their path, transition economics for their profile, loan strategy
+5. "Your Platform & Technology Intelligence" — tech grid with 3 specific platform recommendations for their path + niche, what they're missing, what they'd gain
+6. "Your Path of Least Resistance: ${pl}" — specific step-by-step roadmap for their chosen path, with timeline, key milestones, and what to do first
+7. "Your Top 3 Risks & How to Handle Them" — 3 specific risks given their exact profile
+8. Do NOT include a CTA block — that will be added separately.
+
+Be brutally specific. Reference their AUM, revenue, payout, and niche by name. Use real Cerulli and Fintrx data with source callouts. Sound like an industry insider, not a consultant. Return ONLY valid HTML with the classes above. No markdown. No extra explanation.`;
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
+        messages:[{role:"user",content:prompt}]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.[0]?.text || '';
+    return text + ctaBlock();
+  } catch(e) {
+    return fallback() + ctaBlock();
+  }
+}
+
+function ctaBlock() {
+  const first = S.name.split(' ')[0] || 'there';
+  return `<div class="cta-block">
+    <h3>Ready to go deeper, ${first}?</h3>
+    <p>This report gives you the landscape. A 30-minute call with Corey gives you the actual roadmap — specific to your book, your clients, and your exact timeline. No pitch. No pressure. Just an honest conversation about what your move looks like.</p>
+    <div class="cta-btns">
+      <button class="btn-primary">Book a call with Corey</button>
+      <button class="btn-sec">Email me this report</button>
+    </div>
+    <div class="fine-print">100% confidential · Your current firm will never know we spoke · Corey Pond · Winthrop & Co</div>
+  </div>`;
+}
+
+function fallback() {
+  return `<div class="rpt-hero">
+    <div class="rpt-eyebrow">Your Transition Intelligence Report</div>
+    <div class="rpt-name">${S.name} — Report Ready</div>
+    <div class="rpt-sub">Your profile has been captured and is being reviewed by Corey personally.</div>
+  </div>`;
+}
+</script>
+  </div>
+</div>
+
+<script>
+// Tab switcher — defined first before anything else
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
+}
+</script>
+
+<!-- Voice tool script — wrapped in IIFE to prevent variable conflicts -->
+<script>
+(function() {
+
+let isListening = false;
+let recognition = null;
+let conversationHistory = [];
+let waveInterval = null;
+let hasResponded = false;
+
+function updateChar(el) {
+  document.getElementById('charCount').textContent = el.value.length + ' characters';
+}
+
+function useExample(btn) {
+  const text = btn.textContent.trim().replace(/^"|"$/g, '');
+  document.getElementById('userInput').value = text;
+  updateChar(document.getElementById('userInput'));
+  document.getElementById('userInput').focus();
+}
+
+function toggleListening() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    document.getElementById('orb-label').textContent = 'Voice not supported — please type below';
+    return;
+  }
+  if (isListening) {
+    stopListening();
+  } else {
+    startListening();
+  }
+}
+
+function startListening() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = 'en-US';
+
+  recognition.onstart = () => {
+    isListening = true;
+    document.getElementById('orb').classList.add('listening');
+    document.getElementById('orb-label').textContent = 'Listening... speak naturally';
+    document.getElementById('mic-icon').style.display = 'none';
+    document.getElementById('stop-icon').style.display = 'block';
+    document.getElementById('waveform').classList.add('active');
+    startWaveAnimation();
+  };
+
+  recognition.onresult = (e) => {
+    let transcript = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      transcript += e.results[i][0].transcript;
+    }
+    document.getElementById('userInput').value = transcript;
+    updateChar(document.getElementById('userInput'));
+  };
+
+  recognition.onend = () => {
+    if (isListening) stopListening();
+  };
+
+  recognition.onerror = () => {
+    stopListening();
+    document.getElementById('orb-label').textContent = 'Tap to try again';
+  };
+
+  recognition.start();
+}
+
+function stopListening() {
+  isListening = false;
+  if (recognition) recognition.stop();
+  document.getElementById('orb').classList.remove('listening');
+  document.getElementById('orb-label').textContent = 'Tap to speak, or type below';
+  document.getElementById('mic-icon').style.display = 'block';
+  document.getElementById('stop-icon').style.display = 'none';
+  document.getElementById('waveform').classList.remove('active');
+  stopWaveAnimation();
+}
+
+function startWaveAnimation() {
+  const bars = document.querySelectorAll('.wave-bar');
+  waveInterval = setInterval(() => {
+    bars.forEach(bar => {
+      const h = Math.floor(Math.random() * 24) + 4;
+      bar.style.height = h + 'px';
+    });
+  }, 120);
+}
+
+function stopWaveAnimation() {
+  if (waveInterval) clearInterval(waveInterval);
+  document.querySelectorAll('.wave-bar').forEach(b => b.style.height = '4px');
+}
+
+async function sendMessage() {
+  const input = document.getElementById('userInput').value.trim();
+  if (!input) return;
+
+  if (isListening) stopListening();
+
+  addToHistory('user', input);
+  document.getElementById('userInput').value = '';
+  document.getElementById('charCount').textContent = '0 characters';
+  document.getElementById('sendBtn').disabled = true;
+  document.getElementById('examples-section').style.display = 'none';
+
+  showTyping();
+
+  conversationHistory.push({ role: 'user', content: input });
+  const response = await callCorey(conversationHistory);
+  conversationHistory.push({ role: 'assistant', content: response });
+
+  hideTyping();
+  showResponse(response, input);
+  document.getElementById('sendBtn').disabled = false;
+  hasResponded = true;
+}
+
+async function sendFollowup() {
+  const input = document.getElementById('followupInput').value.trim();
+  if (!input) return;
+
+  addToHistory('user', input);
+  document.getElementById('followupInput').value = '';
+
+  showTyping();
+
+  conversationHistory.push({ role: 'user', content: input });
+  const response = await callCorey(conversationHistory);
+  conversationHistory.push({ role: 'assistant', content: response });
+
+  hideTyping();
+  updateResponse(response);
+}
+
+function addToHistory(role, text) {
+  const hist = document.getElementById('convHistory');
+  if (role === 'user') {
+    const div = document.createElement('div');
+    div.className = 'conv-user';
+    div.textContent = '"' + text + '"';
+    hist.appendChild(div);
+    div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function showTyping() {
+  document.getElementById('typing').classList.add('active');
+  document.getElementById('typing').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function hideTyping() {
+  document.getElementById('typing').classList.remove('active');
+}
+
+function showResponse(text, userInput) {
+  const wrap = document.getElementById('responseWrap');
+  wrap.style.display = 'block';
+  setTimeout(() => wrap.classList.add('visible'), 10);
+
+  const now = new Date();
+  document.getElementById('responseTime').textContent =
+    now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + ' · Advisor Transitions · Winthrop & Co';
+
+  renderResponse(text);
+
+  const chips = extractChips(userInput, text);
+  const chipsEl = document.getElementById('insightChips');
+  chipsEl.innerHTML = '';
+  chips.forEach(c => {
+    const span = document.createElement('span');
+    span.className = 'chip';
+    span.textContent = c;
+    chipsEl.appendChild(span);
+  });
+
+  document.getElementById('nextSteps').style.display = 'grid';
+  wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateResponse(text) {
+  renderResponse(text);
+  document.getElementById('responseWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderResponse(text) {
+  const body = document.getElementById('responseBody');
+  const paragraphs = text.split(/\n\n+/).filter(p => p.trim());
+  body.innerHTML = paragraphs.map(p => {
+    const formatted = p
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em style="color:var(--gold2)">$1</em>');
+    return `<p>${formatted}</p>`;
+  }).join('');
+}
+
+function extractChips(input, response) {
+  const chips = [];
+  const inp = (input + ' ' + response).toLowerCase();
+  if (inp.includes('wirehouse') || inp.includes('merrill') || inp.includes('morgan')) chips.push('Wirehouse → IBD/RIA');
+  if (inp.includes('lpl') || inp.includes('raymond james') || inp.includes('ibd')) chips.push('IBD opportunity');
+  if (inp.includes('independent') || inp.includes('ria') || inp.includes('breakaway')) chips.push('RIA path');
+  if (inp.includes('payout') || inp.includes('comp') || inp.includes('produc')) chips.push('Comp analysis');
+  if (inp.includes('envestnet') || inp.includes('orion') || inp.includes('platform')) chips.push('Platform fit');
+  if (inp.includes('sma') || inp.includes('uma') || inp.includes('portfolio')) chips.push('Investment niche');
+  if (inp.includes('succession') || inp.includes('retire') || inp.includes('exit')) chips.push('Succession planning');
+  if (inp.includes('direct index') || inp.includes('alternatives') || inp.includes('private equity')) chips.push('Alt/tech access');
+  if (inp.includes('loan') || inp.includes('promissory') || inp.includes('forgivable')) chips.push('Loan strategy');
+  if (chips.length === 0) chips.push('Transition readiness', 'Advisor career intel');
+  return chips.slice(0, 5);
+}
+
+async function callCorey(history) {
+  const systemPrompt = `You are Corey Pond, a financial advisor transition expert at Winthrop & Co. You have deep, specific knowledge of the advisor industry — compensation structures, platforms (Envestnet, Orion, AssetMark, Tamarac), investment approaches (SMA, UMA, ETF models, direct indexing), firm types (wirehouses like Merrill/Morgan/UBS/Wells, IBDs like LPL/Raymond James/Cetera/Osaic, independent RIAs), transition dynamics, forgivable loans, non-solicits, and the real economics of each channel.
+
+Your communication style:
+- Direct, warm, and confident — like a trusted friend who happens to be the best person in the industry at this
+- You use specific numbers and real market context — not vague platitudes
+- You speak like someone who has seen hundreds of these situations before
+- You are honest about trade-offs — you don't oversell any path
+- You reference real industry data when relevant (Cerulli channel trends, Fintrx RIA data, live comp market)
+- You ask one clarifying question at the end if it would sharpen your advice
+- You never pressure — you illuminate
+
+Key data you know:
+- Wirehouse payouts: 35–50% of gross production
+- IBD payouts: 82–95% typically
+- Independent RIA: 90–100% before overhead (overhead typically 15–25%)
+- Wirehouse transition packages: 100–350% of T12 depending on AUM and production
+- Cerulli 2025: 25,443 advisors changed firms, $3.1T in assets; 71% would choose independent if switching; RIA headcount growing 5.2% CAGR; wirehouses declining 1.9% annually
+- Fintrx: 40,000+ RIA entities, LPL $619B AUM growing 33% YoY
+- Direct indexing, CAIS/iCapital access, AI tools are increasingly key advisor demands
+
+Respond in 3–4 paragraphs. Be specific. Reference their AUM, their firm, their platform if mentioned. End with a clear, non-pushy next step.`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: history
+      })
+    });
+    const data = await response.json();
+    return data.content?.[0]?.text || fallbackResponse();
+  } catch (e) {
+    return fallbackResponse();
+  }
+}
+
+function fallbackResponse() {
+  return `What you're describing is one of the most common situations I hear — and the fact that you're thinking about it clearly means something important. The frustration you're feeling is real, and it's data.
+
+Without knowing all the specifics, I can tell you this: advisors in your position typically have more options than they realize. The gap between what wirehouses pay and what the IBD or RIA world pays for the same book is often significant — and the transition packages being offered right now for established advisors are the strongest I've seen in years.
+
+The most important thing is to understand your real picture before you make any move. That means knowing your actual production number, your loan status if any, and what the market is paying for books like yours right now.
+
+I'd love to dig into your specific situation. If you want to go deeper, run the full diagnostic below — it'll give you a personalized read on your comp opportunity and best-fit path in about 3 minutes.`;
+}
+
+function triggerDiagnostic() {
+  alert('In your live site, this would open the full diagnostic tool. Embed advisor_transition_tool_v2.html on your /diagnostic page.');
+}
+
+function bookCall() {
+  alert('In your live site, this would open your Calendly or booking page. Link it to Corey@CpondAdvisors.com calendar.');
+}
+
+document.getElementById('userInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) sendMessage();
+});
+
+})();
+</script>
+
+<!-- Diagnostic script — wrapped in IIFE to prevent variable conflicts -->
+<script>
+(function() {
+
+const S = {
+  niche:[], 'tech-have':[], 'tech-want':[], driver:[],
+  firmType:'', years:'', aum:150, hh:150, advisoryPct:'',
+  platform:'', path:'', rev:800, payout:82, compPri:'', loan:'',
+  name:'', email:''
+};
+
+function updSlider(id, dispId, fmt) {
+  const v = parseInt(document.getElementById(id).value);
+  document.getElementById(dispId).textContent = fmt(v);
+}
+
+function togOpt(el, group) {
+  el.classList.toggle('sel');
+  const val = el.dataset.val;
+  const idx = S[group].indexOf(val);
+  if (idx > -1) S[group].splice(idx, 1);
+  else S[group].push(val);
+}
+
+function selectPath(el, val) {
+  document.querySelectorAll('.path-card').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+  S.path = val;
+}
+
+function goNext(from) {
+  if (from === 1) {
+    S.firmType = document.getElementById('firm-type').value;
+    S.years = document.getElementById('years').value;
+    S.aum = parseInt(document.getElementById('aum-sl').value);
+    S.hh = parseInt(document.getElementById('hh-sl').value);
+    S.advisoryPct = document.getElementById('advisory-pct').value;
+  }
+  if (from === 3) { S.platform = document.getElementById('platform').value; }
+  if (from === 5) {
+    S.rev = parseInt(document.getElementById('rev-sl').value);
+    S.payout = parseInt(document.getElementById('pay-sl').value);
+    S.compPri = document.getElementById('comp-pri').value;
+    S.loan = document.getElementById('loan').value;
+  }
+  document.getElementById(`step-${from}`).classList.remove('active');
+  document.getElementById(`step-${from+1}`).classList.add('active');
+  updProg(from+1);
+  window.scrollTo(0,0);
+}
+
+function goPrev(from) {
+  document.getElementById(`step-${from}`).classList.remove('active');
+  document.getElementById(`step-${from-1}`).classList.add('active');
+  updProg(from-1);
+  window.scrollTo(0,0);
+}
+
+function updProg(step) {
+  const labels = ['','Your Practice','Your Path','Investment Niche','Technology','Compensation','Your Goals'];
+  for (let i = 1; i <= 6; i++) {
+    const dot = document.getElementById(`dot-${i}`);
+    const lbl = document.getElementById(`lbl-${i}`);
+    dot.className = 'prog-dot';
+    lbl.className = 'prog-label';
+    if (i < step) { dot.classList.add('done'); dot.textContent = '✓'; }
+    else if (i === step) { dot.classList.add('active'); dot.textContent = i; lbl.classList.add('active'); }
+    else { dot.textContent = i; }
+  }
+}
+
+async function generate() {
+  S.name = document.getElementById('adv-name').value || 'Advisor';
+  S.email = document.getElementById('adv-email').value;
+  S.rev = parseInt(document.getElementById('rev-sl').value);
+  S.payout = parseInt(document.getElementById('pay-sl').value);
+  S.compPri = document.getElementById('comp-pri').value;
+  S.loan = document.getElementById('loan').value;
+
+  document.getElementById('step-6').classList.remove('active');
+  document.getElementById('progress-bar').style.display = 'none';
+  document.getElementById('intro-block').style.display = 'none';
+  document.getElementById('stats-ticker').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+  window.scrollTo(0,0);
+
+  for (let i = 1; i <= 6; i++) {
+    await delay(600);
+    document.getElementById(`ls${i}`).classList.add('show');
+    await delay(900);
+    document.getElementById(`ls${i}`).classList.add('done');
+    const d = document.getElementById(`ld${i}`);
+    d.classList.add('done'); d.textContent = '✓';
+  }
+
+  await delay(400);
+  const html = await callAI();
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('report').style.display = 'block';
+  document.getElementById('report').innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+const pathLabels = {
+  'wirehouse-to-wirehouse': 'Wirehouse to Wirehouse',
+  'ibd': 'Independent Broker-Dealer',
+  'ria': 'RIA / Full Independence'
+};
+const pathClass = {
+  'wirehouse-to-wirehouse': 'ww',
+  'ibd': 'ibd',
+  'ria': 'ria'
+};
+
+async function callAI() {
+  const path = S.path || 'ria';
+  const pc = pathClass[path] || 'ria';
+  const pl = pathLabels[path] || 'RIA / Full Independence';
+
+  const prompt = `You are Corey Pond, a financial advisor transition expert at Winthrop & Co. You have access to real Cerulli Associates data and Fintrx RIA intelligence. Generate a highly specific, data-rich, expert-level transition intelligence report for this advisor.
+
+ADVISOR PROFILE:
+- Name: ${S.name}
+- Firm: ${S.firmType}
+- Years: ${S.years}
+- AUM: $${S.aum}M | HH: ${S.hh} | Advisory %: ${S.advisoryPct}
+- Chosen Path: ${pl}
+- Investment niche: ${S.niche.join(', ') || 'general'}
+- Platform: ${S.platform || 'not specified'}
+- Tech they have: ${S['tech-have'].join(', ') || 'not specified'}
+- Tech they want: ${S['tech-want'].join(', ') || 'not specified'}
+- Gross revenue: $${S.rev}K | Current payout: ${S.payout}%
+- Comp priority: ${S.compPri}
+- Loan status: ${S.loan}
+- Drivers: ${S.driver.join(', ') || 'not specified'}
+
+REAL DATA TO WEAVE IN (cite these sources naturally throughout):
+Cerulli 2025: 25,443 advisors changed firms representing $3.1T assets; 71% of advisors would choose independent channel if switching; wirehouse advisor headcount declining 1.9% annually; independent RIA headcount growing 5.2% CAGR over 10 years; independent RIA AUM growing 11.2% annually; hybrid RIA growing 12.2% annually; independent+hybrid RIAs now control 27% of industry assets up from 21% in 2014; 26% of wirehouse advisors undecided/unlikely to stay; 88% of independent RIAs say very likely to stay in channel; 97% would stay in RIA channel if they left; team practices generate $20.3M organic growth vs $8M for solo; 83% of RIAs cite limited resources as challenge to growth.
+Fintrx: 40,000+ registered RIA entities; $619B LPL Financial AUM +33% YoY; Hightower $165B AUM; 92% of RIA assets discretionary; 90% of RIAs charge % of AUM fee structure; 50% of RIA firms manage under $100M (so your $${S.aum}M puts you in the top tier of the ecosystem).
+
+Generate a report as HTML using ONLY these CSS classes (already defined):
+- Wrap each section in: <div style="margin-bottom:24px">
+- Use .rpt-hero for the opening section
+- Use .rpt-eyebrow for small labels
+- Use .rpt-name for the advisor's name headline
+- Use .rpt-sub for subtitle
+- Use path-badge ${pc} for the path badge
+- Use .score-row and .score-chip .chip-val .chip-lbl for scores
+- Use .cerulli-banner .cb-label .cb-stats .cb-stat .cb-num .cb-desc for data callouts
+- Use .rpt-sec-title for section headings
+- Use .ins-grid and .ins-card .ins-tag .ins-title .ins-body for 2-column card grids
+- Use .fact-list and .fact-item .fact-dot .fact-text .fact-source for bulleted fact lists
+- Use .tech-grid and .tech-card .tech-lbl .tech-name .tech-body for 3-column tech grids
+- Use .divider for horizontal rules
+
+Include these sections:
+1. Opening hero with advisor name, path chosen, readiness score/10, timeline estimate chip, and a "market moment" chip showing a relevant Cerulli stat
+2. "The Market Data That Matters For Your Move" — a cerulli-banner with 3-4 specific stats directly relevant to their path and profile
+3. "What Advisors With Your Profile Are Seeing Right Now" — 4 insight cards with current market intelligence specific to their AUM, revenue, and path
+4. "Your Compensation Opportunity" — fact list with 4-5 very specific points about what they're currently leaving on the table, comp ranges for their path, transition economics for their profile, loan strategy
+5. "Your Platform & Technology Intelligence" — tech grid with 3 specific platform recommendations for their path + niche, what they're missing, what they'd gain
+6. "Your Path of Least Resistance: ${pl}" — specific step-by-step roadmap for their chosen path, with timeline, key milestones, and what to do first
+7. "Your Top 3 Risks & How to Handle Them" — 3 specific risks given their exact profile
+8. Do NOT include a CTA block — that will be added separately.
+
+Be brutally specific. Reference their AUM, revenue, payout, and niche by name. Use real Cerulli and Fintrx data with source callouts. Sound like an industry insider, not a consultant. Return ONLY valid HTML with the classes above. No markdown. No extra explanation.`;
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
+        messages:[{role:"user",content:prompt}]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.[0]?.text || '';
+    return text + ctaBlock();
+  } catch(e) {
+    return fallback() + ctaBlock();
+  }
+}
+
+function ctaBlock() {
+  const first = S.name.split(' ')[0] || 'there';
+  return `<div class="cta-block">
+    <h3>Ready to go deeper, ${first}?</h3>
+    <p>This report gives you the landscape. A 30-minute call with Corey gives you the actual roadmap — specific to your book, your clients, and your exact timeline. No pitch. No pressure. Just an honest conversation about what your move looks like.</p>
+    <div class="cta-btns">
+      <button class="btn-primary">Book a call with Corey</button>
+      <button class="btn-sec">Email me this report</button>
+    </div>
+    <div class="fine-print">100% confidential · Your current firm will never know we spoke · Corey Pond · Winthrop & Co</div>
+  </div>`;
+}
+
+function fallback() {
+  return `<div class="rpt-hero">
+    <div class="rpt-eyebrow">Your Transition Intelligence Report</div>
+    <div class="rpt-name">${S.name} — Report Ready</div>
+    <div class="rpt-sub">Your profile has been captured and is being reviewed by Corey personally.</div>
+  </div>`;
+}
+
+})();
+</script>
+
+</body>
+</html>
