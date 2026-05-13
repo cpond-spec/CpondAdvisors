@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources | Corey Pond · Advisor Transitions · Winthrop & Co</title>
+<meta name="description" content="Free whitepapers, guides, and the Advisor Intelligence Briefing for financial advisors considering a transition.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1520;--ink2:#192b3c;--ink3:#2e3f52;
+  --steel:#4a5f74;--mist:#7a90a3;--fog:#acb8c4;
+  --cream:#e8ebf0;--gold:#b8973a;--gold2:#d4af5a;
+  --border:rgba(184,151,58,0.15);--border2:rgba(184,151,58,0.3);
+  --max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);min-height:100vh}
+
+/* ── WCO BAR ── */
+.wco{background:#020c14;border-bottom:0.5px solid rgba(184,151,58,0.1);padding:7px 0}
+.wco-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
+.wco-left{display:flex;align-items:center;gap:8px}
+.wco-badge{width:20px;height:20px;background:var(--cream);border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:10px;font-weight:600;color:var(--ink)}
+.wco-name{font-family:'Cormorant Garamond',serif;font-size:11px;color:#aabbc8}
+.wco-sep,.wco-sub{font-size:9px;color:var(--steel)}
+
+/* ── NAV ── */
+nav{background:rgba(10,21,32,0.96);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-orb{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--ink)}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:500;color:var(--cream)}
+.nav-role{font-size:8px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-link{font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s}
+.nav-link:hover{color:var(--cream)}
+.nav-link.active{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--ink);font-size:10px;font-weight:500;padding:8px 18px;border-radius:2px;text-decoration:none;letter-spacing:1px;text-transform:uppercase}
+
+/* ── PAGE HERO ── */
+.page-hero{padding:72px 0 56px;background:var(--ink);border-bottom:0.5px solid var(--border)}
+.page-hero-in{max-width:var(--max);margin:0 auto;padding:0 40px}
+.page-eyebrow{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.page-eyebrow::before{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.page-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:600;color:var(--cream);line-height:1.1;margin-bottom:12px}
+.page-h1 em{color:var(--gold2);font-style:italic}
+.page-sub{font-size:13px;color:var(--mist);font-weight:300;line-height:1.8;max-width:560px}
+
+/* ── WHITEPAPERS ── */
+.wp-section{padding:80px 0;background:var(--ink)}
+.sec-in{max-width:var(--max);margin:0 auto;padding:0 40px}
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sec-eye::before{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-weight:600;color:var(--cream);margin-bottom:8px;line-height:1.15}
+.sec-sub{font-size:13px;color:var(--mist);font-weight:300;line-height:1.8;max-width:520px;margin-bottom:44px}
+
+.wp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.wp-card{
+  background:var(--ink2);
+  border:0.5px solid var(--border);
+  border-radius:6px;
+  padding:28px 30px;
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  transition:border-color .2s;
+  position:relative;
+  overflow:hidden;
+}
+.wp-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:transparent;transition:background .2s}
+.wp-card:hover{border-color:rgba(184,151,58,0.35)}
+.wp-card:hover::before{background:var(--gold)}
+
+.wp-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px;
+  font-weight:300;
+  color:rgba(184,151,58,0.2);
+  line-height:1;
+  min-width:36px;
+  margin-top:2px;
+  transition:color .2s;
+}
+.wp-card:hover .wp-num{color:rgba(184,151,58,0.5)}
+
+.wp-content{flex:1}
+.wp-tag{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-family:'DM Mono',monospace}
+.wp-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);line-height:1.25;margin-bottom:8px}
+.wp-desc{font-size:11px;color:var(--mist);line-height:1.7;font-weight:300;margin-bottom:16px}
+
+.wp-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--gold2);
+  text-decoration:none;
+  border:0.5px solid var(--border2);
+  padding:9px 18px;
+  border-radius:2px;
+  cursor:pointer;
+  background:transparent;
+  font-family:'DM Sans',sans-serif;
+  transition:all .2s;
+}
+.wp-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.wp-btn svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+/* ── MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(4px);
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--ink2);
+  border:0.5px solid var(--border2);
+  border-radius:8px;
+  padding:40px;
+  max-width:440px;
+  width:100%;
+  position:relative;
+  animation:modal-in .2s ease;
+}
+@keyframes modal-in{from{opacity:0;transform:scale(0.96)}to{opacity:1;transform:scale(1)}}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  background:transparent;border:none;
+  color:var(--mist);cursor:pointer;
+  font-size:18px;line-height:1;
+  transition:color .2s;
+}
+.modal-close:hover{color:var(--cream)}
+.modal-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-family:'DM Mono',monospace}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:6px;line-height:1.3}
+.modal-sub{font-size:12px;color:var(--mist);font-weight:300;line-height:1.7;margin-bottom:24px}
+.modal-inp{
+  width:100%;background:rgba(255,255,255,0.04);
+  border:0.5px solid var(--border2);color:var(--cream);
+  font-size:13px;padding:12px 16px;border-radius:2px;
+  font-family:'DM Sans',sans-serif;outline:none;
+  margin-bottom:10px;transition:border-color .2s;
+}
+.modal-inp:focus{border-color:var(--gold)}
+.modal-inp::placeholder{color:var(--steel)}
+.modal-submit{
+  width:100%;background:var(--gold);color:var(--ink);border:none;
+  padding:13px;font-size:10px;font-weight:500;letter-spacing:1.5px;
+  text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;
+  border-radius:2px;transition:background .2s;
+}
+.modal-submit:hover{background:var(--gold2)}
+.modal-fine{font-size:10px;color:var(--steel);margin-top:8px;text-align:center}
+.modal-success{display:none;text-align:center;padding:20px 0}
+.modal-success-icon{font-size:32px;margin-bottom:12px}
+.modal-success-h{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:8px}
+.modal-success-sub{font-size:12px;color:var(--mist);line-height:1.7}
+
+/* ── NEWSLETTER SECTION ── */
+.nl-section{background:#060f18;padding:80px 0;overflow:hidden}
+.nl-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+
+/* Rolling preview */
+.nl-preview{position:relative}
+.nl-preview-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--steel);margin-bottom:16px;font-family:'DM Mono',monospace}
+.nl-cards-wrap{position:relative;height:320px;overflow:hidden}
+.nl-cards-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,#060f18);pointer-events:none;z-index:2}
+.nl-card-slide{
+  background:var(--ink2);
+  border:0.5px solid var(--border);
+  border-radius:6px;
+  padding:22px 24px;
+  position:absolute;
+  width:100%;
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .5s ease;
+}
+.nl-card-slide.active{opacity:1;transform:translateY(0)}
+.nl-card-slide.prev{opacity:0;transform:translateY(-20px)}
+.nl-issue{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-family:'DM Mono',monospace;display:flex;align-items:center;justify-content:space-between}
+.nl-issue-date{color:var(--steel)}
+.nl-card-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:10px;line-height:1.3}
+.nl-highlights{list-style:none;display:flex;flex-direction:column;gap:6px}
+.nl-highlights li{font-size:11px;color:var(--mist);line-height:1.5;display:flex;align-items:flex-start;gap:8px}
+.nl-highlights li::before{content:'—';color:var(--gold);flex-shrink:0;font-size:10px;margin-top:1px}
+.nl-dots{display:flex;gap:6px;margin-top:16px;justify-content:center}
+.nl-dot{width:6px;height:6px;border-radius:50%;background:var(--ink3);cursor:pointer;transition:background .2s}
+.nl-dot.active{background:var(--gold)}
+
+/* Signup side */
+.nl-signup{}
+.nl-signup-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.nl-signup-eye::before{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.nl-signup-h{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--cream);margin-bottom:12px;line-height:1.15}
+.nl-signup-h em{color:var(--gold2);font-style:italic}
+.nl-signup-sub{font-size:13px;color:var(--mist);font-weight:300;line-height:1.8;margin-bottom:24px}
+.nl-features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.nl-feature{display:flex;align-items:flex-start;gap:10px}
+.nl-feature-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0}
+.nl-feature-text{font-size:12px;color:var(--mist);line-height:1.6}
+.nl-feature-text strong{color:var(--cream);font-weight:500}
+.nl-form{display:flex;flex-direction:column;gap:9px}
+.nl-inp{
+  background:rgba(255,255,255,0.04);border:0.5px solid var(--border2);
+  color:var(--cream);font-size:13px;padding:12px 16px;border-radius:2px;
+  font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;
+}
+.nl-inp:focus{border-color:var(--gold)}
+.nl-inp::placeholder{color:var(--steel)}
+.nl-submit{
+  background:var(--gold);color:var(--ink);border:none;padding:13px;
+  font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px;transition:background .2s;
+}
+.nl-submit:hover{background:var(--gold2)}
+.nl-fine{font-size:10px;color:var(--steel);margin-top:6px}
+.nl-success{display:none;background:rgba(59,109,17,0.08);border:0.5px solid rgba(59,109,17,0.3);border-radius:4px;padding:18px;text-align:center}
+.nl-success-h{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px}
+.nl-success-sub{font-size:12px;color:var(--mist)}
+
+/* ── FOOTER ── */
+footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
+.foot-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.foot-name{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);margin-bottom:4px}
+.foot-wco{font-size:10px;color:var(--steel)}
+.foot-wco span{color:var(--gold)}
+.foot-contact{margin-top:10px;display:flex;flex-direction:column;gap:3px}
+.foot-contact a{font-size:11px;color:var(--mist);text-decoration:none}
+.foot-copy{font-size:9px;color:#1a2d3d;margin-top:8px}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-link{font-size:10px;color:var(--steel);text-decoration:none;transition:color .2s}
+.foot-link:hover{color:var(--gold)}
+
+/* ── FLOATING BTN ── */
+.float-btn{position:fixed;bottom:32px;right:32px;z-index:999;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none}
+.float-btn.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.float-btn a{display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--ink);text-decoration:none;padding:13px 22px;border-radius:40px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;font-family:'DM Sans',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.4);transition:all .2s;white-space:nowrap}
+.float-btn a:hover{background:var(--gold2);transform:translateY(-2px)}
+.float-btn a svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.8}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .wp-grid{grid-template-columns:1fr}
+  .nl-grid{grid-template-columns:1fr}
+  .nl-cards-wrap{height:280px}
+  .sec-in,.page-hero-in,.foot-in{padding:0 24px}
+  .modal{padding:28px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- WCO BAR -->
+<div class="wco">
+  <div class="wco-in">
+    <div class="wco-left">
+      <div class="wco-badge">W</div>
+      <span class="wco-name">Winthrop & Co</span>
+      <span class="wco-sep"> · </span>
+      <span class="wco-sub">Strategy & Operations Consulting</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a href="/" class="nav-brand">
+      <div class="nav-orb">CP</div>
+      <div>
+        <div class="nav-title">Corey Pond</div>
+        <div class="nav-role">Advisor Transitions</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="/#about" class="nav-link">About</a>
+      <a href="/services" class="nav-link">Services</a>
+      <a href="/webinars" class="nav-link">Webinars</a>
+      <a href="/articles" class="nav-link">Articles</a>
+      <a href="/resources" class="nav-link active">Resources</a>
+      <a href="/clarity" class="nav-link">Advisor Intelligence</a>
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="nav-cta">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-in">
+    <div class="page-eyebrow">Free resources</div>
+    <h1 class="page-h1">The intelligence<br>you need to <em>move right.</em></h1>
+    <p class="page-sub">Whitepapers, guides, and quarterly market intelligence built specifically for financial advisors thinking about a transition. Free. No pitch. Just the real picture.</p>
+  </div>
+</div>
+
+<!-- WHITEPAPERS -->
+<section class="wp-section">
+  <div class="sec-in">
+    <div class="sec-eye">Due diligence</div>
+    <h2 class="sec-h">Free whitepapers for<br>advisors doing their homework.</h2>
+    <p class="sec-sub">Five guides covering every dimension of an advisor transition — from evaluating firms to structuring your exit. Enter your email and it's yours instantly.</p>
+
+    <div class="wp-grid">
+
+      <div class="wp-card">
+        <div class="wp-num">01</div>
+        <div class="wp-content">
+          <div class="wp-tag">Due diligence</div>
+          <div class="wp-title">The Advisor's Due Diligence Checklist: 12 Questions to Ask Before You Sign with Any Firm</div>
+          <div class="wp-desc">The practical checklist every advisor should work through before committing to a new firm. Platform, payout, culture, compliance, technology — nothing left out.</div>
+          <button class="wp-btn" onclick="openModal('due-diligence-checklist', 'The Advisor\'s Due Diligence Checklist')">
+            Download free
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="wp-card">
+        <div class="wp-num">02</div>
+        <div class="wp-content">
+          <div class="wp-tag">Compensation</div>
+          <div class="wp-title">Understanding Your Transition Package: What's Negotiable and What Isn't</div>
+          <div class="wp-desc">Forgivable loans, transition bonuses, deal structures — most advisors leave significant money on the table because they don't know what to ask for. This changes that.</div>
+          <button class="wp-btn" onclick="openModal('transition-package', 'Understanding Your Transition Package')">
+            Download free
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="wp-card">
+        <div class="wp-num">03</div>
+        <div class="wp-content">
+          <div class="wp-tag">Independence</div>
+          <div class="wp-title">Wirehouse to Independence: A Step-by-Step Roadmap for Your First 90 Days</div>
+          <div class="wp-desc">The most searched topic in advisor transitions — and the most misunderstood. A practical timeline covering compliance, client communication, platform setup, and what to expect.</div>
+          <button class="wp-btn" onclick="openModal('first-90-days', 'Wirehouse to Independence: First 90 Days')">
+            Download free
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="wp-card">
+        <div class="wp-num">04</div>
+        <div class="wp-content">
+          <div class="wp-tag">Platform comparison</div>
+          <div class="wp-title">RIA vs IBD: A Side-by-Side Comparison for the Advisor Considering Independence</div>
+          <div class="wp-desc">Payout, platform, compliance burden, cost structure, flexibility — every dimension laid out cleanly so you can make an honest comparison before any conversation.</div>
+          <button class="wp-btn" onclick="openModal('ria-vs-ibd', 'RIA vs IBD Side-by-Side Comparison')">
+            Download free
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="wp-card" style="grid-column:1/-1">
+        <div class="wp-num">05</div>
+        <div class="wp-content">
+          <div class="wp-tag">Succession planning</div>
+          <div class="wp-title">How to Value Your Practice: What Buyers Pay For and How to Maximize Your Multiple</div>
+          <div class="wp-desc">Every advisor over 50 wants to know this number. A practical framework for understanding how your practice gets valued, what moves the multiple, and how to position yourself for the best possible deal.</div>
+          <button class="wp-btn" onclick="openModal('practice-valuation', 'How to Value Your Practice')">
+            Download free
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="nl-section" id="newsletter">
+  <div class="sec-in">
+    <div class="nl-grid">
+
+      <!-- ROLLING PREVIEW -->
+      <div class="nl-preview">
+        <div class="nl-preview-label">Recent issues</div>
+        <div class="nl-cards-wrap" id="nl-cards">
+
+          <div class="nl-card-slide active" data-index="0">
+            <div class="nl-issue">
+              <span>Advisor Intelligence Briefing</span>
+              <span class="nl-issue-date">Q1 2026</span>
+            </div>
+            <div class="nl-card-title">The Great Wirehouse Exodus: What the Numbers Actually Show</div>
+            <ul class="nl-highlights">
+              <li>25,443 advisors changed firms in 2025 — $3.1T in assets moved with them</li>
+              <li>Wirehouse advisors at risk of leaving hit 26% — highest in a decade</li>
+              <li>RIA channel asset share crosses 27% for the first time</li>
+              <li>Average transition package for $200M+ producers up 18% YoY</li>
+              <li>Spotlight: Three moves from Q1 that every advisor should know about</li>
+            </ul>
+          </div>
+
+          <div class="nl-card-slide" data-index="1">
+            <div class="nl-issue">
+              <span>Advisor Intelligence Briefing</span>
+              <span class="nl-issue-date">Q4 2025</span>
+            </div>
+            <div class="nl-card-title">Independence Is Winning: Channel Migration Data & What It Means for You</div>
+            <ul class="nl-highlights">
+              <li>IBD channel payout grids moved up average 4.2% across major platforms</li>
+              <li>RIA headcount growing at 5.2% CAGR — wirehouses declining 1.9% annually</li>
+              <li>71% of advisors surveyed would choose independence if starting over today</li>
+              <li>Direct indexing now available at 34 of the top 50 IBD and RIA platforms</li>
+              <li>The five deals from Q4 that set the market tone heading into 2026</li>
+            </ul>
+          </div>
+
+          <div class="nl-card-slide" data-index="2">
+            <div class="nl-issue">
+              <span>Advisor Intelligence Briefing</span>
+              <span class="nl-issue-date">Q3 2025</span>
+            </div>
+            <div class="nl-card-title">Succession Wave: Why More Advisors Are Selling Earlier Than Expected</div>
+            <ul class="nl-highlights">
+              <li>Average advisor age hits 57 — succession planning urgency at all-time high</li>
+              <li>Practice multiples for fee-based books averaging 2.4x recurring revenue</li>
+              <li>Aggregators paid record premiums in Q3 — who's buying and what they want</li>
+              <li>The sell-and-stay model is growing — what advisors are actually getting</li>
+              <li>Three succession structures worth knowing before any conversation</li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="nl-dots">
+          <div class="nl-dot active" onclick="goToSlide(0)"></div>
+          <div class="nl-dot" onclick="goToSlide(1)"></div>
+          <div class="nl-dot" onclick="goToSlide(2)"></div>
+        </div>
+      </div>
+
+      <!-- SIGNUP -->
+      <div class="nl-signup">
+        <div class="nl-signup-eye">Free · Quarterly</div>
+        <h2 class="nl-signup-h">The Advisor<br><em>Intelligence Briefing.</em></h2>
+        <p class="nl-signup-sub">What's moving in the advisor market — straight to your inbox every quarter. Real data, real deals, no pitch. The intelligence you need to know your options before you need them.</p>
+        <div class="nl-features">
+          <div class="nl-feature"><div class="nl-feature-dot"></div><div class="nl-feature-text"><strong>Comp & deal data</strong> — what transition packages actually look like right now</div></div>
+          <div class="nl-feature"><div class="nl-feature-dot"></div><div class="nl-feature-text"><strong>Channel migration trends</strong> — where advisors are moving and why</div></div>
+          <div class="nl-feature"><div class="nl-feature-dot"></div><div class="nl-feature-text"><strong>Successful advisor moves</strong> — real transitions, real outcomes (anonymized)</div></div>
+          <div class="nl-feature"><div class="nl-feature-dot"></div><div class="nl-feature-text"><strong>Market intelligence</strong> — Cerulli data, Fintrx deal flow, platform updates</div></div>
+        </div>
+        <div class="nl-form" id="nl-form">
+          <input type="text" class="nl-inp" placeholder="Your name" id="nl-name">
+          <input type="email" class="nl-inp" placeholder="your@email.com" id="nl-email">
+          <button class="nl-submit" onclick="submitNewsletter()">Send me the briefing</button>
+          <div class="nl-fine">Quarterly. No spam. Unsubscribe anytime.</div>
+        </div>
+        <div class="nl-success" id="nl-success">
+          <div class="nl-success-h">You're on the list.</div>
+          <div class="nl-success-sub">You'll receive the next Advisor Intelligence Briefing when it drops. Keep an eye on your inbox.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div>
+      <div class="foot-name">Corey Pond · CPond Advisors</div>
+      <div class="foot-wco">Advisor Transitions · <span>Winthrop & Co</span></div>
+      <div class="foot-contact">
+        <a href="tel:9784208175">(978) 420-8175 · Call or text</a>
+        <a href="mailto:Cpond@winthropandcompany.com">Cpond@winthropandcompany.com</a>
+      </div>
+      <div class="foot-copy">© 2026 CPond Advisors · CpondAdvisors.com · All rights reserved</div>
+    </div>
+    <div class="foot-links">
+      <a href="/" class="foot-link">Home</a>
+      <a href="/webinars" class="foot-link">Webinars</a>
+      <a href="/clarity" class="foot-link">Advisor Intelligence</a>
+      <a href="https://www.linkedin.com/in/corey-pond-833b0871/" target="_blank" class="foot-link">LinkedIn</a>
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="foot-link">Book a call</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-form-wrap">
+      <div class="modal-tag" id="modal-tag">Due diligence</div>
+      <div class="modal-title" id="modal-title">Get your free guide</div>
+      <div class="modal-sub">Enter your name and email and we'll send it right over. No pitch. Just the guide.</div>
+      <input type="text" class="modal-inp" placeholder="Your name" id="modal-name">
+      <input type="email" class="modal-inp" placeholder="your@email.com" id="modal-email">
+      <button class="modal-submit" onclick="submitModal()">Send me the guide</button>
+      <div class="modal-fine">100% confidential · Unsubscribe anytime</div>
+    </div>
+    <div class="modal-success" id="modal-success">
+      <div class="modal-success-icon">✓</div>
+      <div class="modal-success-h">It's on its way.</div>
+      <div class="modal-success-sub">Check your inbox shortly. You'll also receive the Advisor Intelligence Briefing each quarter — real market data, no pitch.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING BUTTON -->
+<div class="float-btn" id="float-btn">
+  <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book a 30-min call
+  </a>
+</div>
+
+<script>
+// Modal
+let currentGuide = '';
+
+function openModal(guideId, guideTitle) {
+  currentGuide = guideId;
+  document.getElementById('modal-title').textContent = guideTitle;
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modal-form-wrap').style.display = 'block';
+  document.getElementById('modal-success').style.display = 'none';
+  document.getElementById('modal-name').value = '';
+  document.getElementById('modal-email').value = '';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+function submitModal() {
+  var name = document.getElementById('modal-name').value.trim();
+  var email = document.getElementById('modal-email').value.trim();
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+  window.location.href = 'mailto:Cpond@winthropandcompany.com?subject=Whitepaper download: ' + encodeURIComponent(currentGuide) + '&body=Name: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email) + '%0AGuide requested: ' + encodeURIComponent(currentGuide);
+  document.getElementById('modal-form-wrap').style.display = 'none';
+  document.getElementById('modal-success').style.display = 'block';
+}
+
+// Newsletter
+function submitNewsletter() {
+  var name = document.getElementById('nl-name').value.trim();
+  var email = document.getElementById('nl-email').value.trim();
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+  window.location.href = 'mailto:Cpond@winthropandcompany.com?subject=Briefing signup: ' + encodeURIComponent(name) + '&body=Name: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email) + '%0A%0APlease add me to the Advisor Intelligence Briefing.';
+  document.getElementById('nl-form').style.display = 'none';
+  document.getElementById('nl-success').style.display = 'block';
+}
+
+// Newsletter carousel
+var currentSlide = 0;
+var slides = document.querySelectorAll('.nl-card-slide');
+var dots = document.querySelectorAll('.nl-dot');
+
+function goToSlide(n) {
+  var prevIndex = currentSlide;
+  slides[prevIndex].classList.remove('active');
+  slides[prevIndex].classList.add('prev');
+  dots[prevIndex].classList.remove('active');
+  setTimeout(function() { slides[prevIndex].classList.remove('prev'); }, 500);
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+  goToSlide((currentSlide + 1) % slides.length);
+}
+
+setInterval(nextSlide, 4000);
+
+// Floating button
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('float-btn');
+  if (window.scrollY > 300) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// Close modal on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+
+</body>
+</html>
