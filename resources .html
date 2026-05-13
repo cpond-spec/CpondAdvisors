@@ -36,7 +36,6 @@ nav{background:rgba(10,21,32,0.96);backdrop-filter:blur(12px);border-bottom:0.5p
 .nav-links{display:flex;align-items:center;gap:26px}
 .nav-link{font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s}
 .nav-link:hover{color:var(--cream)}
-.nav-link.active{color:var(--gold)}
 .nav-cta{background:var(--gold);color:var(--ink);font-size:10px;font-weight:500;padding:8px 18px;border-radius:2px;text-decoration:none;letter-spacing:1px;text-transform:uppercase}
 
 /* ── PAGE HERO ── */
@@ -285,11 +284,8 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
       </div>
     </a>
     <div class="nav-links">
-      <a href="/#about" class="nav-link">About</a>
-      <a href="/services" class="nav-link">Services</a>
+      <a href="/" class="nav-link">Home</a>
       <a href="/webinars" class="nav-link">Webinars</a>
-      <a href="/articles" class="nav-link">Articles</a>
-      <a href="/resources" class="nav-link active">Resources</a>
       <a href="/clarity" class="nav-link">Advisor Intelligence</a>
       <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="nav-cta">Book a call</a>
     </div>
@@ -478,7 +474,7 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
   <div class="foot-in">
     <div>
       <div class="foot-name">Corey Pond · CPond Advisors</div>
-      <div class="foot-wco">Advisor Transitions · <span>Winthrop & Co</span></div>
+      <div class="foot-wco">In strategic partnership with <span>Winthrop & Co</span></div>
       <div class="foot-contact">
         <a href="tel:9784208175">(978) 420-8175 · Call or text</a>
         <a href="mailto:Cpond@winthropandcompany.com">Cpond@winthropandcompany.com</a>
@@ -571,11 +567,10 @@ var slides = document.querySelectorAll('.nl-card-slide');
 var dots = document.querySelectorAll('.nl-dot');
 
 function goToSlide(n) {
-  var prevIndex = currentSlide;
-  slides[prevIndex].classList.remove('active');
-  slides[prevIndex].classList.add('prev');
-  dots[prevIndex].classList.remove('active');
-  setTimeout(function() { slides[prevIndex].classList.remove('prev'); }, 500);
+  slides[currentSlide].classList.remove('active');
+  slides[currentSlide].classList.add('prev');
+  dots[currentSlide].classList.remove('active');
+  setTimeout(function() { slides[currentSlide].classList.remove('prev'); }, 500);
   currentSlide = n;
   slides[currentSlide].classList.add('active');
   dots[currentSlide].classList.add('active');
