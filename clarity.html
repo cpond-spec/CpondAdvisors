@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Advisor Intelligence | Corey Pond · Winthrop & Co</title>
-<meta name="description" content="Two tools built for financial advisors who want real answers about their transition.">
+<meta name="description" content="Two paths built for financial advisors — explore the landscape or map your specific situation. Voice, guided questions, and a personalized report.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --ink:#0a1520;--ink2:#192b3c;--ink3:#2e3f52;
   --steel:#4a5f74;--mist:#7a90a3;--fog:#acb8c4;
@@ -843,59 +844,463 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .cb-num span{font-size:10px;color:var(--gold)}
 .cb-desc{font-size:9px;color:var(--steel);margin-top:2px;max-width:160px;line-height:1.4}
 
+
+/* ── MARKET INTELLIGENCE ── */
+.mkt-section{background:#060f18;border-top:0.5px solid var(--border);padding:72px 0}
+.mkt-in{max-width:1160px;margin:0 auto;padding:0 40px}
+.mkt-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.mkt-eye::before{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.mkt-eye::after{content:'';display:block;flex:1;height:0.5px;background:rgba(184,151,58,0.15)}
+.mkt-h{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-weight:600;color:var(--cream);margin-bottom:8px;line-height:1.1}
+.mkt-sub{font-size:12px;color:var(--mist);font-weight:300;margin-bottom:40px;line-height:1.7;max-width:520px}
+.mkt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-bottom:32px}
+.mkt-stat{background:#060f18;padding:28px 22px;transition:background .2s}
+.mkt-stat:hover{background:#0a1825}
+.mkt-val{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--cream);line-height:1;margin-bottom:8px}
+.mkt-val em{font-size:22px;color:var(--gold);font-style:normal}
+.mkt-lbl{font-size:11px;color:var(--mist);line-height:1.5;font-weight:300}
+.mkt-lbl strong{color:var(--cream);font-weight:500;display:block;margin-bottom:2px}
+.mkt-quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px}
+.mkt-q{background:var(--ink2);border:0.5px solid var(--border);border-left:2px solid var(--gold);padding:18px 20px}
+.mkt-q-text{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--cream);line-height:1.65;margin-bottom:8px}
+.mkt-q-src{font-size:9px;color:var(--steel);letter-spacing:0.5px;font-family:'DM Mono',monospace}
+.mkt-source{font-size:9px;color:var(--steel);letter-spacing:0.5px;font-family:'DM Mono',monospace;text-align:center}
+@media(max-width:768px){.mkt-grid{grid-template-columns:1fr 1fr}.mkt-quotes{grid-template-columns:1fr}.mkt-in{padding:0 24px}}
+
+
+/* ── MARKET INTELLIGENCE ── */
+.mkt-section{background:#060f18;border-top:0.5px solid rgba(184,151,58,0.15);padding:72px 0}
+.mkt-in{max-width:1160px;margin:0 auto;padding:0 40px}
+.mkt-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b8973a;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.mkt-eye::before{content:'';display:block;width:20px;height:0.5px;background:#b8973a}
+.mkt-eye::after{content:'';display:block;flex:1;height:0.5px;background:rgba(184,151,58,0.15)}
+.mkt-h{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#e8ebf0;margin-bottom:8px;line-height:1.1}
+.mkt-sub{font-size:12px;color:#7a90a3;font-weight:300;margin-bottom:40px;line-height:1.7;max-width:520px}
+.mkt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(184,151,58,0.15);margin-bottom:32px}
+.mkt-stat{background:#060f18;padding:28px 22px}
+.mkt-val{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:#e8ebf0;line-height:1;margin-bottom:8px}
+.mkt-val em{font-size:22px;color:#b8973a;font-style:normal}
+.mkt-lbl{font-size:11px;color:#7a90a3;line-height:1.5;font-weight:300}
+.mkt-lbl strong{color:#e8ebf0;font-weight:500;display:block;margin-bottom:2px}
+.mkt-quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px}
+.mkt-q{background:#192b3c;border:0.5px solid rgba(184,151,58,0.15);border-left:2px solid #b8973a;padding:18px 20px}
+.mkt-q-text{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#e8ebf0;line-height:1.65;margin-bottom:8px}
+.mkt-q-src{font-size:9px;color:#4a5f74;letter-spacing:0.5px}
+.mkt-source{font-size:9px;color:#4a5f74;letter-spacing:0.5px;text-align:center}
+@media(max-width:768px){.mkt-grid{grid-template-columns:1fr 1fr}.mkt-quotes{grid-template-columns:1fr}.mkt-in{padding:0 24px}}
+
+
+
+/* ── FORK ENTRY SCREEN ── */
+.fork-screen{
+  min-height:calc(100vh - 72px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:60px 40px;
+  background:var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.fork-screen::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  opacity:0.5;
+}
+.fork-bg-art{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  opacity:0.4;
+}
+.fork-header{text-align:center;margin-bottom:56px;position:relative;z-index:1}
+.fork-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.fork-eye::before,.fork-eye::after{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.fork-h{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:600;color:#fff;line-height:1.1;margin-bottom:12px}
+.fork-h em{color:var(--gold2);font-style:italic}
+.fork-sub{font-size:13px;color:var(--mist);font-weight:300;line-height:1.8;max-width:480px;margin:0 auto}
+
+.fork-paths{
+  display:grid;
+  grid-template-columns:1fr 60px 1fr;
+  gap:0;
+  max-width:900px;
+  width:100%;
+  position:relative;
+  z-index:1;
+  align-items:stretch;
+}
+
+/* VOICE PATH */
+.fork-voice{
+  background:var(--ink2);
+  border:0.5px solid var(--border);
+  border-radius:8px 0 0 8px;
+  padding:40px 36px;
+  text-align:center;
+  cursor:pointer;
+  transition:border-color .25s, background .25s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+}
+.fork-voice:hover{border-color:rgba(184,151,58,0.4);background:#0f1e2d}
+
+.fork-mic{
+  width:72px;height:72px;
+  border-radius:50%;
+  border:1.5px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+  transition:all .25s;
+  background:rgba(184,151,58,0.06);
+}
+.fork-voice:hover .fork-mic{border-color:var(--gold);background:rgba(184,151,58,0.12)}
+.fork-mic svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.5}
+
+.fork-path-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-family:'DM Mono',monospace}
+.fork-path-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:10px;line-height:1.2}
+.fork-path-desc{font-size:12px;color:var(--mist);line-height:1.7;font-weight:300;margin-bottom:24px;flex:1}
+.fork-path-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gold2);border:0.5px solid var(--border2);
+  padding:10px 20px;border-radius:2px;
+  transition:all .2s;width:100%;justify-content:center;
+  font-family:'DM Sans',sans-serif;cursor:pointer;background:transparent;
+}
+.fork-voice:hover .fork-path-btn{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* DIVIDER */
+.fork-divider{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:12px;
+  position:relative;
+}
+.fork-divider::before{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;
+  width:0.5px;
+  background:var(--border);
+}
+.fork-or{
+  background:var(--ink);
+  border:0.5px solid var(--border);
+  border-radius:50%;
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--steel);letter-spacing:1px;
+  font-family:'DM Mono',monospace;
+  position:relative;z-index:1;
+  flex-shrink:0;
+}
+
+/* PATH CARDS */
+.fork-paths-right{
+  display:flex;flex-direction:column;gap:0;
+}
+.fork-card{
+  background:var(--ink2);
+  border:0.5px solid var(--border);
+  padding:28px 32px;
+  cursor:pointer;
+  transition:border-color .25s,background .25s;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.fork-card:first-child{border-radius:0 8px 0 0;border-bottom:none}
+.fork-card:last-child{border-radius:0 0 8px 0}
+.fork-card:hover{border-color:rgba(184,151,58,0.4);background:#0f1e2d}
+
+.fork-card-icon{
+  width:48px;height:48px;
+  border-radius:50%;
+  border:0.5px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  background:rgba(184,151,58,0.06);
+  transition:all .25s;
+}
+.fork-card:hover .fork-card-icon{border-color:var(--gold);background:rgba(184,151,58,0.12)}
+.fork-card-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.5}
+
+.fork-card-body{flex:1}
+.fork-card-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;font-family:'DM Mono',monospace}
+.fork-card-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:4px;line-height:1.2}
+.fork-card-desc{font-size:11px;color:var(--mist);line-height:1.6;font-weight:300}
+
+.fork-card-arrow{color:var(--gold);font-size:18px;flex-shrink:0;transition:transform .2s}
+.fork-card:hover .fork-card-arrow{transform:translateX(4px)}
+
+.fork-card-sep{height:0.5px;background:var(--border);margin:0}
+
+/* TOOL SCREENS */
+.tool-screen{display:none;min-height:calc(100vh - 72px);background:var(--ink)}
+.tool-screen.active{display:block}
+.tool-back{
+  max-width:1160px;margin:0 auto;padding:20px 40px;
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;color:var(--mist);cursor:pointer;
+  transition:color .2s;border:none;background:transparent;
+  font-family:'DM Sans',sans-serif;
+}
+.tool-back:hover{color:var(--gold)}
+.tool-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+@media(max-width:768px){
+  .fork-paths{grid-template-columns:1fr;gap:12px}
+  .fork-voice{border-radius:8px}
+  .fork-divider{flex-direction:row;height:40px}
+  .fork-divider::before{top:50%;bottom:auto;left:0;right:0;width:auto;height:0.5px}
+  .fork-paths-right{gap:12px}
+  .fork-card:first-child{border-radius:8px;border-bottom:0.5px solid var(--border)}
+  .fork-card:last-child{border-radius:8px}
+  .fork-screen{padding:40px 24px}
+}
+
+/* ── PATH 1 PILLS ── */
+.p1-opt-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.p1-opt{
+  background:rgba(255,255,255,0.04);
+  border:0.5px solid rgba(184,151,58,0.25);
+  color:#7a90a3;
+  font-size:12px;
+  padding:12px 22px;
+  border-radius:40px;
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all .2s;
+  white-space:nowrap;
+  letter-spacing:0.3px;
+}
+.p1-opt:hover{
+  background:rgba(184,151,58,0.1);
+  border-color:rgba(184,151,58,0.5);
+  color:#e8ebf0;
+}
+.p1-opt.selected{
+  background:rgba(184,151,58,0.18);
+  border-color:#b8973a;
+  color:#d4af5a;
+  font-weight:500;
+}
+.p1-next{
+  margin-top:24px;
+  background:#b8973a;
+  color:#0a1520;
+  border:none;
+  padding:13px 32px;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  border-radius:2px;
+  display:none;
+  transition:background .2s;
+  align-items:center;
+  gap:8px;
+}
+.p1-next:hover{background:#d4af5a}
+.p1-next.visible{display:inline-flex}
+
+
+/* ── INTEL CARD ENTRY (clarity page) ── */
+.intel-card-entry{
+  background:var(--ink2);
+  border:0.5px solid var(--border);
+  border-radius:8px;
+  padding:32px 28px;
+  cursor:pointer;
+  transition:border-color .25s,background .25s;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.intel-card-entry:hover{border-color:rgba(184,151,58,0.4);background:#0f1e2d}
+.intel-card-entry::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .25s}
+.intel-card-entry:hover::before{opacity:1}
+.ice-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-family:'DM Mono',monospace}
+.ice-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:10px;line-height:1.2}
+.ice-body{font-size:12px;color:var(--mist);line-height:1.7;font-weight:300;margin-bottom:20px;flex:1}
+.ice-stats{display:flex;gap:0;margin-bottom:20px;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:12px 0}
+.ice-stat{flex:1;text-align:center;border-right:0.5px solid var(--border)}
+.ice-stat:last-child{border-right:none}
+.ice-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--gold2)}
+.ice-lbl{font-size:9px;color:var(--steel);letter-spacing:0.5px;margin-top:2px}
+.ice-btn{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);font-family:'DM Sans',sans-serif;transition:color .2s}
+.intel-card-entry:hover .ice-btn{color:var(--gold)}
+.ice-deco{position:absolute;bottom:-40px;right:-40px;opacity:0.06;pointer-events:none}
+
+@media(max-width:768px){
+  #screen-fork .fork-header{margin-bottom:32px}
+  #screen-fork > div[style*="grid-template-columns"]{grid-template-columns:1fr !important}
+}
+
 </style>
 </head>
 <body>
 
-<div class="wco">
-  <div class="wco-in">
-    <div class="wco-left">
-      <div class="wco-badge">W</div>
-      <span class="wco-name">Winthrop & Co</span>
-      <span class="wco-sep"> · </span>
-      <span class="wco-sub">Strategy & Operations Consulting</span>
+<!-- HEADER -->
+<header class="hdr" style="background:rgba(10,21,32,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(184,151,58,0.15);position:sticky;top:0;z-index:100">
+  <div style="max-width:1160px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px">
+    <div style="display:flex;align-items:center;gap:16px;flex-shrink:0">
+      <a href="/" style="display:flex;align-items:center;gap:11px;text-decoration:none">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="21" r="20.5" stroke="#b8973a" stroke-width="0.8"/>
+          <circle cx="21" cy="21" r="16" fill="#b8973a" opacity="0.1"/>
+          <circle cx="21" cy="21" r="9" fill="#b8973a" opacity="0.15"/>
+          <text x="21" y="27" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-weight="600" fill="#d4af5a">CP</text>
+        </svg>
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:#e8ebf0;line-height:1.1">Corey Pond</div>
+          <div style="font-size:8px;color:#b8973a;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px">Advisor Transitions</div>
+        </div>
+      </a>
+      <div style="width:0.5px;height:32px;background:rgba(184,151,58,0.3);flex-shrink:0"></div>
+      <a href="https://winthropco.com/" target="_blank" style="display:flex;align-items:center;gap:8px;text-decoration:none;opacity:0.8;transition:opacity .2s">
+        <img src="/wco-logo.jpg" alt="Winthrop & Co" style="width:32px;height:32px;border-radius:4px;object-fit:cover;" onerror="this.style.display='none'">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;color:#7a90a3">Winthrop & Co</span>
+      </a>
     </div>
+    <nav style="display:flex;align-items:center;gap:24px;flex:1;justify-content:center">
+      <a href="/" style="font-size:11px;color:#7a90a3;text-decoration:none">Home</a>
+      <a href="/about" style="font-size:11px;color:#7a90a3;text-decoration:none">About</a>
+      <a href="/services" style="font-size:11px;color:#7a90a3;text-decoration:none">Services</a>
+      <a href="/webinars" style="font-size:11px;color:#7a90a3;text-decoration:none">Webinars</a>
+      <a href="/newsletter" style="font-size:11px;color:#7a90a3;text-decoration:none">Newsletter</a>
+      <a href="/resources" style="font-size:11px;color:#7a90a3;text-decoration:none">Resources</a>
+      <a href="/clarity" style="font-size:11px;color:#e8ebf0;text-decoration:none">Advisor Intelligence</a>
+    </nav>
+    <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" style="background:#b8973a;color:#0a1520;font-size:10px;font-weight:500;padding:9px 20px;border-radius:2px;text-decoration:none;letter-spacing:1px;text-transform:uppercase;white-space:nowrap">Book a call</a>
   </div>
+</header>
+
+<!-- ENTRY SCREEN -->
+<div class="fork-screen" id="screen-fork">
+
+  <div class="fork-bg-art">
+    <svg width="600" height="600" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="250" stroke="#b8973a" stroke-width="0.5" opacity="0.15"/>
+      <circle cx="300" cy="300" r="180" stroke="#b8973a" stroke-width="0.5" opacity="0.1"/>
+      <circle cx="300" cy="300" r="110" stroke="#b8973a" stroke-width="0.5" opacity="0.08"/>
+      <line x1="0" y1="300" x2="600" y2="300" stroke="#b8973a" stroke-width="0.5" opacity="0.08"/>
+      <line x1="300" y1="0" x2="300" y2="600" stroke="#b8973a" stroke-width="0.5" opacity="0.08"/>
+    </svg>
+  </div>
+
+  <div class="fork-header">
+    <div class="fork-eye">Advisor intelligence</div>
+    <h1 class="fork-h">Three ways to get<br><em>real answers.</em></h1>
+    <p class="fork-sub">Pick how you want to start. Every path is 100% confidential and leads to a real conversation — not a pitch.</p>
+  </div>
+
+  <!-- INTEL CARD GRID -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:980px;width:100%;position:relative;z-index:1">
+
+    <!-- VOICE -->
+    <div class="intel-card-entry" onclick="showTool('voice')">
+      <div class="ice-label">Voice</div>
+      <div class="ice-title">Just talk.</div>
+      <div class="ice-body">Describe your situation out loud — your firm, your frustrations, what you are thinking about. Get an instant intelligent response. No typing required.</div>
+      <div class="ice-stats">
+        <div class="ice-stat"><div class="ice-val">Instant</div><div class="ice-lbl">Response</div></div>
+        <div class="ice-stat"><div class="ice-val">No</div><div class="ice-lbl">Typing needed</div></div>
+        <div class="ice-stat"><div class="ice-val">100%</div><div class="ice-lbl">Confidential</div></div>
+      </div>
+      <div class="ice-btn">
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+        Start talking
+      </div>
+      <svg class="ice-deco" width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="80" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+        <circle cx="100" cy="100" r="55" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+        <circle cx="100" cy="100" r="30" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+        <circle cx="100" cy="100" r="8" fill="#b8973a" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="intel-card-entry" onclick="showTool('path1')">
+      <div class="ice-label">Path 1 · Explore</div>
+      <div class="ice-title">Show me the landscape.</div>
+      <div class="ice-body">Curious about the market, how independence works, or what your options look like. A few guided questions — no deep dive required. Corey follows up personally.</div>
+      <div class="ice-stats">
+        <div class="ice-stat"><div class="ice-val">3</div><div class="ice-lbl">Quick questions</div></div>
+        <div class="ice-stat"><div class="ice-val">No</div><div class="ice-lbl">Commitment</div></div>
+        <div class="ice-stat"><div class="ice-val">Personal</div><div class="ice-lbl">Follow-up</div></div>
+      </div>
+      <div class="ice-btn">
+        Explore the landscape
+        <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+      <svg class="ice-deco" width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="80" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+        <line x1="0" y1="100" x2="200" y2="100" stroke="#b8973a" stroke-width="0.3" opacity="0.4"/>
+        <line x1="100" y1="0" x2="100" y2="200" stroke="#b8973a" stroke-width="0.3" opacity="0.4"/>
+        <circle cx="100" cy="100" r="6" fill="#b8973a" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <!-- DIAGNOSE -->
+    <div class="intel-card-entry" onclick="showTool('path2')">
+      <div class="ice-label">Path 2 · Diagnose</div>
+      <div class="ice-title">Map my specific situation.</div>
+      <div class="ice-body">A more in-depth approach. Answer questions about your AUM, technology, compensation, and goals — and get a personalized intelligence report with real market data and a discussion on your potential fits.</div>
+      <div class="ice-stats">
+        <div class="ice-stat"><div class="ice-val">In-depth</div><div class="ice-lbl">Approach</div></div>
+        <div class="ice-stat"><div class="ice-val">Real</div><div class="ice-lbl">Market data</div></div>
+        <div class="ice-stat"><div class="ice-val">Custom</div><div class="ice-lbl">Report</div></div>
+      </div>
+      <div class="ice-btn">
+        Map my situation
+        <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+      <svg class="ice-deco" width="200" height="200" viewBox="0 0 200 200">
+        <rect x="20" y="20" width="160" height="160" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+        <rect x="50" y="50" width="100" height="100" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+        <rect x="80" y="80" width="40" height="40" stroke="#b8973a" stroke-width="1" fill="none"/>
+        <rect x="93" y="93" width="14" height="14" fill="#b8973a" opacity="0.5"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <div style="margin-top:24px;font-size:10px;color:#4a5f74;letter-spacing:0.5px;font-family:'DM Mono',monospace;position:relative;z-index:1">
+    Any information shared with Corey Pond is 100% confidential — your current firm will never know we spoke.
+  </div>
+
 </div>
 
-<nav>
-  <div class="nav-in">
-    <a href="/" class="nav-brand">
-      <div class="nav-orb">CP</div>
-      <div>
-        <div class="nav-title">Corey Pond</div>
-        <div class="nav-role">Advisor Transitions</div>
-      </div>
-    </a>
-    <a href="/" class="nav-back">
-      <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      Back to home
-    </a>
-  </div>
-</nav>
-
-<div class="tab-shell">
-  <div class="tab-header">
-    <div class="tab-eyebrow">Advisor intelligence</div>
-    <h1 class="tab-headline">Real answers.<br><em>Right now.</em></h1>
-    <p class="tab-sub">Two tools built specifically for financial advisors ready to understand what their move actually looks like. 100% confidential. No pitch. No pressure.</p>
-  </div>
-
-  <div class="tabs">
-    <button class="tab-btn active" id="tab-voice" onclick="switchTab('voice')">
-      <span class="tab-label">Option 01</span>
-      Talk to the intelligence
-    </button>
-    <button class="tab-btn" id="tab-diagnostic" onclick="switchTab('diagnostic')">
-      <span class="tab-label">Option 02</span>
-      Run my diagnostic
-    </button>
-  </div>
-
-  <div class="tab-panel active" id="panel-voice">
+<!-- VOICE TOOL SCREEN -->
+<div class="tool-screen" id="screen-voice">
+  <button class="tool-back" onclick="showFork()">
+    <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to options
+  </button>
+  
     <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Advisor intelligence · Speak freely</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px">
+    <div style="width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(184,151,58,0.5);background:rgba(184,151,58,0.08);display:flex;align-items:center;justify-content:center">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8973a" stroke-width="1.8"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+    </div>
+    <div class="hero-eyebrow" style="margin-bottom:0">Advisor intelligence · Talk now</div>
+  </div>
   <h1 class="hero-title">Just tell me<br>what's <em>going on.</em></h1>
   <p class="hero-sub">No forms. No steps. Describe your situation in plain language — your firm, your frustrations, your AUM, what you're thinking about — and get a real, intelligent response instantly.</p>
   <div class="hero-fine">100% confidential · Powered by Corey Pond's expertise · Winthrop & Co</div>
@@ -1303,8 +1708,97 @@ document.getElementById('userInput').addEventListener('keydown', function(e) {
 });
 </script>
   </div>
+</div>
 
-  <div class="tab-panel" id="panel-diagnostic">
+<!-- PATH 1 SCREEN — LANDSCAPE EXPLORER -->
+<div class="tool-screen" id="screen-path1">
+  <button class="tool-back" onclick="showFork()">
+    <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to options
+  </button>
+  <div style="max-width:720px;margin:0 auto;padding:40px 40px 80px">
+    <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b8973a;margin-bottom:12px;font-family:'DM Mono',monospace">Path 1 · Explore the landscape</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#fff;margin-bottom:8px;line-height:1.1">Show me<br><em style="color:#d4af5a;font-style:italic">the landscape.</em></h2>
+    <p style="font-size:13px;color:#7a90a3;font-weight:300;line-height:1.8;margin-bottom:40px">A few quick questions to point you in the right direction. No commitment. 100% confidential.</p>
+
+    <div id="p1-steps">
+
+      <!-- Step 1 -->
+      <div class="p1-step" id="p1-s1">
+        <div style="font-size:11px;color:#4a5f74;margin-bottom:16px;font-family:'DM Mono',monospace">Question 1 of 4</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e8ebf0;margin-bottom:24px;line-height:1.4">Where are you right now?</div>
+        <div class="p1-opt-grid" id="p1-grid-1">
+          <button class="p1-opt" onclick="p1Toggle(this,1)">Major wirehouse</button>
+          <button class="p1-opt" onclick="p1Toggle(this,1)">Independent broker-dealer</button>
+          <button class="p1-opt" onclick="p1Toggle(this,1)">RIA or independent</button>
+          <button class="p1-opt" onclick="p1Toggle(this,1)">Regional broker-dealer</button>
+          <button class="p1-opt" onclick="p1Toggle(this,1)">Bank</button>
+          <button class="p1-opt" onclick="p1Toggle(this,1)">Insurance broker-dealer</button>
+          <button class="p1-opt" onclick="p1Toggle(this,1)">Not sure how to categorize it</button>
+        </div>
+        <button class="p1-next" id="p1-next-1" onclick="p1Next(1)">Continue →</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="p1-step" id="p1-s2" style="display:none">
+        <div style="font-size:11px;color:#4a5f74;margin-bottom:16px;font-family:'DM Mono',monospace">Question 2 of 4</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e8ebf0;margin-bottom:24px;line-height:1.4">What are you most curious about?</div>
+        <div class="p1-opt-grid" id="p1-grid-2">
+          <button class="p1-opt" onclick="p1Toggle(this,2)">How independence works — RIA vs IBD</button>
+          <button class="p1-opt" onclick="p1Toggle(this,2)">What my practice is worth</button>
+          <button class="p1-opt" onclick="p1Toggle(this,2)">Succession planning and exit options</button>
+          <button class="p1-opt" onclick="p1Toggle(this,2)">Better technology and platforms</button>
+          <button class="p1-opt" onclick="p1Toggle(this,2)">The family office model</button>
+          <button class="p1-opt" onclick="p1Toggle(this,2)">Wirehouse breakaway</button>
+          <button class="p1-opt" onclick="p1Toggle(this,2)">Just want to understand the market</button>
+        </div>
+        <button class="p1-next" id="p1-next-2" onclick="p1Next(2)">Continue →</button>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="p1-step" id="p1-s3" style="display:none">
+        <div style="font-size:11px;color:#4a5f74;margin-bottom:16px;font-family:'DM Mono',monospace">Question 3 of 4</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e8ebf0;margin-bottom:24px;line-height:1.4">How soon are you thinking about this?</div>
+        <div class="p1-opt-grid" id="p1-grid-3">
+          <button class="p1-opt" onclick="p1Toggle(this,3)">Actively exploring — I am serious about this</button>
+          <button class="p1-opt" onclick="p1Toggle(this,3)">Thinking about it in the next year or two</button>
+          <button class="p1-opt" onclick="p1Toggle(this,3)">Just gathering intelligence for now</button>
+          <button class="p1-opt" onclick="p1Toggle(this,3)">Something just happened — I need to understand my options</button>
+        </div>
+        <button class="p1-next" id="p1-next-3" onclick="p1Next(3)">Continue →</button>
+      </div>
+
+      <!-- Step 4 — Capture -->
+      <div class="p1-step" id="p1-s4" style="display:none">
+        <div style="font-size:11px;color:#4a5f74;margin-bottom:16px;font-family:'DM Mono',monospace">Last step</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e8ebf0;margin-bottom:8px;line-height:1.4">Where should we send your personalized overview?</div>
+        <p style="font-size:12px;color:#7a90a3;font-weight:300;margin-bottom:24px;line-height:1.7">Based on your answers Corey will put together a personalized market overview and reach out directly. 100% confidential.</p>
+        <input type="text" id="p1-name" placeholder="Your name" style="width:100%;background:rgba(255,255,255,0.04);border:0.5px solid rgba(184,151,58,0.3);color:#e8ebf0;font-size:13px;padding:12px 16px;border-radius:2px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:9px">
+        <input type="email" id="p1-email" placeholder="your@email.com" style="width:100%;background:rgba(255,255,255,0.04);border:0.5px solid rgba(184,151,58,0.3);color:#e8ebf0;font-size:13px;padding:12px 16px;border-radius:2px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:9px">
+        <input type="text" id="p1-firm" placeholder="Current firm (optional)" style="width:100%;background:rgba(255,255,255,0.04);border:0.5px solid rgba(184,151,58,0.3);color:#e8ebf0;font-size:13px;padding:12px 16px;border-radius:2px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:16px">
+        <button onclick="p1Submit()" style="width:100%;background:#b8973a;color:#0a1520;border:none;padding:13px;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px">Send me the overview</button>
+        <div style="font-size:10px;color:#4a5f74;margin-top:8px;text-align:center">100% confidential · Your current firm will never know we spoke</div>
+      </div>
+
+      <!-- Done -->
+      <div class="p1-step" id="p1-done" style="display:none;text-align:center;padding:40px 0">
+        <div style="font-size:32px;margin-bottom:16px">✓</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#e8ebf0;margin-bottom:10px">You are all set.</div>
+        <div style="font-size:13px;color:#7a90a3;line-height:1.8;margin-bottom:28px;font-weight:300">Corey will review your answers and reach out with a personalized market overview — usually within 24 hours.</div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#d4af5a;text-decoration:none;border:0.5px solid rgba(184,151,58,0.3);padding:11px 24px;border-radius:2px">Or book a call now →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PATH 2 SCREEN — FULL DIAGNOSTIC -->
+<div class="tool-screen" id="screen-path2">
+  <button class="tool-back" onclick="showFork()">
+    <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to options
+  </button>
+  
     <!-- WINTHROP BAR -->
 <div class="hdr-wco">
   <div style="display:flex;align-items:center;gap:8px">
@@ -1923,6 +2417,49 @@ function switchTab(name) {
 </script>
 
 <!-- Voice tool script — wrapped in IIFE to prevent variable conflicts -->
+<!-- Path 1 global functions -->
+<script>
+var p1Answers = {};
+
+function p1Toggle(btn, step) {
+  btn.classList.toggle('selected');
+  var grid = document.getElementById('p1-grid-' + step);
+  var selected = grid.querySelectorAll('.selected');
+  var nextBtn = document.getElementById('p1-next-' + step);
+  if (selected.length > 0) {
+    nextBtn.classList.add('visible');
+  } else {
+    nextBtn.classList.remove('visible');
+  }
+}
+
+function p1Next(step) {
+  var grid = document.getElementById('p1-grid-' + step);
+  var selected = Array.from(grid.querySelectorAll('.selected')).map(function(b) { return b.textContent.trim(); });
+  p1Answers['q' + step] = selected.join(', ');
+  document.getElementById('p1-s' + step).style.display = 'none';
+  var next = step + 1;
+  var nextEl = document.getElementById('p1-s' + next);
+  if (nextEl) nextEl.style.display = 'block';
+}
+
+function p1Submit() {
+  var name = document.getElementById('p1-name').value.trim();
+  var email = document.getElementById('p1-email').value.trim();
+  var firm = document.getElementById('p1-firm').value.trim();
+  if (!email) { alert('Please enter your email.'); return; }
+  var body = 'Name: ' + encodeURIComponent(name) +
+    '%0AEmail: ' + encodeURIComponent(email) +
+    (firm ? '%0AFirm: ' + encodeURIComponent(firm) : '') +
+    '%0A%0ACurrent firm type: ' + encodeURIComponent(p1Answers.q1 || '') +
+    '%0ACurious about: ' + encodeURIComponent(p1Answers.q2 || '') +
+    '%0ATimeline: ' + encodeURIComponent(p1Answers.q3 || '');
+  window.location.href = 'mailto:Cpond@winthropandcompany.com?subject=Advisor Intelligence - Landscape Explorer: ' + encodeURIComponent(name || email) + '&body=' + body;
+  document.getElementById('p1-s4').style.display = 'none';
+  document.getElementById('p1-done').style.display = 'block';
+}
+</script>
+
 <script>
 (function() {
 
@@ -2413,6 +2950,105 @@ function fallback() {
 
 })();
 </script>
+
+
+<!-- MARKET INTELLIGENCE -->
+<div class="mkt-section">
+  <div class="mkt-in">
+    <div class="mkt-eye">Market intelligence · Cerulli Associates · Fintrx · 2025 data</div>
+    <h2 class="mkt-h">The numbers behind<br>every advisor conversation.</h2>
+    <p class="mkt-sub">Real market data from the sources that matter. This is the intelligence that shapes every transition conversation — the context most advisors never get to see.</p>
+
+    <div class="mkt-grid">
+      <div class="mkt-stat">
+        <div class="mkt-val">25<em>,443</em></div>
+        <div class="mkt-lbl"><strong>Advisors changed firms in 2025</strong>carrying $3.1 trillion in client assets with them</div>
+      </div>
+      <div class="mkt-stat">
+        <div class="mkt-val">71<em>%</em></div>
+        <div class="mkt-lbl"><strong>Would choose independence</strong>if starting their career over today — up from 58% in 2021</div>
+      </div>
+      <div class="mkt-stat">
+        <div class="mkt-val">27<em>%</em></div>
+        <div class="mkt-lbl"><strong>RIA channel asset share</strong>crossing this threshold for the first time — wirehouses now at 31%</div>
+      </div>
+      <div class="mkt-stat">
+        <div class="mkt-val">26<em>%</em></div>
+        <div class="mkt-lbl"><strong>Wirehouse advisors at risk</strong>of leaving — the highest level recorded in a decade</div>
+      </div>
+    </div>
+
+    <div class="mkt-quotes">
+      <div class="mkt-q">
+        <div class="mkt-q-text">"External M&A offers for advisor practices consistently come in higher than internal succession offers — often by a significant margin. Most advisors who go to market are genuinely surprised by what their practice is actually worth."</div>
+        <div class="mkt-q-src">Corey Pond · Advisor Transitions · Winthrop & Co</div>
+      </div>
+      <div class="mkt-q">
+        <div class="mkt-q-text">"Advisors who move to independence keep more of their clients, earn more, and report significantly higher job satisfaction within 24 months of making the transition."</div>
+        <div class="mkt-q-src">Cerulli Associates · U.S. Advisor Metrics Report · 2025</div>
+      </div>
+      <div class="mkt-q">
+        <div class="mkt-q-text">"RIA headcount is growing at 5.2% annually while wirehouse headcount is declining at 1.9% per year. The structural shift in this industry is not a trend — it is the new reality."</div>
+        <div class="mkt-q-src">Cerulli Associates · Channel Migration Report · 2025</div>
+      </div>
+      <div class="mkt-q">
+        <div class="mkt-q-text">"The advisors who wait the longest to explore their options leave the most on the table — in compensation, in practice value, and in time. The best time to understand your options is before you need them."</div>
+        <div class="mkt-q-src">Corey Pond · Advisor Transitions · Winthrop & Co</div>
+      </div>
+    </div>
+
+    <div class="mkt-source">Data sourced from Cerulli Associates, Fintrx, and proprietary Winthrop & Co market intelligence · Updated Q1 2026</div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-left">
+      <div class="foot-logo-row">
+        <div class="foot-cp-badge">CP</div>
+        <div>
+          <div class="foot-name">Corey Pond</div>
+          <div class="foot-role">Advisor Transitions</div>
+        </div>
+        <div class="foot-divider"></div>
+        <a href="https://winthropco.com/" target="_blank" class="foot-wco-inline">
+          <img src="/wco-logo.jpg" alt="Winthrop & Co" class="foot-wco-inline-img" onerror="this.style.display='none'">
+          <span class="foot-wco-inline-name">Winthrop & Co</span>
+        </a>
+      </div>
+      <div class="foot-contact-list">
+        <a href="tel:9784208175" class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.72-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (978) 420-8175
+        </a>
+        <a href="mailto:Cpond@winthropandcompany.com" class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Cpond@winthropandcompany.com
+        </a>
+        <a href="https://www.linkedin.com/in/corey-pond-833b0871/" target="_blank" class="foot-contact-item">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="currentColor"/><rect x="2" y="9" width="4" height="12" fill="currentColor"/><circle cx="4" cy="4" r="2" fill="currentColor"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="foot-disclaimer">CPond Advisors operates in strategic partnership with Winthrop & Co — bringing institutional-level strategy and operations expertise to every engagement.</div>
+      <div class="foot-copy">© 2026 CPond Advisors · CpondAdvisors.com · All rights reserved</div>
+    </div>
+    <div class="foot-right">
+      <nav class="foot-nav">
+        <a href="/" class="foot-link">Home</a>
+        <a href="/about" class="foot-link">About</a>
+        <a href="/services" class="foot-link">How I Help</a>
+        <a href="/webinars" class="foot-link">Webinars</a>
+        <a href="/newsletter" class="foot-link">Newsletter</a>
+        <a href="/resources" class="foot-link">Resources</a>
+        <a href="/clarity" class="foot-link">Advisor Intelligence</a>
+      </nav>
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="foot-cta">Book a 30-min call →</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
