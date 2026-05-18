@@ -1,1 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webinars | Corey Pond · Advisor Transitions · Winthrop & Co</title>
+<meta name="description" content="Free live webinars for financial advisors on firm transitions, wirehouse breakaways, succession planning, and independence.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1520;--ink2:#192b3c;--ink3:#2e3f52;
+  --steel:#4a5f74;--mist:#7a90a3;--fog:#acb8c4;
+  --cream:#e8ebf0;--gold:#b8973a;--gold2:#d4af5a;
+  --border:rgba(184,151,58,0.15);--border2:rgba(184,151,58,0.3);
+  --max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);min-height:100vh;line-height:1.6}
 
+/* HEADER */
+.site-header{background:rgba(10,21,32,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100}
+.header-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.header-left{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.header-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.header-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--cream);line-height:1.1}
+.header-role{font-size:8px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.header-divider{width:0.5px;height:32px;background:var(--border2);flex-shrink:0}
+.wco-logo-btn{display:flex;align-items:center;gap:8px;text-decoration:none;opacity:0.8;transition:opacity .2s}
+.wco-logo-btn:hover{opacity:1}
+.wco-logo-img{width:32px;height:32px;border-radius:4px;object-fit:cover;border:0.5px solid var(--border)}
+.wco-logo-name{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--mist)}
+.header-nav{display:flex;align-items:center;gap:24px;flex:1;justify-content:center}
+.nav-link{font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-link:hover,.nav-link.active{color:var(--cream)}
+.header-right{display:flex;align-items:center;flex-shrink:0}
+.nav-cta{background:var(--gold);color:var(--ink);font-size:10px;font-weight:500;padding:9px 20px;border-radius:2px;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:background .2s}
+.nav-cta:hover{background:var(--gold2)}
+
+/* PAGE HERO */
+.page-hero{padding:80px 0 64px;background:var(--ink);position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0.5}
+.page-hero-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.page-hero-left{}
+.page-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.page-eye::before{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.page-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,56px);font-weight:600;color:#fff;line-height:1.05;margin-bottom:16px}
+.page-h1 em{color:var(--gold2);font-style:italic}
+.page-sub{font-size:14px;color:var(--mist);font-weight:300;line-height:1.85;max-width:520px}
+.hero-register{background:rgba(184,151,58,0.08);border:0.5px solid var(--border2);border-radius:6px;padding:24px 28px;min-width:280px}
+.hero-reg-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-family:'DM Mono',monospace}
+.hero-reg-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:4px;line-height:1.3}
+.hero-reg-meta{font-size:11px;color:var(--mist);margin-bottom:16px}
+.hero-reg-inp{width:100%;background:rgba(255,255,255,0.05);border:0.5px solid var(--border2);color:var(--cream);font-size:12px;padding:10px 14px;border-radius:2px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:8px}
+.hero-reg-inp::placeholder{color:var(--steel)}
+.hero-reg-btn{width:100%;background:var(--gold);color:var(--ink);border:none;padding:11px;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px;transition:background .2s}
+.hero-reg-btn:hover{background:var(--gold2)}
+.hero-reg-fine{font-size:10px;color:var(--steel);margin-top:6px;text-align:center}
+
+/* WEBINAR GRID */
+.webinars-section{padding:72px 0 80px;background:var(--ink)}
+.web-in{max-width:var(--max);margin:0 auto;padding:0 40px}
+.section-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section-eye::before{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-weight:600;color:var(--cream);margin-bottom:8px;line-height:1.15}
+.section-sub{font-size:13px;color:var(--mist);font-weight:300;line-height:1.8;max-width:520px;margin-bottom:40px}
+
+/* FEATURED WEBINAR */
+.web-featured{background:var(--ink2);border:0.5px solid var(--border2);border-radius:8px;padding:40px;margin-bottom:16px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;position:relative;overflow:hidden}
+.web-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.web-featured-badge{position:absolute;top:20px;right:20px;background:var(--gold);color:var(--ink);font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:2px;font-family:'DM Mono',monospace}
+.web-feat-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-family:'DM Mono',monospace}
+.web-feat-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--cream);margin-bottom:10px;line-height:1.2}
+.web-feat-desc{font-size:13px;color:var(--mist);line-height:1.8;font-weight:300;margin-bottom:18px;max-width:520px}
+.web-feat-meta{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+.web-meta-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mist);font-family:'DM Mono',monospace}
+.web-meta-item svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.web-feat-topics{display:flex;flex-direction:column;gap:5px;margin-bottom:24px}
+.web-feat-topic{font-size:12px;color:var(--fog);display:flex;align-items:flex-start;gap:8px}
+.web-feat-topic::before{content:'—';color:var(--gold);font-size:10px;margin-top:1px;flex-shrink:0}
+.web-register-block{min-width:260px;flex-shrink:0}
+.web-reg-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mist);margin-bottom:12px;font-family:'DM Mono',monospace}
+.web-reg-inp{width:100%;background:rgba(255,255,255,0.04);border:0.5px solid var(--border2);color:var(--cream);font-size:12px;padding:11px 14px;border-radius:2px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:8px;transition:border-color .2s}
+.web-reg-inp:focus{border-color:var(--gold)}
+.web-reg-inp::placeholder{color:var(--steel)}
+.web-reg-btn{width:100%;background:var(--gold);color:var(--ink);border:none;padding:12px;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px;transition:background .2s}
+.web-reg-btn:hover{background:var(--gold2)}
+.web-reg-fine{font-size:10px;color:var(--steel);margin-top:6px;text-align:center}
+
+/* WEBINAR CARDS GRID */
+.web-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:48px}
+.web-card{background:var(--ink2);border:0.5px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color .2s}
+.web-card:hover{border-color:rgba(184,151,58,0.35)}
+.web-card-img{height:140px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wc-1 .web-card-img{background:linear-gradient(135deg,#0d2235,#1a3a52,#0a1a2a)}
+.wc-2 .web-card-img{background:linear-gradient(135deg,#1a1205,#3a2608,#1a0d00)}
+.wc-3 .web-card-img{background:linear-gradient(135deg,#051a1a,#0a3030,#020f0f)}
+.wc-4 .web-card-img{background:linear-gradient(135deg,#1a0d1a,#2d1a35,#0d0515)}
+.wc-5 .web-card-img{background:linear-gradient(135deg,#0a1a05,#1a3510,#051005)}
+.wc-card-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.6}
+.web-card-tag{position:absolute;top:10px;left:10px;background:rgba(184,151,58,0.15);border:0.5px solid var(--border2);border-radius:2px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);padding:3px 8px;font-family:'DM Mono',monospace}
+.web-card-body{padding:20px 22px}
+.web-card-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:8px;line-height:1.3}
+.web-card-desc{font-size:11px;color:var(--mist);line-height:1.6;font-weight:300;margin-bottom:14px}
+.web-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:0.5px solid var(--border)}
+.web-card-type{font-size:9px;color:var(--steel);letter-spacing:0.5px;font-family:'DM Mono',monospace}
+.web-card-cta{font-size:9px;color:var(--gold2);letter-spacing:1px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:color .2s;background:none;border:none;font-family:'DM Sans',sans-serif}
+.web-card-cta:hover{color:var(--gold)}
+
+/* NOTIFY SECTION */
+.notify-section{background:#060f18;border-top:0.5px solid var(--border);padding:72px 0}
+.notify-in{max-width:560px;margin:0 auto;padding:0 40px;text-align:center}
+.notify-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:10px}
+.notify-eye::before,.notify-eye::after{content:'';display:block;width:24px;height:0.5px;background:var(--gold)}
+.notify-h{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:600;color:var(--cream);margin-bottom:10px;line-height:1.1}
+.notify-h em{color:var(--gold2);font-style:italic}
+.notify-sub{font-size:13px;color:var(--mist);font-weight:300;margin-bottom:28px;line-height:1.8}
+.notify-form{display:flex;gap:8px;max-width:420px;margin:0 auto}
+.notify-inp{flex:1;background:rgba(255,255,255,0.04);border:0.5px solid var(--border2);color:var(--cream);font-size:13px;padding:12px 16px;border-radius:2px;font-family:'DM Sans',sans-serif;outline:none}
+.notify-inp::placeholder{color:var(--steel)}
+.notify-btn{background:var(--gold);color:var(--ink);border:none;padding:12px 22px;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px;white-space:nowrap;transition:background .2s}
+.notify-btn:hover{background:var(--gold2)}
+.notify-fine{font-size:10px;color:var(--steel);margin-top:10px}
+
+/* FOOTER */
+footer{background:#020c14;border-top:0.5px solid var(--border);padding:48px 0}
+.foot-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:flex-start;justify-content:space-between;gap:48px}
+.foot-left{flex-shrink:0}
+.foot-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.foot-cp-badge{width:36px;height:36px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:var(--gold);flex-shrink:0}
+.foot-name{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);font-weight:500}
+.foot-role{font-size:9px;color:var(--mist);letter-spacing:0.5px;margin-top:1px}
+.foot-divider{width:0.5px;height:28px;background:var(--border2);flex-shrink:0;margin:0 6px}
+.foot-wco-inline{display:flex;align-items:center;gap:7px;text-decoration:none;opacity:0.75;transition:opacity .2s}
+.foot-wco-inline:hover{opacity:1}
+.foot-wco-inline-img{width:28px;height:28px;border-radius:3px;object-fit:cover;border:0.5px solid var(--border)}
+.foot-wco-inline-name{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--mist)}
+.foot-contact-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.foot-contact-item{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s}
+.foot-contact-item:hover{color:var(--gold)}
+.foot-contact-item svg{width:13px;height:13px;stroke:var(--steel);fill:none;stroke-width:1.5;flex-shrink:0}
+.foot-disclaimer{font-size:10px;color:var(--steel);line-height:1.6;max-width:340px;margin-bottom:6px}
+.foot-copy{font-size:9px;color:#1a2d3d}
+.foot-right{display:flex;flex-direction:column;align-items:flex-end;gap:20px;padding-top:4px}
+.foot-nav{display:flex;flex-direction:row;align-items:center;gap:22px;flex-wrap:nowrap}
+.foot-link{font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s;white-space:nowrap}
+.foot-link:hover{color:var(--gold)}
+.foot-cta{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);text-decoration:none;border:0.5px solid var(--border2);padding:10px 20px;border-radius:2px;transition:all .2s;white-space:nowrap}
+.foot-cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* FLOATING BTN */
+.float-btn{position:fixed;bottom:32px;right:32px;z-index:999;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none}
+.float-btn.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.float-btn a{display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--ink);text-decoration:none;padding:13px 22px;border-radius:40px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;font-family:'DM Sans',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.4);transition:all .2s;white-space:nowrap}
+.float-btn a:hover{background:var(--gold2)}
+.float-btn a svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.8}
+
+@media(max-width:768px){
+  .header-in{padding:0 24px}
+  .header-nav{display:none}
+  .wco-logo-name{display:none}
+  .page-hero-in,.web-in,.notify-in{padding:0 24px}
+  .web-featured{grid-template-columns:1fr;gap:24px}
+  .web-grid{grid-template-columns:1fr}
+  .notify-form{flex-direction:column}
+  .foot-in{flex-direction:column;gap:32px;padding:0 24px}
+  .foot-right{align-items:flex-start}
+  .foot-nav{flex-wrap:wrap;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-in">
+    <div class="header-left">
+      <a href="/" class="header-brand">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="21" r="20.5" stroke="#b8973a" stroke-width="0.8"/>
+          <circle cx="21" cy="21" r="16" fill="#b8973a" opacity="0.1"/>
+          <circle cx="21" cy="21" r="9" fill="#b8973a" opacity="0.15"/>
+          <text x="21" y="27" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-weight="600" fill="#d4af5a">CP</text>
+        </svg>
+        <div>
+          <div class="header-name">Corey Pond</div>
+          <div class="header-role">Advisor Transitions</div>
+        </div>
+      </a>
+      <div class="header-divider"></div>
+      <a href="https://winthropco.com/" target="_blank" class="wco-logo-btn">
+        <img src="/wco-logo.jpg" alt="Winthrop & Co" class="wco-logo-img" onerror="this.style.display='none'">
+        <span class="wco-logo-name">Winthrop & Co</span>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/about" class="nav-link">About</a>
+      <a href="/services" class="nav-link">How I Help</a>
+      <a href="/webinars" class="nav-link active">Webinars</a>
+      <a href="/newsletter" class="nav-link">Newsletter</a>
+      <a href="/resources" class="nav-link">Resources</a>
+      <a href="/clarity" class="nav-link">Advisor Intelligence</a>
+    </nav>
+    <div class="header-right">
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="nav-cta">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-in">
+    <div class="page-hero-left">
+      <div class="page-eye">Free · Live · On-demand</div>
+      <h1 class="page-h1">Real intelligence.<br><em>No pitch. Ever.</em></h1>
+      <p class="page-sub">Free sessions built for advisors who want the real picture on transitions, independence, succession, and what the market actually looks like right now.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WEBINARS -->
+<section class="webinars-section">
+  <div class="web-in">
+
+    <!-- FEATURED / NEXT LIVE -->
+    <div class="section-eye">Next live session</div>
+    <h2 class="section-h">Coming up</h2>
+    <p class="section-sub">Register below — all sessions are free and held via Zoom. A recording is sent to all registrants after the session.</p>
+
+    <div class="web-featured">
+      <div class="web-featured-badge">Seats available</div>
+      <div>
+        <div class="web-feat-tag">Wirehouse breakaway</div>
+        <div class="web-feat-title">The Wirehouse Breakaway Playbook</div>
+        <div class="web-feat-desc">How to leave a wirehouse the right way — protecting your clients, your book, and everything you have built over the last 20 years. This is the conversation most advisors have never had with someone who will actually tell them the truth.</div>
+        <div class="web-feat-meta">
+          <div class="web-meta-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Date TBD — join waitlist
+          </div>
+          <div class="web-meta-item">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            25 minutes
+          </div>
+          <div class="web-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Hosted by Corey Pond
+          </div>
+        </div>
+        <div class="web-feat-topics">
+          <div class="web-feat-topic">Protocol vs. non-protocol — what it actually means for your situation</div>
+          <div class="web-feat-topic">What the best transition packages look like and how to negotiate them</div>
+          <div class="web-feat-topic">How to choose between IBD, RIA platform, and launching your own firm</div>
+          <div class="web-feat-topic">Client communication — what to say, when to say it, and how to protect those relationships</div>
+        </div>
+      </div>
+      <div class="web-register-block">
+        <div class="web-reg-label">Reserve your seat — free</div>
+        <input type="text" class="web-reg-inp" placeholder="Your name" id="feat-name">
+        <input type="email" class="web-reg-inp" placeholder="your@email.com" id="feat-email">
+        <button class="web-reg-btn" onclick="registerWebinar('Wirehouse Breakaway Playbook')">Reserve my seat</button>
+        <div class="web-reg-fine">Free · Recording sent to all registrants</div>
+      </div>
+    </div>
+
+    <!-- UPCOMING SERIES -->
+    <div class="section-eye" style="margin-top:56px">The series</div>
+    <h2 class="section-h">All upcoming sessions</h2>
+    <p class="section-sub">Four sessions covering the full spectrum of advisor transitions. Register for any or all — each stands alone.</p>
+
+    <div class="web-grid">
+
+      <div class="web-card wc-1">
+        <div class="web-card-img">
+          <div class="wc-card-art">
+            <svg width="180" height="120" viewBox="0 0 180 120">
+              <line x1="0" y1="60" x2="180" y2="60" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
+              <line x1="90" y1="0" x2="90" y2="120" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
+              <circle cx="90" cy="60" r="35" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.5"/>
+              <circle cx="90" cy="60" r="55" stroke="#b8973a" stroke-width="0.3" fill="none" opacity="0.3"/>
+              <circle cx="90" cy="60" r="7" fill="#b8973a" opacity="0.5"/>
+            </svg>
+          </div>
+          <span class="web-card-tag">Transitions</span>
+        </div>
+        <div class="web-card-body">
+          <div class="web-card-title">Is It Time to Make Your Move?</div>
+          <div class="web-card-desc">What every advisor should know before leaving their current firm — the timeline, the risks, and what the best deals actually look like right now.</div>
+          <div class="web-card-footer">
+            <span class="web-card-type">25 min · Free · Date TBD</span>
+            <button class="web-card-cta" onclick="registerWebinar('Is It Time to Make Your Move')">Register →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="web-card wc-2">
+        <div class="web-card-img">
+          <div class="wc-card-art">
+            <svg width="180" height="120" viewBox="0 0 180 120">
+              <rect x="20" y="20" width="140" height="80" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.3"/>
+              <rect x="40" y="35" width="100" height="50" stroke="#d4af5a" stroke-width="0.5" fill="none" opacity="0.4"/>
+              <text x="90" y="66" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#d4af5a" opacity="0.6">COMP ANALYSIS</text>
+            </svg>
+          </div>
+          <span class="web-card-tag">Compensation</span>
+        </div>
+        <div class="web-card-body">
+          <div class="web-card-title">What Are You Actually Worth?</div>
+          <div class="web-card-desc">Real comp data across IBD, RIA, and wirehouse channels from the last 90 days. Know your number before you walk into any conversation.</div>
+          <div class="web-card-footer">
+            <span class="web-card-type">20 min · Free · Date TBD</span>
+            <button class="web-card-cta" onclick="registerWebinar('What Are You Actually Worth')">Register →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="web-card wc-3">
+        <div class="web-card-img">
+          <div class="wc-card-art">
+            <svg width="180" height="120" viewBox="0 0 180 120">
+              <path d="M90 15 L125 40 L125 80 L90 105 L55 80 L55 40 Z" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.5"/>
+              <path d="M90 30 L112 47 L112 73 L90 90 L68 73 L68 47 Z" stroke="#d4af5a" stroke-width="0.5" fill="rgba(184,151,58,0.04)" opacity="0.7"/>
+              <circle cx="90" cy="60" r="10" fill="#b8973a" opacity="0.2" stroke="#b8973a" stroke-width="0.5"/>
+            </svg>
+          </div>
+          <span class="web-card-tag">Independence</span>
+        </div>
+        <div class="web-card-body">
+          <div class="web-card-title">RIA vs IBD: Which Path Is Right for You?</div>
+          <div class="web-card-desc">A candid breakdown of the paths to independence — real economics, hidden costs, and how to choose the right model for your practice.</div>
+          <div class="web-card-footer">
+            <span class="web-card-type">25 min · Free · Date TBD</span>
+            <button class="web-card-cta" onclick="registerWebinar('RIA vs IBD')">Register →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="web-card wc-4">
+        <div class="web-card-img">
+          <div class="wc-card-art">
+            <svg width="180" height="120" viewBox="0 0 180 120">
+              <line x1="20" y1="100" x2="160" y2="100" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
+              <line x1="20" y1="100" x2="20" y2="15" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
+              <polyline points="20,80 50,65 80,50 110,38 140,28 160,22" stroke="#d4af5a" stroke-width="1.5" fill="none" opacity="0.7"/>
+              <circle cx="160" cy="22" r="4" fill="#d4af5a" opacity="0.8"/>
+            </svg>
+          </div>
+          <span class="web-card-tag">Succession</span>
+        </div>
+        <div class="web-card-body">
+          <div class="web-card-title">Maximizing Your Practice Value Before You Exit</div>
+          <div class="web-card-desc">What buyers actually pay for, how to structure a deal that protects you, and the moves to make in the years before you are ready to sell.</div>
+          <div class="web-card-footer">
+            <span class="web-card-type">25 min · Free · Date TBD</span>
+            <button class="web-card-cta" onclick="registerWebinar('Maximizing Practice Value')">Register →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="web-card wc-5" style="grid-column:1/-1">
+        <div style="display:grid;grid-template-columns:200px 1fr;overflow:hidden;border-radius:6px">
+          <div class="web-card-img" style="height:100%;min-height:140px">
+            <div class="wc-card-art">
+              <svg width="180" height="120" viewBox="0 0 180 120">
+                <line x1="20" y1="100" x2="160" y2="100" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
+                <rect x="25" y="40" width="35" height="60" rx="2" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.4"/>
+                <rect x="72" y="55" width="35" height="45" rx="2" stroke="#d4af5a" stroke-width="0.5" fill="rgba(184,151,58,0.03)" opacity="0.6"/>
+                <rect x="119" y="30" width="35" height="70" rx="2" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.4"/>
+              </svg>
+            </div>
+            <span class="web-card-tag">Market data</span>
+          </div>
+          <div class="web-card-body" style="background:var(--ink2)">
+            <div class="web-card-title">State of the Market: Q2 2026</div>
+            <div class="web-card-desc">Live comp data, channel migration trends, deal flow, and what is moving in the advisor market right now. Cerulli data, Fintrx intelligence, and a live Q&A with Corey.</div>
+            <div class="web-card-footer">
+              <span class="web-card-type">20 min · Free · Quarterly</span>
+              <button class="web-card-cta" onclick="registerWebinar('State of the Market Q2 2026')">Register →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NOTIFY -->
+<section class="notify-section">
+  <div class="notify-in">
+    <div class="notify-eye">Never miss a session</div>
+    <h2 class="notify-h">Get notified when<br>new sessions <em>drop.</em></h2>
+    <p class="notify-sub">Drop your email and we will let you know when new webinars are scheduled. No spam — just the sessions.</p>
+    <div class="notify-form">
+      <input type="email" class="notify-inp" placeholder="your@email.com" id="notify-email">
+      <button class="notify-btn" onclick="notifyMe()">Notify me</button>
+    </div>
+    <div class="notify-fine">Unsubscribe anytime · No spam · Ever</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-left">
+      <div class="foot-logo-row">
+        <div class="foot-cp-badge">CP</div>
+        <div>
+          <div class="foot-name">Corey Pond</div>
+          <div class="foot-role">Advisor Transitions</div>
+        </div>
+        <div class="foot-divider"></div>
+        <a href="https://winthropco.com/" target="_blank" class="foot-wco-inline">
+          <img src="/wco-logo.jpg" alt="Winthrop & Co" class="foot-wco-inline-img" onerror="this.style.display='none'">
+          <span class="foot-wco-inline-name">Winthrop & Co</span>
+        </a>
+      </div>
+      <div class="foot-contact-list">
+        <a href="tel:9784208175" class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.72-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (978) 420-8175
+        </a>
+        <a href="mailto:Cpond@winthropandcompany.com" class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Cpond@winthropandcompany.com
+        </a>
+        <a href="https://www.linkedin.com/in/corey-pond-833b0871/" target="_blank" class="foot-contact-item">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="currentColor"/><rect x="2" y="9" width="4" height="12" fill="currentColor"/><circle cx="4" cy="4" r="2" fill="currentColor"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="foot-disclaimer">CPond Advisors operates in strategic partnership with Winthrop & Co — bringing institutional-level strategy and operations expertise to every engagement.</div>
+      <div class="foot-copy">© 2026 CPond Advisors · CpondAdvisors.com · All rights reserved</div>
+    </div>
+    <div class="foot-right">
+      <nav class="foot-nav">
+        <a href="/" class="foot-link">Home</a>
+        <a href="/about" class="foot-link">About</a>
+        <a href="/services" class="foot-link">How I Help</a>
+        <a href="/webinars" class="foot-link">Webinars</a>
+        <a href="/newsletter" class="foot-link">Newsletter</a>
+        <a href="/resources" class="foot-link">Resources</a>
+        <a href="/clarity" class="foot-link">Advisor Intelligence</a>
+      </nav>
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="foot-cta">Book a 30-min call →</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTON -->
+<div class="float-btn" id="float-btn">
+  <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book a 30-min call
+  </a>
+</div>
+
+<script>
+function registerWebinar(name) {
+  var nameEl = document.getElementById('feat-name');
+  var emailEl = document.getElementById('feat-email');
+  var n = nameEl ? nameEl.value.trim() : '';
+  var e = emailEl ? emailEl.value.trim() : '';
+  if (!e) { e = prompt('Enter your email to register:'); }
+  if (!e) return;
+  window.location.href = 'mailto:Cpond@winthropandcompany.com?subject=Webinar registration: ' + encodeURIComponent(name) + '&body=Email: ' + encodeURIComponent(e) + (n ? '%0AName: ' + encodeURIComponent(n) : '') + '%0AWebinar: ' + encodeURIComponent(name);
+}
+
+function notifyMe() {
+  var email = document.getElementById('notify-email').value.trim();
+  if (!email) { alert('Please enter your email.'); return; }
+  window.location.href = 'mailto:Cpond@winthropandcompany.com?subject=Webinar notifications&body=Email: ' + encodeURIComponent(email) + '%0APlease notify me of upcoming webinars.';
+}
+
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('float-btn');
+  if (window.scrollY > 300) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+</script>
+</body>
+</html>
