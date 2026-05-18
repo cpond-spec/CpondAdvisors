@@ -1,1 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Help | Corey Pond · Advisor Transitions · Winthrop & Co</title>
+<meta name="description" content="Corey Pond helps financial advisors navigate wirehouse breakaways, IBD moves, RIA launches, succession planning, M&A, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1520;--ink2:#192b3c;--ink3:#2e3f52;
+  --steel:#4a5f74;--mist:#7a90a3;--fog:#acb8c4;
+  --cream:#e8ebf0;--gold:#b8973a;--gold2:#d4af5a;
+  --border:rgba(184,151,58,0.15);--border2:rgba(184,151,58,0.3);
+  --max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);min-height:100vh;line-height:1.6}
+
+/* HEADER */
+.site-header{background:rgba(10,21,32,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100}
+.header-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.header-left{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.header-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.header-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--cream);line-height:1.1}
+.header-role{font-size:8px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.header-divider{width:0.5px;height:32px;background:var(--border2);flex-shrink:0}
+.wco-logo-btn{display:flex;align-items:center;gap:8px;text-decoration:none;opacity:0.8;transition:opacity .2s}
+.wco-logo-btn:hover{opacity:1}
+.wco-logo-img{width:32px;height:32px;border-radius:4px;object-fit:cover;border:0.5px solid var(--border)}
+.wco-logo-name{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--mist)}
+.header-nav{display:flex;align-items:center;gap:24px;flex:1;justify-content:center}
+.nav-link{font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-link:hover,.nav-link.active{color:var(--cream)}
+.header-right{display:flex;align-items:center;flex-shrink:0}
+.nav-cta{background:var(--gold);color:var(--ink);font-size:10px;font-weight:500;padding:9px 20px;border-radius:2px;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:background .2s}
+.nav-cta:hover{background:var(--gold2)}
+
+/* PAGE HERO */
+.page-hero{padding:80px 0 64px;background:var(--ink);position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0.5}
+.page-hero-in{max-width:var(--max);margin:0 auto;padding:0 40px}
+.page-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.page-eye::before{content:'';display:block;width:20px;height:0.5px;background:var(--gold)}
+.page-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,56px);font-weight:600;color:#fff;line-height:1.05;margin-bottom:16px}
+.page-h1 em{color:var(--gold2);font-style:italic}
+.page-sub{font-size:14px;color:var(--mist);font-weight:300;line-height:1.85;max-width:580px}
+
+/* SITUATION CARDS */
+.situations{padding:72px 0 80px}
+.sit-in{max-width:var(--max);margin:0 auto;padding:0 40px}
+
+.sit-card{display:grid;grid-template-columns:80px 1fr;gap:0;border:0.5px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:16px;transition:border-color .25s}
+.sit-card:hover{border-color:rgba(184,151,58,0.35)}
+.sit-card:nth-child(odd) .sit-num{background:#060f18}
+.sit-card:nth-child(even) .sit-num{background:#0a1825}
+
+.sit-num{display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:rgba(184,151,58,0.3);border-right:0.5px solid var(--border);padding:32px 0;transition:color .25s}
+.sit-card:hover .sit-num{color:var(--gold)}
+
+.sit-body{background:var(--ink2);padding:32px 36px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.sit-content{}
+.sit-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-family:'DM Mono',monospace}
+.sit-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:10px;line-height:1.2}
+.sit-desc{font-size:12px;color:var(--mist);line-height:1.8;font-weight:300;margin-bottom:14px;max-width:580px}
+.sit-bullets{display:flex;flex-direction:column;gap:5px}
+.sit-bullet{font-size:11px;color:var(--fog);line-height:1.5;display:flex;align-items:flex-start;gap:8px}
+.sit-bullet::before{content:'—';color:var(--gold);flex-shrink:0;font-size:10px;margin-top:1px}
+.sit-cta{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);text-decoration:none;border:0.5px solid var(--border2);padding:10px 18px;border-radius:2px;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.sit-cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.sit-cta svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.8;transition:transform .2s}
+.sit-cta:hover svg{transform:translateX(3px)}
+
+/* BOTTOM CTA */
+.page-cta{background:var(--ink2);border-top:0.5px solid var(--border);padding:80px 0;text-align:center}
+.page-cta-in{max-width:560px;margin:0 auto;padding:0 40px}
+.page-cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);font-weight:600;color:#fff;line-height:1.1;margin-bottom:12px}
+.page-cta-h em{color:var(--gold2);font-style:italic}
+.page-cta-sub{font-size:13px;color:var(--mist);font-weight:300;margin-bottom:28px;line-height:1.8}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--ink);font-size:10px;font-weight:500;padding:13px 28px;border-radius:2px;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s}
+.btn-primary:hover{background:var(--gold2)}
+.btn-secondary{background:transparent;color:var(--gold2);font-size:10px;font-weight:500;padding:13px 28px;border-radius:2px;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;border:0.5px solid var(--border2);transition:all .2s}
+.btn-secondary:hover{background:rgba(184,151,58,0.08);border-color:var(--gold)}
+
+/* FOOTER */
+footer{background:#020c14;border-top:0.5px solid var(--border);padding:48px 0}
+.foot-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:flex-start;justify-content:space-between;gap:48px}
+.foot-left{flex-shrink:0}
+.foot-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.foot-cp-badge{width:36px;height:36px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:var(--gold);flex-shrink:0}
+.foot-name{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);font-weight:500}
+.foot-role{font-size:9px;color:var(--mist);letter-spacing:0.5px;margin-top:1px}
+.foot-divider{width:0.5px;height:28px;background:var(--border2);flex-shrink:0;margin:0 6px}
+.foot-wco-inline{display:flex;align-items:center;gap:7px;text-decoration:none;opacity:0.75;transition:opacity .2s}
+.foot-wco-inline:hover{opacity:1}
+.foot-wco-inline-img{width:28px;height:28px;border-radius:3px;object-fit:cover;border:0.5px solid var(--border)}
+.foot-wco-inline-name{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--mist)}
+.foot-contact-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.foot-contact-item{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s}
+.foot-contact-item:hover{color:var(--gold)}
+.foot-contact-item svg{width:13px;height:13px;stroke:var(--steel);fill:none;stroke-width:1.5;flex-shrink:0}
+.foot-disclaimer{font-size:10px;color:var(--steel);line-height:1.6;max-width:340px;margin-bottom:6px}
+.foot-copy{font-size:9px;color:#1a2d3d}
+.foot-right{display:flex;flex-direction:column;align-items:flex-end;gap:20px;padding-top:4px}
+.foot-nav{display:flex;flex-direction:row;align-items:center;gap:22px;flex-wrap:nowrap}
+.foot-link{font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s;white-space:nowrap}
+.foot-link:hover{color:var(--gold)}
+.foot-cta{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);text-decoration:none;border:0.5px solid var(--border2);padding:10px 20px;border-radius:2px;transition:all .2s;white-space:nowrap}
+.foot-cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* FLOATING BTN */
+.float-btn{position:fixed;bottom:32px;right:32px;z-index:999;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none}
+.float-btn.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.float-btn a{display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--ink);text-decoration:none;padding:13px 22px;border-radius:40px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;font-family:'DM Sans',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.4);transition:all .2s;white-space:nowrap}
+.float-btn a:hover{background:var(--gold2)}
+.float-btn a svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.8}
+
+@media(max-width:768px){
+  .header-in{padding:0 24px}
+  .header-nav{display:none}
+  .wco-logo-name{display:none}
+  .sit-in,.page-hero-in,.page-cta-in{padding:0 24px}
+  .sit-card{grid-template-columns:1fr}
+  .sit-num{display:none}
+  .sit-body{grid-template-columns:1fr;gap:20px;padding:24px}
+  .sit-cta{width:fit-content}
+  .foot-in{flex-direction:column;gap:32px;padding:0 24px}
+  .foot-right{align-items:flex-start}
+  .foot-nav{flex-wrap:wrap;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-in">
+    <div class="header-left">
+      <a href="/" class="header-brand">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="21" r="20.5" stroke="#b8973a" stroke-width="0.8"/>
+          <circle cx="21" cy="21" r="16" fill="#b8973a" opacity="0.1"/>
+          <circle cx="21" cy="21" r="9" fill="#b8973a" opacity="0.15"/>
+          <text x="21" y="27" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-weight="600" fill="#d4af5a">CP</text>
+        </svg>
+        <div>
+          <div class="header-name">Corey Pond</div>
+          <div class="header-role">Advisor Transitions</div>
+        </div>
+      </a>
+      <div class="header-divider"></div>
+      <a href="https://winthropco.com/" target="_blank" class="wco-logo-btn">
+        <img src="/wco-logo.jpg" alt="Winthrop & Co" class="wco-logo-img" onerror="this.style.display='none'">
+        <span class="wco-logo-name">Winthrop & Co</span>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/about" class="nav-link">About</a>
+      <a href="/services" class="nav-link active">How I Help</a>
+      <a href="/webinars" class="nav-link">Webinars</a>
+      <a href="/newsletter" class="nav-link">Newsletter</a>
+      <a href="/resources" class="nav-link">Resources</a>
+      <a href="/clarity" class="nav-link">Advisor Intelligence</a>
+    </nav>
+    <div class="header-right">
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="nav-cta">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-in">
+    <div class="page-eye">How I help</div>
+    <h1 class="page-h1">Every advisor situation<br>is <em>different.</em></h1>
+    <p class="page-sub">I work with advisors across every firm type, channel, and career stage. Here are the eight situations I see most often — and what working together actually looks like in each one.</p>
+  </div>
+</div>
+
+<!-- SITUATIONS -->
+<section class="situations">
+  <div class="sit-in">
+
+    <!-- 1 -->
+    <div class="sit-card">
+      <div class="sit-num">01</div>
+      <div class="sit-body">
+        <div class="sit-content">
+          <div class="sit-tag">Wirehouse breakaway</div>
+          <div class="sit-title">Leaving a wirehouse — making the move the right way</div>
+          <div class="sit-desc">This is the biggest move in the industry. Years of hard work, deep client relationships, and a platform that has started to feel more like a ceiling than a foundation. Breaking away the right way means protecting everything you have built.</div>
+          <div class="sit-bullets">
+            <div class="sit-bullet">Evaluating protocol vs. non-protocol considerations</div>
+            <div class="sit-bullet">Understanding your real transition package options</div>
+            <div class="sit-bullet">Managing client communication before, during, and after</div>
+            <div class="sit-bullet">Choosing the right destination — IBD, RIA, or your own firm</div>
+          </div>
+        </div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="sit-cta">
+          Let's talk
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="sit-card">
+      <div class="sit-num">02</div>
+      <div class="sit-body">
+        <div class="sit-content">
+          <div class="sit-tag">IBD to IBD</div>
+          <div class="sit-title">Moving from one independent broker-dealer to another</div>
+          <div class="sit-desc">Already independent but the platform is not growing with you. Whether it is payout, technology, compliance culture, or a firm acquisition you did not sign up for — there are better options and the transition is more straightforward than most advisors think.</div>
+          <div class="sit-bullets">
+            <div class="sit-bullet">Platform comparison across the top IBDs</div>
+            <div class="sit-bullet">Transition package negotiation and deal structure</div>
+            <div class="sit-bullet">Forgivable loan and note analysis</div>
+            <div class="sit-bullet">Platform continuity — keeping your tools and workflows intact</div>
+          </div>
+        </div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="sit-cta">
+          Let's talk
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="sit-card">
+      <div class="sit-num">03</div>
+      <div class="sit-body">
+        <div class="sit-content">
+          <div class="sit-tag">RIA platform</div>
+          <div class="sit-title">Joining an RIA</div>
+          <div class="sit-desc">Full independence without building everything from scratch. Joining an existing RIA gives you the payout and autonomy of independence with the compliance, technology, and operational infrastructure already in place. Finding the right platform for your specific practice is the work.</div>
+          <div class="sit-bullets">
+            <div class="sit-bullet">Evaluating RIA platforms by AUM size, client profile, and investment approach</div>
+            <div class="sit-bullet">Custodian relationships and continuity</div>
+            <div class="sit-bullet">Fee structure, payout, and economics analysis</div>
+            <div class="sit-bullet">Equity and partnership opportunities</div>
+          </div>
+        </div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="sit-cta">
+          Let's talk
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="sit-card">
+      <div class="sit-num">04</div>
+      <div class="sit-body">
+        <div class="sit-content">
+          <div class="sit-tag">Own RIA</div>
+          <div class="sit-title">Launching your own RIA — your name on the door</div>
+          <div class="sit-desc">Maximum independence, maximum control, and maximum complexity. Launching your own RIA is the right answer for some advisors — and the wrong answer for others. I help you figure out which one you are, and if it is right, I help you build it correctly from the ground up.</div>
+          <div class="sit-bullets">
+            <div class="sit-bullet">ADV filing, compliance setup, and regulatory requirements</div>
+            <div class="sit-bullet">Custodian selection — Schwab, Fidelity, Pershing, Goldman</div>
+            <div class="sit-bullet">Technology stack and infrastructure decisions</div>
+            <div class="sit-bullet">Whether to DIY or use a turnkey RIA support platform</div>
+          </div>
+        </div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="sit-cta">
+          Let's talk
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="sit-card">
+      <div class="sit-num">05</div>
+      <div class="sit-body">
+        <div class="sit-content">
+          <div class="sit-tag">Succession planning</div>
+          <div class="sit-title">Finding a successor and structuring the handoff</div>
+          <div class="sit-desc">Your clients are your legacy and you want them in the right hands. Whether you have someone in mind or need to find the right person, structuring a succession plan that protects your clients, your employees, and your financial outcome takes real expertise and time.</div>
+          <div class="sit-bullets">
+            <div class="sit-bullet">Identifying and evaluating internal or external successors</div>
+            <div class="sit-bullet">Deal structure — earn-outs, revenue sharing, equity transfer</div>
+            <div class="sit-bullet">Client transition planning and communication strategy</div>
+            <div class="sit-bullet">Timeline management — most good successions take 3 to 5 years</div>
+          </div>
+        </div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="sit-cta">
+          Let's talk
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="sit-card">
+      <div class="sit-num">06</div>
+      <div class="sit-body">
+        <div class="sit-content">
+          <div class="sit-tag">Sell & monetize</div>
+          <div class="sit-title">Selling your practice and maximizing your exit</div>
+          <div class="sit-desc">You have built something valuable. Getting the right number for it — and the right deal structure — requires going to market with proper preparation and real competitive pressure. External M&A offers consistently come in higher than internal succession offers. Most advisors are surprised by what their practice is worth.</div>
+          <div class="sit-bullets">
+            <div class="sit-bullet">Practice valuation and positioning for sale</div>
+            <div class="sit-bullet">Running a competitive M&A process to maximize your multiple</div>
+            <div class="sit-bullet">Sell-and-stay deal structures — get a check now, keep working</div>
+            <div class="sit-bullet">Tax-efficient deal structuring and exit planning</div>
+          </div>
+        </div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="sit-cta">
+          Let's talk
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="sit-card">
+      <div class="sit-num">07</div>
+      <div class="sit-body">
+        <div class="sit-content">
+          <div class="sit-tag">Technology & platform upgrade</div>
+          <div class="sit-title">Finding a firm that has what your current one does not</div>
+          <div class="sit-desc">Sometimes the conversation starts with technology — direct indexing, alternatives access, better portfolio tools — but the real answer is that your current firm simply does not offer what you need. I can put the right firms in front of you that do, and help you evaluate whether a move makes sense based on your specific situation.</div>
+          <div class="sit-bullets">
+            <div class="sit-bullet">Identifying exactly what technology and platform capabilities you are missing</div>
+            <div class="sit-bullet">Matching those gaps to firms that actually have them — direct indexing, alternatives, AI tools, integrated planning</div>
+            <div class="sit-bullet">Evaluating whether the economics of a move make sense given what you would gain</div>
+            <div class="sit-bullet">Putting the right firms in front of you with the right introduction</div>
+          </div>
+        </div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="sit-cta">
+          Let's talk
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="sit-card">
+      <div class="sit-num">08</div>
+      <div class="sit-body">
+        <div class="sit-content">
+          <div class="sit-tag">Family office</div>
+          <div class="sit-title">Transitioning your practice to a family office model</div>
+          <div class="sit-desc">Some advisors have outgrown the traditional advisory model entirely. Their clients are high-net-worth families who need more than portfolio management — they need comprehensive, integrated wealth services under one roof. Moving to a family office or multi-family office setting gives you the platform, the resources, and the infrastructure to serve those clients the way they actually deserve to be served.</div>
+          <div class="sit-bullets">
+            <div class="sit-bullet">Access to comprehensive services — integrated tax planning, estate planning, legal coordination, philanthropy, and alternative investments all under one umbrella</div>
+            <div class="sit-bullet">Multi-family office platforms that provide institutional-level resources without the cost of building your own — serving multiple high-net-worth families with a shared infrastructure</div>
+            <div class="sit-bullet">Concierge and lifestyle services that high-net-worth clients increasingly expect — bill pay, family governance, next-gen education, and family meeting facilitation</div>
+            <div class="sit-bullet">Alternative investment access — private equity, private credit, hedge funds, and direct deals that traditional IBD and wirehouse platforms simply cannot offer</div>
+            <div class="sit-bullet">Identifying the right family office platform or partner — whether that is joining an existing MFO, building under an RIA umbrella, or launching your own single-family or multi-family office structure</div>
+          </div>
+        </div>
+        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="sit-cta">
+          Let's talk
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-cta">
+  <div class="page-cta-in">
+    <h2 class="page-cta-h">Not sure which<br>situation is <em>yours?</em></h2>
+    <p class="page-cta-sub">Most advisors are dealing with more than one of these at once. Start with a conversation — we will figure out together what the right path looks like for your specific situation.</p>
+    <div class="cta-btns">
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="btn-primary">Book a 30-min call</a>
+      <a href="/clarity" class="btn-secondary">Run my diagnostic →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-left">
+      <div class="foot-logo-row">
+        <div class="foot-cp-badge">CP</div>
+        <div>
+          <div class="foot-name">Corey Pond</div>
+          <div class="foot-role">Advisor Transitions</div>
+        </div>
+        <div class="foot-divider"></div>
+        <a href="https://winthropco.com/" target="_blank" class="foot-wco-inline">
+          <img src="/wco-logo.jpg" alt="Winthrop & Co" class="foot-wco-inline-img" onerror="this.style.display='none'">
+          <span class="foot-wco-inline-name">Winthrop & Co</span>
+        </a>
+      </div>
+      <div class="foot-contact-list">
+        <a href="tel:9784208175" class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.72-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (978) 420-8175
+        </a>
+        <a href="mailto:Cpond@winthropandcompany.com" class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Cpond@winthropandcompany.com
+        </a>
+        <a href="https://www.linkedin.com/in/corey-pond-833b0871/" target="_blank" class="foot-contact-item">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="currentColor"/><rect x="2" y="9" width="4" height="12" fill="currentColor"/><circle cx="4" cy="4" r="2" fill="currentColor"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="foot-disclaimer">CPond Advisors operates in strategic partnership with Winthrop & Co — bringing institutional-level strategy and operations expertise to every engagement.</div>
+      <div class="foot-copy">© 2026 CPond Advisors · CpondAdvisors.com · All rights reserved</div>
+    </div>
+    <div class="foot-right">
+      <nav class="foot-nav">
+        <a href="/" class="foot-link">Home</a>
+        <a href="/about" class="foot-link">About</a>
+        <a href="/services" class="foot-link">How I Help</a>
+        <a href="/webinars" class="foot-link">Webinars</a>
+        <a href="/newsletter" class="foot-link">Newsletter</a>
+        <a href="/resources" class="foot-link">Resources</a>
+        <a href="/clarity" class="foot-link">Advisor Intelligence</a>
+      </nav>
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="foot-cta">Book a 30-min call →</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTON -->
+<div class="float-btn" id="float-btn">
+  <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book a 30-min call
+  </a>
+</div>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('float-btn');
+  if (window.scrollY > 300) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+</script>
+</body>
+</html>
 
