@@ -235,18 +235,6 @@ nav{background:rgba(10,21,32,0.96);backdrop-filter:blur(12px);border-bottom:0.5p
 .cta-btn:hover{background:var(--gold2)}
 .cta-fine{font-size:10px;color:var(--steel);text-align:center}
 
-/* ── FOOTER ── */
-footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
-.foot-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.foot-name{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);margin-bottom:3px}
-.foot-wco{font-size:10px;color:var(--steel)}
-.foot-wco span{color:var(--gold)}
-.foot-copy{font-size:9px;color:#1a2d3d;margin-top:4px}
-.foot-links{display:flex;gap:22px}
-.foot-link{font-size:10px;color:var(--steel);text-decoration:none;transition:color .2s}
-.foot-link:hover{color:var(--gold)}
-
-
 /* ── CONNECT STRIP ── */
 .connect-strip{background:var(--ink2);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:0}
 .connect-in{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0}
@@ -327,6 +315,45 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
   .float-btn a{padding:12px 18px;font-size:10px;}
 }
 
+.feel{background:var(--ink2);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);overflow:hidden}
+.feel-tape-wrap{position:relative;padding:0;height:48px;overflow:hidden}
+.feel-tape-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:120px;background:linear-gradient(90deg,var(--ink2),transparent);z-index:2;pointer-events:none}
+.feel-tape-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:120px;background:linear-gradient(-90deg,var(--ink2),transparent);z-index:2;pointer-events:none}
+.feel-tape{display:flex;align-items:center;gap:0;animation:tape-scroll 40s linear infinite;width:max-content}
+.feel-tape:hover{animation-play-state:paused}
+.feel-item{display:flex;align-items:center;gap:0;white-space:nowrap;padding:0 48px;height:48px;border-right:0.5px solid var(--border)}
+.feel-item:last-child{border-right:none}
+.feel-dot-sep{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0.5;margin:0 20px;flex-shrink:0}
+.feel-q{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--mist);white-space:nowrap}
+.feel-q span{color:var(--cream)}
+@keyframes tape-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+
+/* ── HEADER ── */
+.site-header{background:rgba(10,21,32,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100}
+.header-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.header-left{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.header-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.cp-logo{flex-shrink:0}
+.header-name-wrap{}
+.header-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--cream);line-height:1.1}
+.header-role{font-size:8px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.header-divider{width:0.5px;height:32px;background:var(--border2);flex-shrink:0}
+.wco-logo-btn{display:flex;align-items:center;gap:8px;text-decoration:none;opacity:0.8;transition:opacity .2s}
+.wco-logo-btn:hover{opacity:1}
+.wco-logo-img{width:32px;height:32px;border-radius:4px;object-fit:cover;object-position:center;border:0.5px solid var(--border)}
+.wco-logo-name{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--mist);letter-spacing:0.3px;white-space:nowrap}
+.wco-logo-btn:hover .wco-logo-name{color:var(--cream)}
+.header-nav{display:flex;align-items:center;gap:24px;flex:1;justify-content:center}
+.nav-link{font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s;letter-spacing:0.2px;white-space:nowrap}
+.nav-link:hover{color:var(--cream)}
+.header-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.nav-cta{background:var(--gold);color:var(--ink);font-size:10px;font-weight:500;padding:9px 20px;border-radius:2px;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2)}
+@media(max-width:1000px){.header-nav{display:none}}
+@media(max-width:768px){.wco-logo-name{display:none}.header-divider{display:none}}
+
+
 /* ── MOBILE ── */
 @media(max-width:768px){
   .hero{flex-direction:column}
@@ -342,47 +369,83 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
   .cta-form-row{flex-direction:column}
   .foot-in{flex-direction:column;gap:20px}
 }
+/* ── FOOTER ── */
+footer{background:#020c14;border-top:0.5px solid var(--border);padding:48px 0}
+.foot-in{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:flex-start;justify-content:space-between;gap:48px}
+.foot-left{flex-shrink:0}
+.foot-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.foot-cp-badge{width:36px;height:36px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:var(--gold);flex-shrink:0}
+.foot-name{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);font-weight:500}
+.foot-role{font-size:9px;color:var(--mist);letter-spacing:0.5px;margin-top:1px}
+.foot-divider{width:0.5px;height:28px;background:var(--border2);flex-shrink:0;margin:0 6px}
+.foot-wco-inline{display:flex;align-items:center;gap:7px;text-decoration:none;opacity:0.75;transition:opacity .2s}
+.foot-wco-inline:hover{opacity:1}
+.foot-wco-inline-img{width:28px;height:28px;border-radius:3px;object-fit:cover;border:0.5px solid var(--border)}
+.foot-wco-inline-name{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--mist)}
+.foot-contact-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.foot-contact-item{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s}
+.foot-contact-item:hover{color:var(--gold)}
+.foot-contact-item svg{width:13px;height:13px;stroke:var(--steel);fill:none;stroke-width:1.5;flex-shrink:0}
+.foot-copy{font-size:9px;color:#1a2d3d}
+.foot-right{display:flex;flex-direction:column;align-items:flex-end;gap:20px;padding-top:4px}
+.foot-nav{display:flex;flex-direction:row;align-items:center;gap:22px;flex-wrap:nowrap}
+.foot-link{font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s;white-space:nowrap}
+.foot-link:hover{color:var(--gold)}
+.foot-cta{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);text-decoration:none;border:0.5px solid var(--border2);padding:10px 20px;border-radius:2px;transition:all .2s;white-space:nowrap}
+.foot-cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+@media(max-width:768px){.foot-in{flex-direction:column;gap:32px;padding:0 24px}.foot-right{align-items:flex-start}.foot-nav{flex-wrap:wrap}}
+
+.foot-disclaimer{font-size:10px;color:var(--steel);line-height:1.6;max-width:340px;margin-bottom:6px}
 </style>
 </head>
 <body>
 
-<!-- WINTHROP BAR -->
-<div class="wco">
-  <div class="wco-in">
-    <div class="wco-left">
-      <div class="wco-badge">W</div>
-      <span class="wco-name">Winthrop & Co</span>
-      <span class="wco-sep">·</span>
-      <span class="wco-sub">Strategy & Operations Consulting</span>
-    </div>
-    <div class="wco-links">
-      <a href="#" class="wco-link">About Winthrop</a>
-      <a href="#" class="wco-link">Our team</a>
-    </div>
-  </div>
-</div>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-in">
 
-<!-- NAV -->
-<nav>
-  <div class="nav-in">
-    <a href="/" class="nav-brand">
-      <div class="nav-orb">CP</div>
-      <div>
-        <div class="nav-title">Corey Pond</div>
-        <div class="nav-role">Advisor Transitions</div>
-      </div>
-    </a>
-    <div class="nav-links">
-      <a href="#about" class="nav-link">About</a>
-      <a href="/services" class="nav-link">Services</a>
-      <a href="#webinars" class="nav-link">Webinars</a>
-      <a href="/articles" class="nav-link">Articles</a>
-      <a href="/resources" class="nav-link">Resources</a>
-      <a href="#intelligence" class="nav-link">Advisor Intelligence</a>
-      <a href="#contact" class="nav-cta">Book a call</a>
+    <!-- LEFT: CP LOGO + NAME + W&C LOGO -->
+    <div class="header-left">
+      <a href="/" class="header-brand">
+        <div class="cp-logo">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+            <circle cx="21" cy="21" r="20.5" stroke="#b8973a" stroke-width="0.8"/>
+            <circle cx="21" cy="21" r="16" fill="#b8973a" opacity="0.1"/>
+            <circle cx="21" cy="21" r="9" fill="#b8973a" opacity="0.15"/>
+            <text x="21" y="27" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-weight="600" fill="#d4af5a">CP</text>
+          </svg>
+        </div>
+        <div class="header-name-wrap">
+          <div class="header-name">Corey Pond</div>
+          <div class="header-role">Advisor Transitions</div>
+        </div>
+      </a>
+
+      <div class="header-divider"></div>
+
+      <a href="https://winthropco.com/" target="_blank" class="wco-logo-btn" title="Winthrop & Co">
+        <img src="/wco-logo.jpg" alt="Winthrop & Co" class="wco-logo-img" onerror="this.style.display='none'">
+        <span class="wco-logo-name">Winthrop & Co</span>
+      </a>
     </div>
+
+    <!-- CENTER: NAV -->
+    <nav class="header-nav">
+      <a href="/about" class="nav-link">About</a>
+      <a href="/services" class="nav-link">How I Help</a>
+      <a href="/webinars" class="nav-link">Webinars</a>
+      <a href="/newsletter" class="nav-link">Newsletter</a>
+      <a href="/resources" class="nav-link">Resources</a>
+      <a href="/clarity" class="nav-link">Advisor Intelligence</a>
+    </nav>
+
+    <!-- RIGHT: BOOK A CALL -->
+    <div class="header-right">
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="nav-cta">Book a call</a>
+    </div>
+
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
 <section class="hero">
@@ -410,18 +473,33 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
 
 <!-- FEEL SEEN -->
 <div class="feel">
-  <div class="feel-in">
-    <div class="feel-item">
-      <div class="feel-q">"I feel stuck but I don't know what my options are."</div>
-      <div class="feel-a">Most advisors don't leave because they don't know what's possible. Let's map it out — no commitment required.</div>
-    </div>
-    <div class="feel-item">
-      <div class="feel-q">"I'm worried about my clients finding out before I'm ready."</div>
-      <div class="feel-a">Every conversation I have is 100% confidential. Your current firm will never know we spoke.</div>
-    </div>
-    <div class="feel-item">
-      <div class="feel-q">"I don't want to start over. I just want to love this work again."</div>
-      <div class="feel-a">A good transition doesn't mean losing what you've built. It means building something better on top of it.</div>
+  <div class="feel-tape-wrap">
+    <div class="feel-tape">
+      <div class="feel-item"><div class="feel-q"><span>"My firm was just acquired</span> — I feel forced into a decision rather than weighing what is best for me and my clients."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I have a successor lined up</span> — but no idea if this firm is the right fit, and they do not have the liquidity to make it work."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I have outgrown my firm.</span> I am hitting a ceiling and it is holding me back."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I am in the office until 8 or 9 every night.</span> I have built something great but my process needs to change."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I have spent 20 years at my wirehouse.</span> I want to break away but do not know where to start."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I have heard I should get competitive outside offers before I retire</span> — but do not know where to begin."</div></div>
+      <div class="feel-dot-sep"></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="feel-item"><div class="feel-q"><span>"My firm was just acquired</span> — I feel forced into a decision rather than weighing what is best for me and my clients."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I have a successor lined up</span> — but no idea if this firm is the right fit, and they do not have the liquidity to make it work."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I have outgrown my firm.</span> I am hitting a ceiling and it is holding me back."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I am in the office until 8 or 9 every night.</span> I have built something great but my process needs to change."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I have spent 20 years at my wirehouse.</span> I want to break away but do not know where to start."</div></div>
+      <div class="feel-dot-sep"></div>
+      <div class="feel-item"><div class="feel-q"><span>"I have heard I should get competitive outside offers before I retire</span> — but do not know where to begin."</div></div>
+      <div class="feel-dot-sep"></div>
     </div>
   </div>
 </div>
@@ -640,85 +718,112 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
 <section class="intel-section" id="intelligence">
   <div class="sec-in">
     <div class="sec-eye">Advisor intelligence</div>
-    <h2 class="sec-h">Built for advisors<br>who want real answers.</h2>
-    <p class="sec-sub">Two tools built specifically for advisors ready to understand what their move actually looks like. No pitch. No pressure.</p>
+    <h2 class="sec-h">Three ways to get<br>real answers.</h2>
+    <p class="sec-sub">Pick how you want to start. Every path is 100% confidential and leads to a real conversation — not a pitch.</p>
 
-    <div class="intel-grid">
+    <div class="intel-grid" style="grid-template-columns:1fr 1fr 1fr">
 
-      <!-- VOICE TOOL -->
+      <!-- VOICE -->
       <div class="intel-card">
-        <div class="intel-label">Voice tool</div>
-        <div class="intel-title">Just describe your situation.</div>
-        <div class="intel-body">No forms. No steps. Tell us where you are — your firm, your AUM, your frustrations — and get an intelligent, personalized response instantly. Like talking to Corey at 11pm when you're finally ready to ask the question.</div>
+        <div class="intel-label">Voice</div>
+        <div class="intel-title">Just talk.</div>
+        <div class="intel-body">Describe your situation out loud — your firm, your frustrations, what you are thinking about. Get an instant intelligent response. No typing required.</div>
         <div class="intel-stats">
           <div class="intel-stat">
             <div class="intel-stat-val">Instant</div>
             <div class="intel-stat-lbl">Response</div>
           </div>
           <div class="intel-stat">
+            <div class="intel-stat-val">No</div>
+            <div class="intel-stat-lbl">Typing needed</div>
+          </div>
+          <div class="intel-stat">
             <div class="intel-stat-val">100%</div>
             <div class="intel-stat-lbl">Confidential</div>
           </div>
-          <div class="intel-stat">
-            <div class="intel-stat-val">No</div>
-            <div class="intel-stat-lbl">Forms needed</div>
-          </div>
         </div>
-        <a href="/clarity" class="intel-btn">
-          Try the voice tool
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <a href="/clarity#voice" class="intel-btn">
+          Start talking
+          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
         </a>
-        <!-- Decorative -->
         <svg class="intel-deco" width="200" height="200" viewBox="0 0 200 200">
           <circle cx="100" cy="100" r="80" stroke="#b8973a" stroke-width="0.5" fill="none"/>
-          <circle cx="100" cy="100" r="60" stroke="#b8973a" stroke-width="0.5" fill="none"/>
-          <circle cx="100" cy="100" r="40" stroke="#b8973a" stroke-width="0.5" fill="none"/>
-          <circle cx="100" cy="100" r="20" stroke="#b8973a" stroke-width="1" fill="none"/>
-          <circle cx="100" cy="100" r="4" fill="#b8973a"/>
+          <circle cx="100" cy="100" r="55" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+          <circle cx="100" cy="100" r="30" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+          <circle cx="100" cy="100" r="8" fill="#b8973a" opacity="0.5"/>
         </svg>
       </div>
 
-      <!-- DIAGNOSTIC -->
+      <!-- EXPLORE -->
       <div class="intel-card">
-        <div class="intel-label">Transition diagnostic</div>
-        <div class="intel-title">Find out exactly what your move looks like.</div>
-        <div class="intel-body">Answer questions about your practice — niche, technology, comp, goals. Get a personalized intelligence report with real Cerulli and Fintrx data, comp ranges for your AUM, and a ranked list of your best-fit paths.</div>
+        <div class="intel-label">Path 1 · Explore</div>
+        <div class="intel-title">Show me the landscape.</div>
+        <div class="intel-body">Curious about the market, how independence works, or what your options look like. A few guided questions — no deep dive required. Corey follows up personally.</div>
         <div class="intel-stats">
           <div class="intel-stat">
-            <div class="intel-stat-val">3 min</div>
-            <div class="intel-stat-lbl">To complete</div>
+            <div class="intel-stat-val">3</div>
+            <div class="intel-stat-lbl">Quick questions</div>
           </div>
           <div class="intel-stat">
-            <div class="intel-stat-val">44</div>
-            <div class="intel-stat-lbl">Firms analyzed</div>
+            <div class="intel-stat-val">No</div>
+            <div class="intel-stat-lbl">Commitment</div>
+          </div>
+          <div class="intel-stat">
+            <div class="intel-stat-val">Personal</div>
+            <div class="intel-stat-lbl">Follow-up</div>
+          </div>
+        </div>
+        <a href="/clarity#path1" class="intel-btn">
+          Explore the landscape
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <svg class="intel-deco" width="200" height="200" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="80" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+          <line x1="0" y1="100" x2="200" y2="100" stroke="#b8973a" stroke-width="0.3" opacity="0.4"/>
+          <line x1="100" y1="0" x2="100" y2="200" stroke="#b8973a" stroke-width="0.3" opacity="0.4"/>
+          <circle cx="100" cy="100" r="6" fill="#b8973a" opacity="0.6"/>
+        </svg>
+      </div>
+
+      <!-- DIAGNOSE -->
+      <div class="intel-card">
+        <div class="intel-label">Path 2 · Diagnose</div>
+        <div class="intel-title">Map my specific situation.</div>
+        <div class="intel-body">A more in-depth approach. Answer questions about your AUM, technology, compensation, and goals — and get a personalized intelligence report with real market data and a discussion on your potential fits.</div>
+        <div class="intel-stats">
+          <div class="intel-stat">
+            <div class="intel-stat-val">In-depth</div>
+            <div class="intel-stat-lbl">Approach</div>
           </div>
           <div class="intel-stat">
             <div class="intel-stat-val">Real</div>
             <div class="intel-stat-lbl">Market data</div>
           </div>
+          <div class="intel-stat">
+            <div class="intel-stat-val">Custom</div>
+            <div class="intel-stat-lbl">Report</div>
+          </div>
         </div>
-        <a href="/clarity" class="intel-btn">
-          Run my diagnostic
+        <a href="/clarity#path2" class="intel-btn">
+          Map my situation
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
-        <!-- Decorative -->
         <svg class="intel-deco" width="200" height="200" viewBox="0 0 200 200">
           <rect x="20" y="20" width="160" height="160" stroke="#b8973a" stroke-width="0.5" fill="none"/>
-          <rect x="40" y="40" width="120" height="120" stroke="#b8973a" stroke-width="0.5" fill="none"/>
-          <rect x="60" y="60" width="80" height="80" stroke="#b8973a" stroke-width="0.5" fill="none"/>
+          <rect x="50" y="50" width="100" height="100" stroke="#b8973a" stroke-width="0.5" fill="none"/>
           <rect x="80" y="80" width="40" height="40" stroke="#b8973a" stroke-width="1" fill="none"/>
-          <rect x="95" y="95" width="10" height="10" fill="#b8973a"/>
+          <rect x="93" y="93" width="14" height="14" fill="#b8973a" opacity="0.5"/>
         </svg>
       </div>
 
     </div>
     <div style="text-align:center;margin-top:20px;font-size:10px;color:var(--steel);letter-spacing:0.5px;font-family:'DM Mono',monospace">
-      Powered by Corey Pond's expertise · Winthrop & Co · Cerulli Associates · Fintrx · 100% confidential
+      Any information shared with Corey Pond is 100% confidential — your current firm will never know we spoke.
     </div>
   </div>
 </section>
 
-<!-- NEWSLETTER CTA -->
+<!-- NEWSLETTER + FOOTER -->
 <section class="cta-section" id="contact">
   <div class="cta-in">
     <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:10px">
@@ -736,113 +841,63 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:36px 0}
     <div class="cta-fine" style="text-align:center">Join advisors getting real market intelligence every quarter · Unsubscribe anytime</div>
     <div style="margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);text-align:center">
       <p style="font-size:12px;color:var(--mist);margin-bottom:14px;font-weight:300">Ready to have the real conversation?</p>
-      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);text-decoration:none;border:0.5px solid var(--border2);padding:11px 24px;border-radius:2px;transition:all .2s" onmouseover="this.style.background='rgba(184,151,58,0.08)'" onmouseout="this.style.background=''">
-        Book a 30-min call with Corey →
-      </a>
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);text-decoration:none;border:0.5px solid var(--border2);padding:11px 24px;border-radius:2px;transition:all .2s">Book a 30-min call with Corey →</a>
     </div>
   </div>
 </section>
 
-<!-- CONNECT STRIP -->
-<div class="connect-strip">
-  <div class="connect-in">
-
-    <a href="tel:9784208175" class="connect-item">
-      <div class="connect-icon">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.72-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      </div>
-      <div>
-        <div class="connect-label">Call or text</div>
-        <div class="connect-val">(978) 420-8175</div>
-      </div>
-    </a>
-
-    <a href="mailto:Cpond@winthropandcompany.com" class="connect-item">
-      <div class="connect-icon">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </div>
-      <div>
-        <div class="connect-label">Email</div>
-        <div class="connect-val">Cpond@winthropandcompany.com</div>
-      </div>
-    </a>
-
-    <a href="https://www.linkedin.com/in/corey-pond-833b0871/" target="_blank" class="connect-item">
-      <div class="connect-icon linkedin-icon">
-        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="#b8973a"/><rect x="2" y="9" width="4" height="12" fill="#b8973a"/><circle cx="4" cy="4" r="2" fill="#b8973a"/></svg>
-      </div>
-      <div>
-        <div class="connect-label">LinkedIn</div>
-        <div class="connect-val">Connect with Corey</div>
-      </div>
-    </a>
-
-    <div class="connect-item" style="border-right:none;justify-content:center">
-      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="connect-cta">Book a 30-min call →</a>
-    </div>
-
-  </div>
-</div>
-
-
-
 <!-- FOOTER -->
 <footer>
   <div class="foot-in">
-    <div>
-      <div class="foot-name">Corey Pond · CPond Advisors</div>
-      <div class="foot-wco">In strategic partnership with <span>Winthrop & Co</span></div>
-      <div style="margin-top:10px;display:flex;flex-direction:column;gap:4px">
-        <a href="tel:9784208175" style="font-size:11px;color:var(--mist);text-decoration:none">(978) 420-8175 · Call or text</a>
-        <a href="mailto:Cpond@winthropandcompany.com" style="font-size:11px;color:var(--mist);text-decoration:none">Cpond@winthropandcompany.com</a>
+
+    <!-- LEFT: BRAND + CONTACT + WINTHROP -->
+    <div class="foot-left">
+      <div class="foot-logo-row">
+        <div class="foot-cp-badge">CP</div>
+        <div>
+          <div class="foot-name">Corey Pond</div>
+          <div class="foot-role">Advisor Transitions</div>
+        </div>
+        <div class="foot-divider"></div>
+        <a href="https://winthropco.com/" target="_blank" class="foot-wco-inline">
+          <img src="/wco-logo.jpg" alt="Winthrop & Co" class="foot-wco-inline-img" onerror="this.style.display='none'">
+          <span class="foot-wco-inline-name">Winthrop & Co</span>
+        </a>
       </div>
-      <div class="foot-copy" style="margin-top:8px">© 2026 CPond Advisors · CpondAdvisors.com · All rights reserved</div>
-    </div>
-    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:16px">
-      <div class="foot-links">
-        <a href="/" class="foot-link">Home</a>
-        <a href="#" class="foot-link">About</a>
-        <a href="#webinars" class="foot-link">Webinars</a>
-        <a href="#intelligence" class="foot-link">Advisor Intelligence</a>
-        <a href="#contact" class="foot-link">Contact</a>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center">
-        <a href="https://www.linkedin.com/in/corey-pond-833b0871/" target="_blank" style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mist);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#b8973a'" onmouseout="this.style.color=''">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="#b8973a"/><rect x="2" y="9" width="4" height="12" fill="#b8973a"/><circle cx="4" cy="4" r="2" fill="#b8973a"/></svg>
+      <div class="foot-contact-list">
+        <a href="tel:9784208175" class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.72-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (978) 420-8175
+        </a>
+        <a href="mailto:Cpond@winthropandcompany.com" class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Cpond@winthropandcompany.com
+        </a>
+        <a href="https://www.linkedin.com/in/corey-pond-833b0871/" target="_blank" class="foot-contact-item">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="currentColor"/><rect x="2" y="9" width="4" height="12" fill="currentColor"/><circle cx="4" cy="4" r="2" fill="currentColor"/></svg>
           LinkedIn
         </a>
-        <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" style="font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:0.5px solid var(--border2);padding:8px 16px;border-radius:2px;transition:all .2s" onmouseover="this.style.background='rgba(184,151,58,0.1)'" onmouseout="this.style.background=''">Book a call →</a>
       </div>
+      <div class="foot-disclaimer">CPond Advisors operates in strategic partnership with Winthrop & Co — bringing institutional-level strategy and operations expertise to every engagement.</div>
+      <div class="foot-copy">© 2026 CPond Advisors · CpondAdvisors.com · All rights reserved</div>
     </div>
+
+    <!-- RIGHT: NAV + CTA -->
+    <div class="foot-right">
+      <nav class="foot-nav">
+        <a href="/" class="foot-link">Home</a>
+        <a href="#about" class="foot-link">About</a>
+        <a href="/services" class="foot-link">How I Help</a>
+        <a href="/webinars" class="foot-link">Webinars</a>
+        <a href="/newsletter" class="foot-link">Newsletter</a>
+        <a href="/resources" class="foot-link">Resources</a>
+        <a href="/clarity" class="foot-link">Advisor Intelligence</a>
+      </nav>
+      <a href="https://calendly.com/cpond-winthropandcompany/30min" target="_blank" class="foot-cta">Book a 30-min call →</a>
+    </div>
+
   </div>
 </footer>
-
-<script>
-function submitForm(e){
-  e.preventDefault();
-  const inputs = document.querySelectorAll('input[name="name"], input[name="email"]');
-  let name = '', email = '';
-  inputs.forEach(i => { if(i.name==='name') name=i.value.trim(); if(i.name==='email') email=i.value.trim(); });
-  if(!name||!email){alert('Please enter your name and email.');return;}
-  window.location.href='mailto:Corey@CpondAdvisors.com?subject=Confidential conversation request from '+encodeURIComponent(name)+'&body=Name: '+encodeURIComponent(name)+'%0AEmail: '+encodeURIComponent(email);
-}
-function submitNewsletter(e){
-  e.preventDefault();
-  var name = document.querySelector('input[name="nl-name"]').value.trim();
-  var email = document.querySelector('input[name="nl-email"]').value.trim();
-  if(!name||!email){alert('Please enter your name and email.');return;}
-  // Replace with your ConvertKit or Beehiiv form action when ready
-  window.location.href='mailto:Cpond@winthropandcompany.com?subject=Newsletter signup: '+encodeURIComponent(name)+'&body=Name: '+encodeURIComponent(name)+'%0AEmail: '+encodeURIComponent(email)+'%0A%0APlease add me to the Advisor Intelligence Briefing.';
-  alert('Got it! You'll receive the next Advisor Intelligence Briefing in your inbox.');
-}
-
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){
-    const t=document.querySelector(this.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
-  });
-});
-</script>
 
 <!-- FLOATING BUTTON -->
 <div class="float-btn" id="float-btn">
@@ -850,13 +905,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     Book a 30-min call
   </a>
-  <a href="https://www.linkedin.com/in/corey-pond-833b0871/" target="_blank" class="float-li" title="Connect on LinkedIn">
-    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="#b8973a"/><rect x="2" y="9" width="4" height="12" fill="#b8973a"/><circle cx="4" cy="4" r="2" fill="#b8973a"/></svg>
-  </a>
 </div>
 
 <script>
-// Show floating button after scrolling past hero
 window.addEventListener('scroll', function() {
   var btn = document.getElementById('float-btn');
   if (window.scrollY > window.innerHeight * 0.6) {
