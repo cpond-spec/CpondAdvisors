@@ -97,6 +97,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);m
 .wc-3 .web-card-img{background:linear-gradient(135deg,#051a1a,#0a3030,#020f0f)}
 .wc-4 .web-card-img{background:linear-gradient(135deg,#1a0d1a,#2d1a35,#0d0515)}
 .wc-5 .web-card-img{background:linear-gradient(135deg,#0a1a05,#1a3510,#051005)}
+.wc-6 .web-card-img{background:linear-gradient(135deg,#0a1505,#1a2e10,#0d1a08)}
 .wc-card-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.6}
 .web-card-tag{position:absolute;top:10px;left:10px;background:rgba(184,151,58,0.15);border:0.5px solid var(--border2);border-radius:2px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);padding:3px 8px;font-family:'DM Mono',monospace}
 .web-card-body{padding:20px 22px}
@@ -226,7 +227,7 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:48px 0}
     <!-- FEATURED / NEXT LIVE -->
     <div class="section-eye">Next live session</div>
     <h2 class="section-h">Coming up</h2>
-    <p class="section-sub">Register below — all sessions are free and held via Zoom. A recording is sent to all registrants after the session.</p>
+    <p class="section-sub">Six webinars built for six specific advisors — wirehouse, IBD, W-2, RIA-curious, and UHNW. Find the one that fits where you are right now.</p>
 
     <div class="web-featured">
       <div class="web-featured-badge">Seats available</div>
@@ -271,123 +272,105 @@ footer{background:#020c14;border-top:0.5px solid var(--border);padding:48px 0}
 
     <div class="web-grid">
 
+      <!-- CARD 1 — WIREHOUSE BREAKAWAY -->
       <div class="web-card wc-1">
-        <div class="web-card-img">
-          <div class="wc-card-art">
-            <svg width="180" height="120" viewBox="0 0 180 120">
-              <line x1="0" y1="60" x2="180" y2="60" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
-              <line x1="90" y1="0" x2="90" y2="120" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
-              <circle cx="90" cy="60" r="35" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.5"/>
-              <circle cx="90" cy="60" r="55" stroke="#b8973a" stroke-width="0.3" fill="none" opacity="0.3"/>
-              <circle cx="90" cy="60" r="7" fill="#b8973a" opacity="0.5"/>
-            </svg>
-          </div>
-          <span class="web-card-tag">Transitions</span>
+        <div class="web-card-img" style="background-image:url(web1.jpg);background-size:cover;background-position:center top;position:relative;">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,21,32,0.45) 0%,rgba(10,21,32,0.7) 100%);"></div>
+          <span class="web-card-tag" style="position:relative;z-index:1">Wirehouse</span>
         </div>
         <div class="web-card-body">
-          <div class="web-card-title">Is It Time to Make Your Move?</div>
-          <div class="web-card-desc">What every advisor should know before leaving their current firm — the timeline, the risks, and what the best deals actually look like right now.</div>
+          <div class="web-card-title">The Wirehouse Breakaway Playbook</div>
+          <div class="web-card-desc">The data, the math, and the mechanics behind one of the most consequential decisions a wirehouse advisor can make. What the best moves actually look like in 2026.</div>
           <div class="web-card-footer">
             <span class="web-card-type">25 min · Free · Date TBD</span>
-            <button class="web-card-cta" onclick="registerWebinar('Is It Time to Make Your Move')">Register →</button>
+            <button class="web-card-cta" onclick="registerWebinar(this, 'The Wirehouse Breakaway Playbook')">Register →</button>
           </div>
         </div>
       </div>
 
+      <!-- CARD 2 — TECH TRIGGER -->
       <div class="web-card wc-2">
-        <div class="web-card-img">
-          <div class="wc-card-art">
-            <svg width="180" height="120" viewBox="0 0 180 120">
-              <rect x="20" y="20" width="140" height="80" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.3"/>
-              <rect x="40" y="35" width="100" height="50" stroke="#d4af5a" stroke-width="0.5" fill="none" opacity="0.4"/>
-              <text x="90" y="66" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#d4af5a" opacity="0.6">COMP ANALYSIS</text>
-            </svg>
-          </div>
-          <span class="web-card-tag">Compensation</span>
+        <div class="web-card-img" style="background-image:url(web2.jpg);background-size:cover;background-position:center;position:relative;">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,21,32,0.55) 0%,rgba(10,21,32,0.75) 100%);"></div>
+          <span class="web-card-tag" style="position:relative;z-index:1">Technology</span>
         </div>
         <div class="web-card-body">
-          <div class="web-card-title">What Are You Actually Worth?</div>
-          <div class="web-card-desc">Real comp data across IBD, RIA, and wirehouse channels from the last 90 days. Know your number before you walk into any conversation.</div>
+          <div class="web-card-title">The Tech Trigger</div>
+          <div class="web-card-desc">Why 79% of advisors who switched firms in 2025 cited technology — not compensation — as the #1 reason. What your current platform is actually costing you and your clients.</div>
           <div class="web-card-footer">
-            <span class="web-card-type">20 min · Free · Date TBD</span>
-            <button class="web-card-cta" onclick="registerWebinar('What Are You Actually Worth')">Register →</button>
+            <span class="web-card-type">25 min · Free · Date TBD</span>
+            <button class="web-card-cta" onclick="registerWebinar(this, 'The Tech Trigger')">Register →</button>
           </div>
         </div>
       </div>
 
+      <!-- CARD 3 — GOING INDEPENDENT -->
       <div class="web-card wc-3">
-        <div class="web-card-img">
-          <div class="wc-card-art">
-            <svg width="180" height="120" viewBox="0 0 180 120">
-              <path d="M90 15 L125 40 L125 80 L90 105 L55 80 L55 40 Z" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.5"/>
-              <path d="M90 30 L112 47 L112 73 L90 90 L68 73 L68 47 Z" stroke="#d4af5a" stroke-width="0.5" fill="rgba(184,151,58,0.04)" opacity="0.7"/>
-              <circle cx="90" cy="60" r="10" fill="#b8973a" opacity="0.2" stroke="#b8973a" stroke-width="0.5"/>
-            </svg>
-          </div>
-          <span class="web-card-tag">Independence</span>
+        <div class="web-card-img" style="background-image:url(web3.jpg);background-size:cover;background-position:center;position:relative;">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,21,32,0.35) 0%,rgba(10,21,32,0.65) 100%);"></div>
+          <span class="web-card-tag" style="position:relative;z-index:1">Independence</span>
         </div>
         <div class="web-card-body">
-          <div class="web-card-title">RIA vs IBD: Which Path Is Right for You?</div>
-          <div class="web-card-desc">A candid breakdown of the paths to independence — real economics, hidden costs, and how to choose the right model for your practice.</div>
+          <div class="web-card-title">Going Independent — What It Actually Looks Like</div>
+          <div class="web-card-desc">There are six different definitions of independent. Five of them don't require filing your own ADV. A practical breakdown of every model — RIA, IBD, supported independence, and everything in between.</div>
           <div class="web-card-footer">
             <span class="web-card-type">25 min · Free · Date TBD</span>
-            <button class="web-card-cta" onclick="registerWebinar('RIA vs IBD')">Register →</button>
+            <button class="web-card-cta" onclick="registerWebinar(this, 'Going Independent')">Register →</button>
           </div>
         </div>
       </div>
 
+      <!-- CARD 4 — HIT A CEILING -->
       <div class="web-card wc-4">
-        <div class="web-card-img">
-          <div class="wc-card-art">
-            <svg width="180" height="120" viewBox="0 0 180 120">
-              <line x1="20" y1="100" x2="160" y2="100" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
-              <line x1="20" y1="100" x2="20" y2="15" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
-              <polyline points="20,80 50,65 80,50 110,38 140,28 160,22" stroke="#d4af5a" stroke-width="1.5" fill="none" opacity="0.7"/>
-              <circle cx="160" cy="22" r="4" fill="#d4af5a" opacity="0.8"/>
-            </svg>
-          </div>
-          <span class="web-card-tag">Succession</span>
+        <div class="web-card-img" style="background-image:url(web4.jpg);background-size:cover;background-position:center 40%;position:relative;">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,21,32,0.3) 0%,rgba(10,21,32,0.65) 100%);"></div>
+          <span class="web-card-tag" style="position:relative;z-index:1">IBD · Growth</span>
         </div>
         <div class="web-card-body">
-          <div class="web-card-title">Maximizing Your Practice Value Before You Exit</div>
-          <div class="web-card-desc">What buyers actually pay for, how to structure a deal that protects you, and the moves to make in the years before you are ready to sell.</div>
+          <div class="web-card-title">I've Hit a Ceiling — When Your IBD Stops Fitting Your Practice</div>
+          <div class="web-card-desc">One in three IBD advisors considered opening an RIA last year. If your payout, tech, or alternatives access isn't keeping up with your practice, here's what the data says about what comes next.</div>
           <div class="web-card-footer">
             <span class="web-card-type">25 min · Free · Date TBD</span>
-            <button class="web-card-cta" onclick="registerWebinar('Maximizing Practice Value')">Register →</button>
+            <button class="web-card-cta" onclick="registerWebinar(this, 'I Have Hit a Ceiling')">Register →</button>
           </div>
         </div>
       </div>
 
-      <div class="web-card wc-5" style="grid-column:1/-1">
-        <div style="display:grid;grid-template-columns:200px 1fr;overflow:hidden;border-radius:6px">
-          <div class="web-card-img" style="height:100%;min-height:140px">
-            <div class="wc-card-art">
-              <svg width="180" height="120" viewBox="0 0 180 120">
-                <line x1="20" y1="100" x2="160" y2="100" stroke="#b8973a" stroke-width="0.5" opacity="0.4"/>
-                <rect x="25" y="40" width="35" height="60" rx="2" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.4"/>
-                <rect x="72" y="55" width="35" height="45" rx="2" stroke="#d4af5a" stroke-width="0.5" fill="rgba(184,151,58,0.03)" opacity="0.6"/>
-                <rect x="119" y="30" width="35" height="70" rx="2" stroke="#b8973a" stroke-width="0.5" fill="none" opacity="0.4"/>
-              </svg>
-            </div>
-            <span class="web-card-tag">Market data</span>
+      <!-- CARD 5 — GO RIA -->
+      <div class="web-card wc-5">
+        <div class="web-card-img" style="background-image:url(web5.jpg);background-size:cover;background-position:center;position:relative;">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,21,32,0.35) 0%,rgba(10,21,32,0.65) 100%);"></div>
+          <span class="web-card-tag" style="position:relative;z-index:1">RIA Model</span>
+        </div>
+        <div class="web-card-body">
+          <div class="web-card-title">Go RIA — What It Actually Means, What It Costs, and Whether It's Right for You</div>
+          <div class="web-card-desc">The RIA path is the most misunderstood model in the industry. A practical, no-pitch walkthrough of custodians, compliance, startup economics, and how to know if the model actually fits your practice.</div>
+          <div class="web-card-footer">
+            <span class="web-card-type">25 min · Free · Date TBD</span>
+            <button class="web-card-cta" onclick="registerWebinar(this, 'Go RIA')">Register →</button>
           </div>
-          <div class="web-card-body" style="background:var(--ink2)">
-            <div class="web-card-title">State of the Market: Q2 2026</div>
-            <div class="web-card-desc">Live comp data, channel migration trends, deal flow, and what is moving in the advisor market right now. Cerulli data, Fintrx intelligence, and a live Q&A with Corey.</div>
-            <div class="web-card-footer">
-              <span class="web-card-type">20 min · Free · Quarterly</span>
-              <button class="web-card-cta" onclick="registerWebinar('State of the Market Q2 2026')">Register →</button>
-            </div>
+        </div>
+      </div>
+
+      <!-- CARD 6 — FAMILY OFFICE -->
+      <div class="web-card wc-6">
+        <div class="web-card-img" style="background-image:url(web6.jpg);background-size:cover;background-position:center 30%;position:relative;">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,21,32,0.25) 0%,rgba(10,21,32,0.6) 100%);"></div>
+          <span class="web-card-tag" style="position:relative;z-index:1">UHNW · Family Office</span>
+        </div>
+        <div class="web-card-body">
+          <div class="web-card-title">From Wirehouse to Family Office RIA — What the Transition Actually Looks Like</div>
+          <div class="web-card-desc">For advisors managing $500M–$3B+ in UHNW relationships whose clients are asking for private equity, tax integration, and family governance — and the wirehouse keeps saying no. The platforms, the economics, and the move.</div>
+          <div class="web-card-footer">
+            <span class="web-card-type">25 min · Free · UHNW advisors</span>
+            <button class="web-card-cta" onclick="registerWebinar(this, 'From Wirehouse to Family Office RIA')">Register →</button>
           </div>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
 
-<!-- NOTIFY -->
-<section class="notify-section">
+    <section class="notify-section">
   <div class="notify-in">
     <div class="notify-eye">Never miss a session</div>
     <h2 class="notify-h">Get notified when<br>new sessions <em>drop.</em></h2>
